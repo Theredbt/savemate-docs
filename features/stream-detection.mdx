@@ -8,7 +8,7 @@ Video Downloader Plus watches network traffic in the background while you browse
 
 ## How detection works
 
-1. **Passive monitoring** — Video Downloader Plus intercepts outgoing HTTP requests through the browser's `webRequest` APIs, watching for responses that match known video formats and MIME types.
+1. **Passive monitoring** — Video Downloader Plus watches outgoing network requests in the background, looking for responses that match known video formats and media types.
 2. **Stream identification** — Each intercepted response is analyzed to extract format, quality variants, duration, file size, and codec information.
 3. **Visual notification** — Once a match is confirmed, the extension icon turns blue to signal that something is ready to act on.
 4. **User action** — Open the popup to review detected streams by quality tier and decide whether to download, cast, or save them.

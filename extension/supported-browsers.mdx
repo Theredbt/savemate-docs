@@ -48,8 +48,8 @@ When you install Video Downloader Plus, the browser asks you to approve a set of
 | Permission | Purpose |
 |------------|---------|
 | **tabs** | Associate detected streams with the correct browser tab, update the detection badge when you switch tabs, and clean up stream data when a tab is closed |
-| **webRequest** | Monitor network responses to identify video streams — HLS manifests, DASH segments, and direct MP4 files — by inspecting Content-Type headers and URL patterns |
-| **declarativeNetRequest** | Used as a fallback download mechanism and to manage streaming bridge headers when direct network interception is insufficient |
+| **Network monitoring** | Watch for video streams (HLS, DASH, MP4) as pages load by analyzing response types and URL patterns |
+| **Download rules** | Manage reliable file saving and streaming player header routing |
 | **storage** | Save your preferences, detected stream data for the current session, and authentication state locally on your device |
 | **downloads** (optional) | Enable saving files through the browser's download dialog with proper file names and folder routing — this permission is only requested when you turn on download management in settings |
 | **all_urls** (host permission) | Detect video streams on any website — required because video content can be hosted on any domain, not just a fixed list of known platforms |
@@ -62,9 +62,9 @@ When you install Video Downloader Plus, the browser asks you to approve a set of
 
 Video Downloader Plus relies on a set of browser APIs that are currently stable only in Chromium-based browsers:
 
-- **`webRequest`** — Low-level network monitoring needed to identify streams in real time as pages load
-- **`declarativeNetRequest`** — Declarative download rules and header manipulation for reliable file saving
-- **`storage.sync`** — Settings that synchronize automatically across all your browser profiles and devices
-- **Background service worker** — Persistent processing without a persistent background page, keeping resource use low
+- **Real-time network monitoring** — Identify streams the moment they load on a page
+- **Declarative download rules** — Reliable file saving that works across all sites
+- **Synced settings** — Preferences that follow you across browser profiles and devices
+- **Background processing** — Lightweight event-driven architecture that stays responsive without draining resources
 
 Firefox exposes some equivalent APIs through the WebExtension standard, but the behavior diverges enough that a separate implementation is required. Firefox support is currently in development.

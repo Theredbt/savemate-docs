@@ -61,8 +61,8 @@ The following table covers every permission in Video Downloader Plus's manifest 
 | Permission | Purpose |
 |---|---|
 | `tabs` | Associate detected video streams with their originating tab; update the badge icon and stream count per tab; detect tab navigation and closure to clear stale data; open install, uninstall, and download pages |
-| `webRequest` | Intercept HTTP response headers to identify video media streams (HLS, DASH, MP4) as they load; capture request headers needed to replay authenticated streams accurately |
-| `declarativeNetRequest` | Manage download rules and network headers needed for reliable file saving and the streaming player |
+| Network monitoring | Watch for video media streams (HLS, DASH, MP4) as pages load and capture the headers needed to replay protected streams accurately |
+| Download rules | Manage reliable file saving and the streaming player's network routing |
 | `storage` | Persist extension state: preferences in sync storage; detected video data, authentication state, and limit cache in local storage |
 | `downloads` *(optional)* | Requested at runtime only when you initiate a download. Triggers the browser's native download dialog with proper file naming. Never requested upfront |
 | `all_urls` (host permission) | Monitor network requests for video stream detection across all domains; run content scripts for DOM scanning and thumbnail extraction; fetch HLS/DASH manifests from arbitrary CDN origins |
