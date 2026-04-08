@@ -116,10 +116,10 @@ description: "A video streaming glossary covering HLS, DASH, codecs, m3u8, trans
   </Accordion>
 
   <Accordion title="Service Worker">
-    A JavaScript file that runs in its own background thread, separate from any web page, and persists across tab opens and closes. In the context of browser extensions built to the Manifest V3 specification, the service worker replaces the long-lived background page from Manifest V2. Because service workers are event-driven and can be terminated by the browser when idle, extensions must store any persistent state in `chrome.storage` rather than in memory. Video Downloader Plus's extension architecture is designed around this constraint to avoid losing detected stream data when the service worker is suspended.
+    A background script used by modern browser extensions (Manifest V3) to handle tasks like network monitoring and state management without requiring an open tab. Video Downloader Plus uses a service worker to detect video streams as you browse.
   </Accordion>
 
   <Accordion title="Manifest V3">
-    The current Chrome extension platform specification introduced by Google to improve security, performance, and privacy compared to the legacy Manifest V2 model. Key changes include replacing persistent background pages with ephemeral service workers, restricting the use of remotely hosted code, and replacing the `webRequestBlocking` API (which could intercept and modify network requests) with the `declarativeNetRequest` API (which uses declarative rules evaluated by the browser). Extensions must declare their full set of rules at install time. Video Downloader Plus's Manifest V3 implementation uses a service worker plus `chrome.storage` to reliably track streaming sessions within these constraints.
+    The current Chrome extension platform specification, replacing the older Manifest V2 standard. Manifest V3 improves security and performance by using event-driven background scripts and declarative rules for network operations. Video Downloader Plus is built on Manifest V3 for compatibility with all modern Chromium browsers.
   </Accordion>
 </AccordionGroup>

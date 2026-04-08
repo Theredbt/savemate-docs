@@ -26,7 +26,7 @@ Video Downloader Plus persists state in two Chrome storage areas — `sync` for 
 
 **Detected video metadata per tab** (local storage): the page URL where a video was found, detected video stream URLs, video title, thumbnail URL, available quality options, and stream type (HLS, DASH, or direct MP4). This data is cleared automatically when the tab closes and is also purged after 24 hours regardless of tab state.
 
-**Authentication state** (local storage): a boolean flag for whether you are logged in, an upgraded flag indicating premium status, a `device_key` identifier that ties the extension to your account, a `device_claimed` flag, and counters and timestamps tracking authentication failure events.
+**Authentication state** (local storage): a flag indicating whether you are signed in, your subscription status, and a unique device identifier used to associate the extension with your account.
 
 **HD download limit cache**: the current state of your download allowance, cached locally to avoid redundant server round-trips.
 
@@ -39,10 +39,10 @@ Video Downloader Plus does contact our servers in specific, bounded situations. 
 - **Last-resort video detection**: when network interception alone cannot find any video streams on a page, the page URL is sent to a Video Downloader Plus API endpoint that attempts server-side detection. No page content is transmitted — only the URL.
 - **Save to library**: when you explicitly click to save a video, the video title, the originating page link, and the thumbnail URL are sent to our servers to create the library entry.
 - **Bug reports**: the page URL, your browser name, and error details are transmitted only when you actively submit a bug report through the extension UI. No automatic crash reporting occurs.
-- **Device claim**: your `device_key` is sent to our servers on first login to merge any anonymous usage activity into your user account.
-- **Limit checks**: your `device_key` is sent when the extension checks whether you have remaining downloads or cast actions under your current plan.
+- **Device association**: a unique identifier is sent on first sign-in to link anonymous usage activity to your account.
+- **Limit checks**: your device identifier is sent to verify remaining downloads and cast sessions under your plan.
 - **Authentication state**: session cookies set by the vidow.io web app are included with API requests to verify your login status. The extension itself never handles credentials — authentication happens entirely through the vidow.io web interface.
-- **Outbound link tracking**: all URLs that open vidow.io from the extension have UTM parameters appended (`utm_source=extension`, `utm_medium`, `utm_campaign`, `utm_content` set to the context that triggered the link, e.g. `cast_premium_only` or `daily_limit_reached`), along with your browser name and extension version. This lets us understand which extension actions drive web visits.
+- **Outbound link parameters**: links that open vidow.io from the extension include campaign parameters (source, medium, and context), your browser name, and the extension version. These help us understand how the extension drives visits to the website.
 
 ## What Video Downloader Plus does not collect
 
@@ -62,7 +62,7 @@ The following table covers every permission in Video Downloader Plus's manifest 
 |---|---|
 | `tabs` | Associate detected video streams with their originating tab; update the badge icon and stream count per tab; detect tab navigation and closure to clear stale data; open install, uninstall, and download pages |
 | `webRequest` | Intercept HTTP response headers to identify video media streams (HLS, DASH, MP4) as they load; capture request headers needed to replay authenticated streams accurately |
-| `declarativeNetRequest` | Fallback download method via `Content-Disposition` header injection; forward streaming bridge headers for cast and stream player pages on vidow.io |
+| `declarativeNetRequest` | Manage download rules and network headers needed for reliable file saving and the streaming player |
 | `storage` | Persist extension state: preferences in sync storage; detected video data, authentication state, and limit cache in local storage |
 | `downloads` *(optional)* | Requested at runtime only when you initiate a download. Triggers the browser's native download dialog with proper file naming. Never requested upfront |
 | `all_urls` (host permission) | Monitor network requests for video stream detection across all domains; run content scripts for DOM scanning and thumbnail extraction; fetch HLS/DASH manifests from arbitrary CDN origins |
@@ -81,7 +81,7 @@ Your access keys are transmitted over HTTPS and stored encrypted on Video Downlo
 
 ## Payment security
 
-All payment processing is handled by [Stripe](https://stripe.com), a PCI DSS Level 1 certified payment processor. Video Downloader Plus never receives, stores, or processes your card number. Payment details are entered directly into Stripe's hosted payment forms, and billing webhooks communicate the outcome back to Video Downloader Plus without card data ever leaving Stripe's infrastructure.
+All payment processing is handled by [Stripe](https://stripe.com), a PCI DSS Level 1 certified payment processor. Video Downloader Plus never receives, stores, or processes your card number. Payment details are entered directly into Stripe's hosted payment forms, and payment processing communicates the outcome back to Video Downloader Plus without card data ever leaving Stripe's infrastructure.
 
 ## Extension verification
 
