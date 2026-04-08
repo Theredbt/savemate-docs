@@ -1,41 +1,41 @@
 ---
-title: "Set Up Google Drive — Cloud Video Storage with Vidow"
+title: "Set Up Google Drive — Cloud Video Storage with Video Downloader Plus"
 sidebarTitle: "Google Drive"
-description: "Link your Google Drive account to Vidow and start saving videos directly to your own storage in a few clicks."
+description: "Link your Google Drive account to Video Downloader Plus and start saving videos directly to your own storage in a few clicks."
 ---
 
-Google Drive connects through OAuth 2.0, which means Vidow never sees your Google password. You authorize access once, and Google issues a token that Vidow uses for uploads.
+Google Drive connects through OAuth 2.0, which means Video Downloader Plus never sees your Google password. You authorize access once, and Google issues a token that Video Downloader Plus uses for uploads.
 
 ## Prerequisites
 
-- A Vidow account on the [Professional plan](/billing/plans)
+- A Video Downloader Plus account on the [Professional plan](/billing/plans)
 - A Google account with sufficient Drive storage for your videos
 
 ## Connect Google Drive
 
 <Steps>
   <Step title="Open Cloud Sync">
-    Go to [vidow.io/cloud-sync](https://vidow.io/cloud-sync) and sign in to your Vidow account.
+    Go to [vidow.io/cloud-sync](https://vidow.io/cloud-sync) and sign in to your Video Downloader Plus account.
   </Step>
   <Step title="Click Connect on Google Drive">
-    Locate the Google Drive card and click **Connect**. Vidow redirects you to Google's OAuth authorization page.
+    Locate the Google Drive card and click **Connect**. Video Downloader Plus redirects you to Google's OAuth authorization page.
   </Step>
   <Step title="Choose your Google account">
     Pick the Google account you want to use. If several accounts are listed, select the one with enough free space for video storage.
   </Step>
   <Step title="Grant permissions">
-    Google asks you to confirm that Vidow can manage files in your Drive. Vidow writes only to a dedicated folder it creates — your existing files and folders remain untouched.
+    Google asks you to confirm that Video Downloader Plus can manage files in your Drive. Video Downloader Plus writes only to a dedicated folder it creates — your existing files and folders remain untouched.
 
     Click **Allow** to complete the authorization.
   </Step>
   <Step title="Connection confirmed">
-    You're returned to Vidow. The Google Drive card now displays a green **Connected** indicator, and you can start syncing videos.
+    You're returned to Video Downloader Plus. The Google Drive card now displays a green **Connected** indicator, and you can start syncing videos.
   </Step>
 </Steps>
 
 ## How uploads work
 
-Vidow uses Google's **resumable upload** protocol, which is designed to handle large files reliably:
+Video Downloader Plus uses Google's **resumable upload** protocol, which is designed to handle large files reliably:
 
 - Files smaller than 100MB are sent in a single HTTP request
 - Larger files open a resumable session, which tolerates network interruptions
@@ -44,7 +44,7 @@ Vidow uses Google's **resumable upload** protocol, which is designed to handle l
 
 ## Storage location
 
-Vidow creates a dedicated folder at the root of your Google Drive. Every synced video lands in that folder. You can move or rename files inside Drive after the upload without affecting Vidow's ability to write new ones.
+Video Downloader Plus creates a dedicated folder at the root of your Google Drive. Every synced video lands in that folder. You can move or rename files inside Drive after the upload without affecting Video Downloader Plus's ability to write new ones.
 
 ## Managing the connection
 
@@ -54,19 +54,19 @@ The Cloud Sync page shows a live status for each connected provider:
 
 - **Healthy** — The OAuth token is current and uploads are working normally
 - **Broken** — The token was invalidated or expired. Click **Reconnect** to go through authorization again
-- **Revoked** — You removed Vidow's access from your Google account. Reconnect from the Cloud Sync page to restore it
+- **Revoked** — You removed Video Downloader Plus's access from your Google account. Reconnect from the Cloud Sync page to restore it
 
-<Tip>Vidow refreshes OAuth tokens automatically before they expire, so you should rarely see a Broken status during normal use.</Tip>
+<Tip>Video Downloader Plus refreshes OAuth tokens automatically before they expire, so you should rarely see a Broken status during normal use.</Tip>
 
 ### Disconnect
 
-To remove the Google Drive connection from Vidow:
+To remove the Google Drive connection from Video Downloader Plus:
 
 1. Visit [vidow.io/cloud-sync](https://vidow.io/cloud-sync)
 2. Open the options on the Google Drive card and choose **Disconnect**
-3. The connection is deleted from Vidow — no files in Drive are affected
+3. The connection is deleted from Video Downloader Plus — no files in Drive are affected
 
-To also cut off access from Google's side, visit [myaccount.google.com/permissions](https://myaccount.google.com/permissions) and remove Vidow from the list of connected apps.
+To also cut off access from Google's side, visit [myaccount.google.com/permissions](https://myaccount.google.com/permissions) and remove Video Downloader Plus from the list of connected apps.
 
 ## Troubleshooting
 
@@ -81,7 +81,7 @@ To also cut off access from Google's side, visit [myaccount.google.com/permissio
     Google can invalidate a token for several reasons:
 
     - You changed your Google account password
-    - You manually removed Vidow's access in your Google account settings
+    - You manually removed Video Downloader Plus's access in your Google account settings
     - Google flagged unusual activity on your account
 
     In any of these cases, click **Reconnect** on the Cloud Sync page to issue a fresh token.

@@ -1,19 +1,19 @@
 ---
 title: "Stream Detection — Automatically Find HLS, DASH & MP4 Videos"
 sidebarTitle: "Stream Detection"
-description: "Vidow is a stream video downloader that identifies HLS, DASH, and 16+ progressive formats as you browse — no manual URL hunting required."
+description: "Video Downloader Plus is a stream video downloader that identifies HLS, DASH, and 16+ progressive formats as you browse — no manual URL hunting required."
 ---
 
-Vidow watches network traffic in the background while you browse. The moment it identifies a video stream on the page, the extension icon activates and shows you everything it found.
+Video Downloader Plus watches network traffic in the background while you browse. The moment it identifies a video stream on the page, the extension icon activates and shows you everything it found.
 
 ## How detection works
 
-1. **Passive monitoring** — Vidow intercepts outgoing HTTP requests through the browser's `webRequest` APIs, watching for responses that match known video formats and MIME types.
+1. **Passive monitoring** — Video Downloader Plus intercepts outgoing HTTP requests through the browser's `webRequest` APIs, watching for responses that match known video formats and MIME types.
 2. **Stream identification** — Each intercepted response is analyzed to extract format, quality variants, duration, file size, and codec information.
 3. **Visual notification** — Once a match is confirmed, the extension icon turns blue to signal that something is ready to act on.
 4. **User action** — Open the popup to review detected streams by quality tier and decide whether to download, cast, or save them.
 
-Detection runs locally in your browser. For sites where network interception alone isn't sufficient, Vidow uses a server-assisted fallback to identify streams.
+Detection runs locally in your browser. For sites where network interception alone isn't sufficient, Video Downloader Plus uses a server-assisted fallback to identify streams.
 
 ## Supported stream types
 
@@ -21,12 +21,12 @@ Detection runs locally in your browser. For sites where network interception alo
 
 | Type | Format | Notes |
 |------|--------|-------|
-| **HLS** | `.m3u8` | Vidow parses master playlists to enumerate every quality variant and detect separate audio renditions. |
+| **HLS** | `.m3u8` | Video Downloader Plus parses master playlists to enumerate every quality variant and detect separate audio renditions. |
 | **DASH** | `.mpd` | MPD manifests are parsed to extract available resolutions, bitrates, and segment templates. |
 
 ### Progressive video
 
-Vidow detects direct video files in 16 container formats:
+Video Downloader Plus detects direct video files in 16 container formats:
 
 | Format | Extensions |
 |--------|-----------|
@@ -44,17 +44,17 @@ Vidow detects direct video files in 16 container formats:
 
 ### Audio formats
 
-Vidow also picks up standalone audio streams: `.mp3`, `.aac`, `.m4a`, `.flac`, `.wav`
+Video Downloader Plus also picks up standalone audio streams: `.mp3`, `.aac`, `.m4a`, `.flac`, `.wav`
 
 ### Platform-specific detection
 
-Some platforms wrap their stream URLs inside API responses rather than exposing them as direct network requests. Vidow handles these with dedicated interceptors:
+Some platforms wrap their stream URLs inside API responses rather than exposing them as direct network requests. Video Downloader Plus handles these with dedicated interceptors:
 
 - **Vimeo** — Intercepts the player configuration API call to extract both progressive MP4 download URLs and HLS playlists, along with accurate file sizes that aren't available from headers alone.
 
 ## Detection indicator
 
-The Vidow icon in your toolbar reflects the current state of the page:
+The Video Downloader Plus icon in your toolbar reflects the current state of the page:
 
 - **Default state** — No video streams have been found on the active tab.
 - **Active (blue)** — At least one stream has been detected and is ready to act on.
@@ -63,7 +63,7 @@ Clicking the active icon opens the stream list, organized by quality variant whe
 
 ## Stream metadata
 
-For each detected stream, Vidow surfaces the following information:
+For each detected stream, Video Downloader Plus surfaces the following information:
 
 - **Title** — Pulled from page metadata or stream manifest tags
 - **Thumbnail** — Preview image extracted from Open Graph tags or the page's video element
@@ -97,20 +97,20 @@ For each detected stream, Vidow surfaces the following information:
 
 ## Detection settings
 
-Open the extension's options page to tune how Vidow monitors traffic:
+Open the extension's options page to tune how Video Downloader Plus monitors traffic:
 
 - **Format filtering** — Turn detection on or off for individual video and audio format types
 - **Minimum file size** — Skip files below a threshold to filter out ads and preview clips (presets: 10KB, 100KB, 1MB, 2MB, or enter a custom value)
-- **Blocked sites** — Specify domains where Vidow should not activate, using pattern matching
+- **Blocked sites** — Specify domains where Video Downloader Plus should not activate, using pattern matching
 
 <Info>
-  Reach options by right-clicking the Vidow icon and selecting **Options**, or by clicking the gear icon inside the popup.
+  Reach options by right-clicking the Video Downloader Plus icon and selecting **Options**, or by clicking the gear icon inside the popup.
 </Info>
 
 ## Supported sites
 
-Vidow works with any site that delivers video through HLS, DASH, MP4, WebM, or any of the other supported formats. This covers the overwhelming majority of video hosting platforms, media sites, and web apps built on standard streaming infrastructure.
+Video Downloader Plus works with any site that delivers video through HLS, DASH, MP4, WebM, or any of the other supported formats. This covers the overwhelming majority of video hosting platforms, media sites, and web apps built on standard streaming infrastructure.
 
 <Warning>
-  Vidow is intended for personal archiving and fair-use scenarios. Respect the rights of content creators and review the terms of service of any site before downloading.
+  Video Downloader Plus is intended for personal archiving and fair-use scenarios. Respect the rights of content creators and review the terms of service of any site before downloading.
 </Warning>

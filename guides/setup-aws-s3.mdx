@@ -1,14 +1,14 @@
 ---
-title: "Set Up AWS S3 — Cloud Video Storage with Vidow"
+title: "Set Up AWS S3 — Cloud Video Storage with Video Downloader Plus"
 sidebarTitle: "AWS S3"
-description: "Configure an AWS S3 bucket and IAM credentials to use S3 as your Vidow video storage destination with full multipart upload support."
+description: "Configure an AWS S3 bucket and IAM credentials to use S3 as your Video Downloader Plus video storage destination with full multipart upload support."
 ---
 
-AWS S3 connects via API keys rather than OAuth. You create a dedicated IAM user with narrowly scoped permissions, generate an access key pair, and enter those credentials in Vidow. Your AWS root account is never involved.
+AWS S3 connects via API keys rather than OAuth. You create a dedicated IAM user with narrowly scoped permissions, generate an access key pair, and enter those credentials in Video Downloader Plus. Your AWS root account is never involved.
 
 ## Prerequisites
 
-- A Vidow account on the [Professional plan](/billing/plans)
+- A Video Downloader Plus account on the [Professional plan](/billing/plans)
 - An AWS account with S3 access
 - An S3 bucket to use for video storage
 - An IAM user with upload permissions on that bucket
@@ -26,7 +26,7 @@ If you haven't set one up yet:
 
 ## Step 2: Create an IAM user
 
-Vidow needs a dedicated IAM user with the minimum permissions required to upload files:
+Video Downloader Plus needs a dedicated IAM user with the minimum permissions required to upload files:
 
 1. Open the [IAM Console](https://console.aws.amazon.com/iam/)
 2. Go to **Users** and click **Create user**
@@ -58,7 +58,7 @@ Replace `YOUR-BUCKET-NAME` with the name of the bucket you created in Step 1.
 
 6. Save the policy, then attach it to the new IAM user
 
-<Warning>Use only the six actions listed above. Do not use the wildcard `s3:*` or attach the managed `AmazonS3FullAccess` policy — those grant far more access than Vidow needs.</Warning>
+<Warning>Use only the six actions listed above. Do not use the wildcard `s3:*` or attach the managed `AmazonS3FullAccess` policy — those grant far more access than Video Downloader Plus needs.</Warning>
 
 ## Step 3: Generate access keys
 
@@ -70,7 +70,7 @@ Replace `YOUR-BUCKET-NAME` with the name of the bucket you created in Step 1.
 
 <Warning>AWS shows the Secret Access Key only at the moment of creation. Store it somewhere secure before closing the dialog — if you lose it, you'll need to delete the key and create a new one.</Warning>
 
-## Step 4: Connect in Vidow
+## Step 4: Connect in Video Downloader Plus
 
 <Steps>
   <Step title="Open Cloud Sync">
@@ -87,13 +87,13 @@ Replace `YOUR-BUCKET-NAME` with the name of the bucket you created in Step 1.
     - **Region** — The AWS region where the bucket lives (e.g., `us-east-1`)
   </Step>
   <Step title="Test and save">
-    Vidow performs a quick validation against your bucket. If the credentials are correct and the permissions are in place, the connection is saved and you can start syncing.
+    Video Downloader Plus performs a quick validation against your bucket. If the credentials are correct and the permissions are in place, the connection is saved and you can start syncing.
   </Step>
 </Steps>
 
 ## How uploads work
 
-Vidow uses **multipart upload** for files larger than 100MB:
+Video Downloader Plus uses **multipart upload** for files larger than 100MB:
 
 - Each file is split into 10MB parts
 - Parts transfer in parallel, which saturates available bandwidth and reduces total upload time
@@ -115,7 +115,7 @@ When you need to replace your IAM access keys:
 
 ### Disconnect
 
-Click disconnect on the S3 card to remove the connection from Vidow. Your S3 bucket and all previously uploaded files stay intact — Vidow only removes its own stored credentials.
+Click disconnect on the S3 card to remove the connection from Video Downloader Plus. Your S3 bucket and all previously uploaded files stay intact — Video Downloader Plus only removes its own stored credentials.
 
 ## Troubleshooting
 
@@ -124,7 +124,7 @@ Click disconnect on the S3 card to remove the connection from Vidow. Your S3 buc
     Check that your IAM policy includes all six required actions: `PutObject`, `CreateMultipartUpload`, `UploadPart`, `CompleteMultipartUpload`, `AbortMultipartUpload`, and `ListMultipartUploadParts`. Also confirm the `Resource` ARN in the policy ends with `/*` and matches your bucket name exactly.
   </Accordion>
   <Accordion title="Wrong region error">
-    S3 bucket names are globally unique, but each bucket is tied to a specific region. The region you enter in Vidow must match the region where the bucket was created. Check the bucket details in the S3 Console if you're unsure.
+    S3 bucket names are globally unique, but each bucket is tied to a specific region. The region you enter in Video Downloader Plus must match the region where the bucket was created. Check the bucket details in the S3 Console if you're unsure.
   </Accordion>
   <Accordion title="Upload timeout">
     On slower or unstable connections, large file transfers can stall. Try pausing and resuming the upload from the Cloud Sync page — this resets the active connection without losing progress. Also check whether your bucket has any lifecycle rules or policies that might be terminating in-progress multipart uploads.

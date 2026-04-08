@@ -6,7 +6,7 @@ description: "Convert HLS and DASH streams into standard video containers, or pu
 
 <Info>Format conversion is a **Professional** feature. [Upgrade your plan](/billing/plans) to unlock it.</Info>
 
-Vidow can remux HLS (m3u8) and DASH (mpd) streams into standard video containers and extract audio tracks into standalone audio files. Conversion runs entirely inside your browser — nothing is uploaded to a server.
+Video Downloader Plus can remux HLS (m3u8) and DASH (mpd) streams into standard video containers and extract audio tracks into standalone audio files. Conversion runs entirely inside your browser — nothing is uploaded to a server.
 
 ## Video conversion targets
 
@@ -28,13 +28,13 @@ Vidow can remux HLS (m3u8) and DASH (mpd) streams into standard video containers
 
 <Steps>
   <Step title="Detect the stream">
-    Vidow identifies an HLS or DASH stream on the page and surfaces it in the popup.
+    Video Downloader Plus identifies an HLS or DASH stream on the page and surfaces it in the popup.
   </Step>
   <Step title="Choose a target format">
     Select your desired output format from the format picker before starting the download.
   </Step>
   <Step title="Local processing via WebAssembly">
-    Vidow downloads all segments and passes them through a WebAssembly-based media engine running in your browser. No data leaves your device during this step.
+    Video Downloader Plus downloads all segments and passes them through a WebAssembly-based media engine running in your browser. No data leaves your device during this step.
   </Step>
   <Step title="Save the output file">
     The finished file is written to your downloads folder in the format you selected.
@@ -72,6 +72,6 @@ Vidow can remux HLS (m3u8) and DASH (mpd) streams into standard video containers
 ## Key details
 
 - **Local-only processing** — The WebAssembly media engine runs entirely in your browser. Your video data stays on your machine.
-- **Lossless quality** — Vidow remuxes streams into the target container without re-encoding video or audio, so there is no quality degradation for supported codec combinations.
+- **Lossless quality** — Video Downloader Plus remuxes streams into the target container without re-encoding video or audio, so there is no quality degradation for supported codec combinations.
 - **Automatic track muxing** — HLS and DASH streams with separate audio and video renditions are merged into a single output file before being saved.
-- **DASH SegmentBase passthrough** — When a DASH stream uses SegmentBase (meaning the content is already a standard MP4 with byte-range requests), Vidow downloads the file directly and skips the conversion step entirely.
+- **DASH SegmentBase passthrough** — When a DASH stream uses SegmentBase (meaning the content is already a standard MP4 with byte-range requests), Video Downloader Plus downloads the file directly and skips the conversion step entirely.

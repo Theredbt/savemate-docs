@@ -1,30 +1,30 @@
 ---
-title: "Download Vimeo Videos — Enhanced Detection with Vidow"
+title: "Download Vimeo Videos — Enhanced Detection with Video Downloader Plus"
 sidebarTitle: "Download from Vimeo"
-description: "Learn how to download Vimeo video files with Vidow's dedicated detector — accurate quality levels, real file sizes, and support for embedded players on any site."
+description: "Learn how to download Vimeo video files with Video Downloader Plus's dedicated detector — accurate quality levels, real file sizes, and support for embedded players on any site."
 ---
 
-Vidow ships a purpose-built Vimeo detector that goes beyond generic stream sniffing. Instead of watching for network requests at the surface level, it intercepts Vimeo's internal player configuration API — the same response the Vimeo player uses to initialize itself. This gives Vidow access to data that generic detectors never see.
+Video Downloader Plus ships a purpose-built Vimeo detector that goes beyond generic stream sniffing. Instead of watching for network requests at the surface level, it intercepts Vimeo's internal player configuration API — the same response the Vimeo player uses to initialize itself. This gives Video Downloader Plus access to data that generic detectors never see.
 
 ## How Vimeo detection works
 
-When a Vimeo player loads, it fetches a JSON configuration object that describes every available format, quality level, and CDN URL for that video. Vidow captures this configuration before the player processes it, which means:
+When a Vimeo player loads, it fetches a JSON configuration object that describes every available format, quality level, and CDN URL for that video. Video Downloader Plus captures this configuration before the player processes it, which means:
 
-1. **Progressive MP4 and HLS are both surfaced** — Vimeo serves direct file downloads alongside adaptive streams. Vidow presents both, so you can choose the simpler option when it fits your needs.
+1. **Progressive MP4 and HLS are both surfaced** — Vimeo serves direct file downloads alongside adaptive streams. Video Downloader Plus presents both, so you can choose the simpler option when it fits your needs.
 2. **File sizes are exact, not estimated** — Progressive MP4 entries carry their actual byte count in the config. What you see in the popup is the real file size, not a guess.
-3. **All quality renditions are listed** — Vimeo's player UI sometimes hides certain quality options to avoid overwhelming viewers. Vidow shows every rendition the API provides, including ones the player never exposes.
-4. **Detection happens on first load** — You do not need to interact with Vidow's popup first. As soon as the player config is intercepted, the extension badge activates.
+3. **All quality renditions are listed** — Vimeo's player UI sometimes hides certain quality options to avoid overwhelming viewers. Video Downloader Plus shows every rendition the API provides, including ones the player never exposes.
+4. **Detection happens on first load** — You do not need to interact with Video Downloader Plus's popup first. As soon as the player config is intercepted, the extension badge activates.
 
 ## Downloading a Vimeo video
 
 <Steps>
   <Step title="Go to the video page">
-    Open the Vimeo video URL directly, or navigate to any page that embeds a Vimeo player. Vidow's detector works wherever the Vimeo player loads.
+    Open the Vimeo video URL directly, or navigate to any page that embeds a Vimeo player. Video Downloader Plus's detector works wherever the Vimeo player loads.
   </Step>
   <Step title="Press play">
-    The player configuration request fires during playback initialization. Click play to trigger it. Vidow intercepts the config at this point and extracts all available formats.
+    The player configuration request fires during playback initialization. Click play to trigger it. Video Downloader Plus intercepts the config at this point and extracts all available formats.
   </Step>
-  <Step title="Click the Vidow icon">
+  <Step title="Click the Video Downloader Plus icon">
     The toolbar icon will show a badge once the video is detected. Open the popup to see your download options organized by format type and quality.
   </Step>
   <Step title="Select your preferred format">
@@ -33,29 +33,29 @@ When a Vimeo player loads, it fetches a JSON configuration object that describes
     - **Progressive MP4** — A direct file hosted on Vimeo's CDN. No segment assembly needed. Download speed depends on your connection and Vimeo's CDN. Exact file sizes shown.
     - **HLS stream** — The adaptive playlist covering the same quality range. Useful when a progressive option is unavailable at the quality you need.
 
-    When both formats are available at the same quality, progressive MP4 is generally faster to download since Vidow retrieves a single file rather than hundreds of segments.
+    When both formats are available at the same quality, progressive MP4 is generally faster to download since Video Downloader Plus retrieves a single file rather than hundreds of segments.
   </Step>
   <Step title="Download">
-    Click **Download** on your chosen format. Vidow handles the rest — no browser plugin, no external tool.
+    Click **Download** on your chosen format. Video Downloader Plus handles the rest — no browser plugin, no external tool.
   </Step>
 </Steps>
 
 ## Embedded Vimeo videos
 
-Vidow's Vimeo detector is not limited to vimeo.com. The same detection logic activates whenever a Vimeo player loads anywhere on the web. This covers a wide range of hosting contexts:
+Video Downloader Plus's Vimeo detector is not limited to vimeo.com. The same detection logic activates whenever a Vimeo player loads anywhere on the web. This covers a wide range of hosting contexts:
 
 - **Online course platforms** — Teachable, Thinkific, and Kajabi use Vimeo as their backend video host
 - **Portfolio and agency sites** — Designers and studios commonly embed Vimeo players for showreels and case studies
 - **Learning management systems** — University portals, corporate LMS platforms, and training tools that embed Vimeo for content delivery
 - **Business and marketing sites** — Product demos, webinars, and explainer videos hosted through Vimeo's business plan
 
-The detection mechanism is identical regardless of the embed host. If the Vimeo player initializes, Vidow intercepts its configuration.
+The detection mechanism is identical regardless of the embed host. If the Vimeo player initializes, Video Downloader Plus intercepts its configuration.
 
-<Tip>On embedded players, make sure playback actually starts before checking the Vidow popup. Some embed configurations defer the full player initialization until the viewer presses play, which is when the API call occurs.</Tip>
+<Tip>On embedded players, make sure playback actually starts before checking the Video Downloader Plus popup. Some embed configurations defer the full player initialization until the viewer presses play, which is when the API call occurs.</Tip>
 
 ## Quality options
 
-The renditions available for any given video depend on what the uploader submitted. Vidow shows exactly what Vimeo's API provides — nothing more, nothing less.
+The renditions available for any given video depend on what the uploader submitted. Video Downloader Plus shows exactly what Vimeo's API provides — nothing more, nothing less.
 
 | Quality | Progressive MP4 | HLS |
 |---------|-----------------|-----|
@@ -66,4 +66,4 @@ The renditions available for any given video depend on what the uploader submitt
 | 1440p (2K) | Rare, Vimeo Pro and above | Depends on upload |
 | 4K | Rare, high-tier plans only | Depends on upload |
 
-<Note>Vimeo restricts certain quality levels based on the creator's account tier. A video uploaded by a free Vimeo account may only offer up to 720p even if it was recorded in 4K. Vidow surfaces exactly what Vimeo's API returns — it cannot unlock quality levels the platform has restricted.</Note>
+<Note>Vimeo restricts certain quality levels based on the creator's account tier. A video uploaded by a free Vimeo account may only offer up to 720p even if it was recorded in 4K. Video Downloader Plus surfaces exactly what Vimeo's API returns — it cannot unlock quality levels the platform has restricted.</Note>

@@ -1,25 +1,25 @@
 ---
-title: "Troubleshooting — Fix Common Vidow Issues"
+title: "Troubleshooting — Fix Common Video Downloader Plus Issues"
 sidebarTitle: "Troubleshooting"
-description: "Step-by-step fixes for the most common Vidow problems — detection failures, download errors, sync issues, and more."
+description: "Step-by-step fixes for the most common Video Downloader Plus problems — detection failures, download errors, sync issues, and more."
 ---
 
 ## Stream not detected
 
-**The Vidow icon stays inactive on a page that has video.**
+**The Video Downloader Plus icon stays inactive on a page that has video.**
 
 <Steps>
   <Step title="Check the stream format">
-    Vidow detects HLS (m3u8), DASH (mpd), MP4, and WebM streams. Sites that serve video through proprietary DRM systems typically cannot be detected regardless of settings.
+    Video Downloader Plus detects HLS (m3u8), DASH (mpd), MP4, and WebM streams. Sites that serve video through proprietary DRM systems typically cannot be detected regardless of settings.
   </Step>
   <Step title="Refresh the page">
-    Detection runs at page load. A full refresh gives Vidow another opportunity to find the stream before any content is cached by the browser.
+    Detection runs at page load. A full refresh gives Video Downloader Plus another opportunity to find the stream before any content is cached by the browser.
   </Step>
   <Step title="Play the video first">
-    Many platforms delay loading the stream URL until you press play. Start the video, wait a few seconds, and check whether the Vidow icon activates.
+    Many platforms delay loading the stream URL until you press play. Start the video, wait a few seconds, and check whether the Video Downloader Plus icon activates.
   </Step>
   <Step title="Confirm the extension is enabled">
-    Right-click the Vidow icon in your toolbar and open **Manage extension**. Verify the toggle is set to **On** for the site you are visiting.
+    Right-click the Video Downloader Plus icon in your toolbar and open **Manage extension**. Verify the toggle is set to **On** for the site you are visiting.
   </Step>
 </Steps>
 
@@ -29,18 +29,18 @@ description: "Step-by-step fixes for the most common Vidow problems — detectio
 
 - **Check your connection** — HLS downloads fetch many small segments in sequence. A dropped connection can interrupt this process.
 - **Switch to a lower quality** — Smaller files place less strain on slow or unstable connections and are more likely to complete in one pass.
-- **Retry the download** — Vidow supports resuming interrupted HLS downloads from where they stopped. Start the download again rather than restarting from the beginning.
+- **Retry the download** — Video Downloader Plus supports resuming interrupted HLS downloads from where they stopped. Start the download again rather than restarting from the beginning.
 - **Clear browser cache** — Stale manifest data can cause the extension to request segments that no longer exist. Clear your cache, refresh the page, and try again.
 - **Verify available disk space** — Make sure the drive you are saving to has enough free space to hold the full video file.
 
 ## Extension not visible in toolbar
 
-**You installed Vidow but cannot find the icon in your browser.**
+**You installed Video Downloader Plus but cannot find the icon in your browser.**
 
 The extension is installed but may not be pinned yet:
 
 1. Click the **puzzle piece icon** in the upper-right corner of your browser window
-2. Locate Vidow in the list of installed extensions
+2. Locate Video Downloader Plus in the list of installed extensions
 3. Click the **pin icon** to keep it permanently visible in your toolbar
 
 For detailed screenshots, see the [Pin to Toolbar guide](/extension/pinning).
@@ -52,13 +52,13 @@ For detailed screenshots, see the [Pin to Toolbar guide](/extension/pinning).
 <AccordionGroup>
   <Accordion title="Google Drive / Dropbox">
     - **Re-authorize the connection** — OAuth tokens expire over time. Go to your Cloud Sync settings, disconnect the provider, and reconnect to generate a fresh token.
-    - **Review granted permissions** — During the OAuth flow, Vidow requires specific access scopes. If you declined any permissions, the connection may be partially authorized. Disconnect and reconnect, granting all requested permissions.
+    - **Review granted permissions** — During the OAuth flow, Video Downloader Plus requires specific access scopes. If you declined any permissions, the connection may be partially authorized. Disconnect and reconnect, granting all requested permissions.
     - **Check storage quota** — Your Google Drive or Dropbox account may be full. Free up space before retrying the upload.
   </Accordion>
   <Accordion title="AWS S3 / Cloudflare R2">
-    - **Verify your credentials** — Confirm that the Access Key ID and Secret Access Key entered in Vidow settings are current and correct.
+    - **Verify your credentials** — Confirm that the Access Key ID and Secret Access Key entered in Video Downloader Plus settings are current and correct.
     - **Check bucket permissions** — The IAM user or policy attached to your credentials must include `s3:PutObject` and `s3:CreateMultipartUpload` at minimum.
-    - **Confirm the region** — An incorrect region setting will cause all requests to fail. Match the region in Vidow settings to the region shown in your bucket configuration.
+    - **Confirm the region** — An incorrect region setting will cause all requests to fail. Match the region in Video Downloader Plus settings to the region shown in your bucket configuration.
   </Accordion>
 </AccordionGroup>
 
@@ -89,7 +89,7 @@ If you no longer have your recovery codes either, contact support for manual acc
 
 ## Download limit reached
 
-**Vidow shows a message saying you have hit your daily limit.**
+**Video Downloader Plus shows a message saying you have hit your daily limit.**
 
 Free accounts get unlimited downloads at 720p and below. Downloads at 1080p and above are capped at 3 per day.
 
@@ -135,7 +135,7 @@ Free accounts get unlimited downloads at 720p and below. Downloads at 1080p and 
     Common reasons for a decline: insufficient funds, an expired card, or automatic fraud protection from your bank. Contact your bank directly if the card should be working.
   </Accordion>
   <Accordion title="Invoice payment failed">
-    Failed invoices can be retried manually from your billing dashboard. Vidow also schedules automatic retry attempts after a short delay, so the payment may succeed on its own.
+    Failed invoices can be retried manually from your billing dashboard. Video Downloader Plus also schedules automatic retry attempts after a short delay, so the payment may succeed on its own.
   </Accordion>
   <Accordion title="Subscription not activating after payment">
     Subscription activation relies on a webhook from Stripe. Processing usually takes under a minute, but can occasionally run longer. If your Professional features have not appeared within 5 minutes of payment:
@@ -148,9 +148,9 @@ Free accounts get unlimited downloads at 720p and below. Downloads at 1080p and 
 
 ## Extension does not detect videos on single-page apps
 
-**Vidow misses videos when you navigate between pages without a full reload.**
+**Video Downloader Plus misses videos when you navigate between pages without a full reload.**
 
-Vidow includes a built-in SPA observer that watches for navigation changes on React, Vue, Angular, and similar frameworks. If detection is still not triggering:
+Video Downloader Plus includes a built-in SPA observer that watches for navigation changes on React, Vue, Angular, and similar frameworks. If detection is still not triggering:
 
 1. **Play the video** — Many SPAs do not fetch the stream URL until the player is actually started
 2. **Wait a few seconds** — Navigation events fire asynchronously, so detection can lag a few seconds behind the route change
@@ -161,7 +161,7 @@ Vidow includes a built-in SPA observer that watches for navigation changes on Re
 
 If you run into a problem that is not covered here, submit a report directly from the extension:
 
-1. Click the Vidow icon in your toolbar
+1. Click the Video Downloader Plus icon in your toolbar
 2. Find the report option in the popup footer
 3. Describe what happened and submit
 
@@ -170,5 +170,5 @@ All submitted reports are reviewed by the team, and we will follow up if more de
 ## Still need help?
 
 <Card title="Contact support" icon="envelope" href="https://vidow.io/contact" horizontal>
-  Reach out to the Vidow team and we will help you resolve the issue.
+  Reach out to the Video Downloader Plus team and we will help you resolve the issue.
 </Card>

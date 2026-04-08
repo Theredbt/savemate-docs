@@ -1,22 +1,22 @@
 ---
-title: "Tips & Tricks — Get the Most Out of Vidow"
+title: "Tips & Tricks — Get the Most Out of Video Downloader Plus"
 sidebarTitle: "Tips & Tricks"
-description: "Power-user techniques for detection, downloads, cloud storage, extension settings, and billing — everything you need to get full value from Vidow."
+description: "Power-user techniques for detection, downloads, cloud storage, extension settings, and billing — everything you need to get full value from Video Downloader Plus."
 ---
 
 ## Detection tips
 
 ### Single-page applications
 
-Modern web apps built on React, Vue, Angular, and similar frameworks navigate between views without triggering full page loads. Vidow includes a navigation observer that watches for route changes on these sites and automatically re-scans for new video content whenever the URL changes. You do not need to close and reopen the extension or refresh the page — the badge updates on its own when a new stream is found after an in-app navigation.
+Modern web apps built on React, Vue, Angular, and similar frameworks navigate between views without triggering full page loads. Video Downloader Plus includes a navigation observer that watches for route changes on these sites and automatically re-scans for new video content whenever the URL changes. You do not need to close and reopen the extension or refresh the page — the badge updates on its own when a new stream is found after an in-app navigation.
 
 ### Play the video before checking the popup
 
-A significant number of platforms use lazy initialization: the video stream manifest is not fetched until the viewer presses play. If you open the Vidow popup and see no results, close it, start the video, wait two or three seconds for the player to request its stream data, then open the popup again. The badge will reflect the detected stream count once the network request has fired.
+A significant number of platforms use lazy initialization: the video stream manifest is not fetched until the viewer presses play. If you open the Video Downloader Plus popup and see no results, close it, start the video, wait two or three seconds for the player to request its stream data, then open the popup again. The badge will reflect the detected stream count once the network request has fired.
 
 ### Pages with multiple videos
 
-When a page contains several videos — a course module list, a media archive, or a social feed — Vidow tracks all of them simultaneously. Opening the popup reveals every stream that has been detected on the current page, listed individually. You can pick and download any of them without needing to navigate to a dedicated video page.
+When a page contains several videos — a course module list, a media archive, or a social feed — Video Downloader Plus tracks all of them simultaneously. Opening the popup reveals every stream that has been detected on the current page, listed individually. You can pick and download any of them without needing to navigate to a dedicated video page.
 
 ---
 
@@ -24,7 +24,7 @@ When a page contains several videos — a course module list, a media archive, o
 
 ### Prefer progressive downloads when available
 
-Some platforms serve both a direct MP4 file and an HLS stream for the same content. These are not equivalent from a download perspective. A progressive MP4 is a single file: one request, one transfer, done. An HLS download requires Vidow to fetch potentially hundreds of small segments and assemble them afterward. When a direct MP4 is available at your target quality, use it — it is simpler, faster, and produces a cleaner output file.
+Some platforms serve both a direct MP4 file and an HLS stream for the same content. These are not equivalent from a download perspective. A progressive MP4 is a single file: one request, one transfer, done. An HLS download requires Video Downloader Plus to fetch potentially hundreds of small segments and assemble them afterward. When a direct MP4 is available at your target quality, use it — it is simpler, faster, and produces a cleaner output file.
 
 ### Match your format to the destination device
 
@@ -45,8 +45,8 @@ Very long recordings — two-hour lectures, full-length films, multi-hour live s
 
 - Check the estimated file size in the popup before starting. A 1080p stream at two hours can easily exceed 3–4 GB.
 - Use a stable wired or Wi-Fi connection. Cellular and shared Wi-Fi connections are more likely to interrupt an HLS segment fetch mid-download.
-- Keep the Vidow tab open and active throughout the download. HLS segment downloads run in the context of the browser tab. Closing it stops the process.
-- If an HLS download stalls or errors, use the retry option shown in the popup. Vidow can resume segment fetching from where it stopped for most streams.
+- Keep the Video Downloader Plus tab open and active throughout the download. HLS segment downloads run in the context of the browser tab. Closing it stops the process.
+- If an HLS download stalls or errors, use the retry option shown in the popup. Video Downloader Plus can resume segment fetching from where it stopped for most streams.
 
 ---
 
@@ -54,11 +54,11 @@ Very long recordings — two-hour lectures, full-length films, multi-hour live s
 
 ### Organize with dedicated folders
 
-Vidow saves files to a dedicated folder on your connected cloud provider (Google Drive, Dropbox, AWS S3, or Cloudflare R2). For long-term storage, consider creating subfolders within that directory by content category — courses, research, archived footage — so you are not sorting through a flat list later.
+Video Downloader Plus saves files to a dedicated folder on your connected cloud provider (Google Drive, Dropbox, AWS S3, or Cloudflare R2). For long-term storage, consider creating subfolders within that directory by content category — courses, research, archived footage — so you are not sorting through a flat list later.
 
 ### Pause and resume large uploads
 
-Uploads to AWS S3 and Cloudflare R2 use multipart upload, which means they can be paused and picked up later without starting over. This is useful when you need to switch networks, temporarily prioritize bandwidth for something else, or if your connection becomes unreliable. The upload state persists across browser sessions — you can safely close Chrome and resume from the Vidow popup when you return.
+Uploads to AWS S3 and Cloudflare R2 use multipart upload, which means they can be paused and picked up later without starting over. This is useful when you need to switch networks, temporarily prioritize bandwidth for something else, or if your connection becomes unreliable. The upload state persists across browser sessions — you can safely close Chrome and resume from the Video Downloader Plus popup when you return.
 
 ### Check connection health regularly
 
@@ -66,27 +66,27 @@ Cloud storage connections can break without obvious warning — OAuth tokens exp
 
 - **Healthy** — The connection is active and uploads will work
 - **Broken** — Authentication has expired or failed. Reconnect from the Cloud Sync page to restore access.
-- **Revoked** — The provider has cancelled the authorization (for example, you removed Vidow's access from your Google account settings). Re-authorize from scratch to reconnect.
+- **Revoked** — The provider has cancelled the authorization (for example, you removed Video Downloader Plus's access from your Google account settings). Re-authorize from scratch to reconnect.
 
 ---
 
 ## Extension tips
 
-### Pin Vidow to your toolbar
+### Pin Video Downloader Plus to your toolbar
 
-By default, Chrome collapses extensions into a puzzle-piece menu. Pin Vidow so the badge counter is visible directly in your toolbar at all times. Right-click the extensions icon, find Vidow in the list, and select **Pin**. The badge lights up with a count whenever streams are detected — without pinning, you would have to open the menu to notice.
+By default, Chrome collapses extensions into a puzzle-piece menu. Pin Video Downloader Plus so the badge counter is visible directly in your toolbar at all times. Right-click the extensions icon, find Video Downloader Plus in the list, and select **Pin**. The badge lights up with a count whenever streams are detected — without pinning, you would have to open the menu to notice.
 
 ### Block sites that generate noise
 
-Certain pages trigger stream detection on ad prerolls, analytics pings, or background media that you have no interest in downloading. Open Vidow's settings and add those domains to the block list under Website Controls. Detection on blocked domains is disabled entirely, so the badge stays quiet on those sites.
+Certain pages trigger stream detection on ad prerolls, analytics pings, or background media that you have no interest in downloading. Open Video Downloader Plus's settings and add those domains to the block list under Website Controls. Detection on blocked domains is disabled entirely, so the badge stays quiet on those sites.
 
 ### Raise the minimum file size filter
 
-If your popup regularly shows a long list of audio snippets, ad clips, or tiny media files, increase the minimum file size threshold in Vidow's settings. Setting the floor to 1 MB or 2 MB filters out most incidental detections while preserving the streams you actually want.
+If your popup regularly shows a long list of audio snippets, ad clips, or tiny media files, increase the minimum file size threshold in Video Downloader Plus's settings. Setting the floor to 1 MB or 2 MB filters out most incidental detections while preserving the streams you actually want.
 
 ### Turn off formats you never use
 
-If you have no interest in audio downloads — MP3 files, AAC streams, podcast content — disable audio format detection in Vidow's settings under Format Options. The reduction in detected items makes the popup cleaner and faster to scan on pages with heavy media activity.
+If you have no interest in audio downloads — MP3 files, AAC streams, podcast content — disable audio format detection in Video Downloader Plus's settings under Format Options. The reduction in detected items makes the popup cleaner and faster to scan on pages with heavy media activity.
 
 ---
 
@@ -94,12 +94,12 @@ If you have no interest in audio downloads — MP3 files, AAC streams, podcast c
 
 ### Use the free plan to evaluate before upgrading
 
-Vidow's free plan is fully operational for standard quality downloads. Use it on the sites you visit regularly to confirm that Vidow detects and downloads the content you care about. There is no time limit on the free plan, so you can test thoroughly before committing to Professional.
+Video Downloader Plus's free plan is fully operational for standard quality downloads. Use it on the sites you visit regularly to confirm that Video Downloader Plus detects and downloads the content you care about. There is no time limit on the free plan, so you can test thoroughly before committing to Professional.
 
 ### Lifetime access is the best long-term value
 
-If you expect to use Vidow for more than a year or two, the [lifetime access](/billing/lifetime) option costs less over time than a recurring subscription. It covers all Professional features indefinitely, including every feature added in future updates — one payment, no renewals.
+If you expect to use Video Downloader Plus for more than a year or two, the [lifetime access](/billing/lifetime) option costs less over time than a recurring subscription. It covers all Professional features indefinitely, including every feature added in future updates — one payment, no renewals.
 
 ### Subscription credit when switching to lifetime
 
-If you are currently on a monthly or yearly Professional subscription and decide to switch to lifetime access, Vidow applies the remaining value of your current billing period as a credit toward the lifetime purchase price. You do not lose money you have already paid.
+If you are currently on a monthly or yearly Professional subscription and decide to switch to lifetime access, Video Downloader Plus applies the remaining value of your current billing period as a credit toward the lifetime purchase price. You do not lose money you have already paid.

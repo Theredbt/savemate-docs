@@ -1,12 +1,12 @@
 ---
 title: "Cloud Storage — Sync Downloads to Google Drive, Dropbox, S3 & R2"
 sidebarTitle: "Cloud Storage"
-description: "Connect Vidow to Google Drive, Dropbox, AWS S3, or Cloudflare R2 and send downloaded videos straight to your cloud storage — no manual file moving required."
+description: "Connect Video Downloader Plus to Google Drive, Dropbox, AWS S3, or Cloudflare R2 and send downloaded videos straight to your cloud storage — no manual file moving required."
 ---
 
 <Info>Cloud storage sync is a **Professional** feature. [Upgrade your plan](/billing/plans) to enable it.</Info>
 
-Once you connect a cloud storage provider, Vidow can push your downloaded videos there automatically. Files go directly from the download pipeline to your storage bucket or folder — no intermediate step required.
+Once you connect a cloud storage provider, Video Downloader Plus can push your downloaded videos there automatically. Files go directly from the download pipeline to your storage bucket or folder — no intermediate step required.
 
 ## Supported providers
 
@@ -21,13 +21,13 @@ Once you connect a cloud storage provider, Vidow can push your downloaded videos
 
 <Steps>
   <Step title="Open Cloud Sync">
-    Go to [vidow.io/cloud-sync](https://vidow.io/cloud-sync) and sign into your Vidow account.
+    Go to [vidow.io/cloud-sync](https://vidow.io/cloud-sync) and sign into your Video Downloader Plus account.
   </Step>
   <Step title="Pick a provider">
     Find the provider you want to use and click **Connect**.
   </Step>
   <Step title="Authenticate">
-    For **Google Drive** and **Dropbox**, you'll be redirected through an OAuth flow to grant Vidow access to your storage. For **AWS S3** and **Cloudflare R2**, enter your Access Key ID and Secret Access Key — Vidow stores these credentials encrypted.
+    For **Google Drive** and **Dropbox**, you'll be redirected through an OAuth flow to grant Video Downloader Plus access to your storage. For **AWS S3** and **Cloudflare R2**, enter your Access Key ID and Secret Access Key — Video Downloader Plus stores these credentials encrypted.
   </Step>
   <Step title="Start syncing">
     Connected providers are immediately active. Your next download will be uploaded to the configured destination.
@@ -42,7 +42,7 @@ Smaller files are sent to the cloud provider in a single request from your brows
 
 ### Multipart upload (S3 and R2, files over 100MB)
 
-For large files on AWS S3 and Cloudflare R2, Vidow splits the content into parts and uploads them concurrently:
+For large files on AWS S3 and Cloudflare R2, Video Downloader Plus splits the content into parts and uploads them concurrently:
 
 - Parts transfer in parallel, making better use of your available bandwidth
 - You can pause and resume uploads without starting over
@@ -66,5 +66,5 @@ The Cloud Sync page keeps a log of every upload attempt, so you always know what
 From the Cloud Sync settings panel you can:
 
 - **Update credentials** — Refresh expired OAuth tokens or replace API keys that have been rotated
-- **Disconnect a provider** — Removes the connection and revokes Vidow's access to that storage account
+- **Disconnect a provider** — Removes the connection and revokes Video Downloader Plus's access to that storage account
 - **Request a new provider** — Submit a request to add support for a cloud storage service not currently listed

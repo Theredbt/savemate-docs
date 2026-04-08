@@ -1,18 +1,18 @@
 ---
 title: "Video Downloads — Save Streaming Video in Any Quality"
 sidebarTitle: "Video Downloads"
-description: "Vidow lets you download streaming video from virtually any website — pick your quality, hit download, and the file lands in your downloads folder."
+description: "Video Downloader Plus lets you download streaming video from virtually any website — pick your quality, hit download, and the file lands in your downloads folder."
 ---
 
-When Vidow detects a video stream, you can pull it down to your device at any quality the stream makes available. The download process handles everything — manifest parsing, concurrent segment fetching, and audio/video merging — without requiring any additional software.
+When Video Downloader Plus detects a video stream, you can pull it down to your device at any quality the stream makes available. The download process handles everything — manifest parsing, concurrent segment fetching, and audio/video merging — without requiring any additional software.
 
 ## How to download
 
 <Steps>
   <Step title="Find a stream">
-    Browse to a page containing video content. When Vidow detects a stream, the toolbar icon turns blue.
+    Browse to a page containing video content. When Video Downloader Plus detects a stream, the toolbar icon turns blue.
   </Step>
-  <Step title="Open Vidow">
+  <Step title="Open Video Downloader Plus">
     Click the icon to open the popup. You'll see a list of all detected streams on the current page.
   </Step>
   <Step title="Pick your quality and format">
@@ -37,7 +37,7 @@ When Vidow detects a video stream, you can pull it down to your device at any qu
 
 ## HLS and DASH stream downloads
 
-Adaptive streams are segmented — the video is split into dozens or hundreds of small chunks spread across separate files. Vidow handles the entire download pipeline:
+Adaptive streams are segmented — the video is split into dozens or hundreds of small chunks spread across separate files. Video Downloader Plus handles the entire download pipeline:
 
 1. Parses the manifest file to map out every video and audio segment
 2. Fetches multiple segments at the same time for faster overall download speed
@@ -48,13 +48,13 @@ Additional capabilities for adaptive streams:
 
 - **Parallel segment fetching** — Concurrent connections mean faster downloads, especially for longer videos
 - **Retry on interruption** — If a download stalls, you can restart it without losing progress
-- **Automatic audio merging** — When a stream carries audio and video in separate tracks, Vidow combines them into one file automatically
+- **Automatic audio merging** — When a stream carries audio and video in separate tracks, Video Downloader Plus combines them into one file automatically
 - **Full quality selection** — Every variant declared in the manifest is available to choose from
 - **Live stream recording** — Capture ongoing live broadcasts (Professional plan)
 
 ## Progressive video downloads
 
-For direct video files served over HTTP — MP4, WebM, MKV, and similar formats — Vidow downloads the file as-is. File size is shown upfront when the server includes a `Content-Length` header.
+For direct video files served over HTTP — MP4, WebM, MKV, and similar formats — Video Downloader Plus downloads the file as-is. File size is shown upfront when the server includes a `Content-Length` header.
 
 ## Download limits
 
@@ -68,12 +68,12 @@ For direct video files served over HTTP — MP4, WebM, MKV, and similar formats 
 - No daily caps
 
 <Tip>
-  The 1080p daily limit is tracked per device. If you're signed into a Vidow account, it ties to your account instead, preventing the limit from being reset by switching browsers.
+  The 1080p daily limit is tracked per device. If you're signed into a Video Downloader Plus account, it ties to your account instead, preventing the limit from being reset by switching browsers.
 </Tip>
 
 ## Supported formats
 
-Vidow can download content in 16+ container formats:
+Video Downloader Plus can download content in 16+ container formats:
 
 | Category | Formats |
 |----------|---------|
@@ -91,5 +91,5 @@ Vidow can download content in 16+ container formats:
 You can adjust download behavior from the options page:
 
 - **Download management** — Activates the browser's download management API, giving you more control over save location and file naming. This requires a separate optional browser permission, requested at runtime.
-- **Download path** — Set a folder prefix so Vidow organizes files into a subdirectory (e.g., `Vidow/` inside your Downloads folder).
+- **Download path** — Set a folder prefix so Video Downloader Plus organizes files into a subdirectory (e.g., `Video Downloader Plus/` inside your Downloads folder).
 - **File naming** — Filenames are generated from the video title and deduplicated automatically by appending a number if a file with the same name already exists.

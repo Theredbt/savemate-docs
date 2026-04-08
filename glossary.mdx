@@ -16,35 +16,35 @@ description: "A video streaming glossary covering HLS, DASH, codecs, m3u8, trans
   </Accordion>
 
   <Accordion title="m3u8">
-    The file extension that identifies an HLS playlist. It is a plain-text file structured as an extended M3U playlist, containing the addresses of each video segment along with duration hints and, in master playlists, links to alternate quality renditions and audio tracks. When Vidow encounters an m3u8 URL in network traffic, it recognises an HLS stream and can begin assembling a complete download from all the listed segments.
+    The file extension that identifies an HLS playlist. It is a plain-text file structured as an extended M3U playlist, containing the addresses of each video segment along with duration hints and, in master playlists, links to alternate quality renditions and audio tracks. When Video Downloader Plus encounters an m3u8 URL in network traffic, it recognises an HLS stream and can begin assembling a complete download from all the listed segments.
   </Accordion>
 
   <Accordion title="MPD (Media Presentation Description)">
-    The XML manifest format used by DASH streams, analogous to the m3u8 file in HLS. An MPD describes every available quality tier, frame rate, audio language, and subtitle track, along with the exact byte ranges or URLs that correspond to each segment. Vidow parses MPD files to identify all representations and select the highest-quality stream for download.
+    The XML manifest format used by DASH streams, analogous to the m3u8 file in HLS. An MPD describes every available quality tier, frame rate, audio language, and subtitle track, along with the exact byte ranges or URLs that correspond to each segment. Video Downloader Plus parses MPD files to identify all representations and select the highest-quality stream for download.
   </Accordion>
 
   <Accordion title="Adaptive bitrate streaming">
-    A delivery strategy where video is pre-encoded at several quality levels — for example 360p, 720p, and 1080p — and each level is sliced into identically timed segments. The player monitors real-time throughput and buffer health, then requests segments from whichever quality tier keeps playback smooth. If your bandwidth drops, it steps down; when bandwidth recovers, it steps back up. Both HLS and DASH are built around this principle. Vidow downloads the highest available tier by default, giving you the best copy the source offers.
+    A delivery strategy where video is pre-encoded at several quality levels — for example 360p, 720p, and 1080p — and each level is sliced into identically timed segments. The player monitors real-time throughput and buffer health, then requests segments from whichever quality tier keeps playback smooth. If your bandwidth drops, it steps down; when bandwidth recovers, it steps back up. Both HLS and DASH are built around this principle. Video Downloader Plus downloads the highest available tier by default, giving you the best copy the source offers.
   </Accordion>
 
   <Accordion title="Progressive download">
-    The straightforward alternative to adaptive streaming: a single video file served at a fixed URL, downloaded linearly from byte zero to the end. The browser knows the total file size upfront and can display a deterministic progress bar. Progressive downloads are simpler to capture because the entire video is one resource rather than hundreds of segments — Vidow handles both approaches automatically.
+    The straightforward alternative to adaptive streaming: a single video file served at a fixed URL, downloaded linearly from byte zero to the end. The browser knows the total file size upfront and can display a deterministic progress bar. Progressive downloads are simpler to capture because the entire video is one resource rather than hundreds of segments — Video Downloader Plus handles both approaches automatically.
   </Accordion>
 
   <Accordion title="Segments">
-    The individual short-duration video chunks — typically two to six seconds each — that adaptive streams are divided into. Each segment is a self-contained, independently decodable unit, which is what makes quality switching possible mid-stream. When Vidow downloads an HLS or DASH stream, it fetches every segment in sequence and then joins them into a single continuous output file.
+    The individual short-duration video chunks — typically two to six seconds each — that adaptive streams are divided into. Each segment is a self-contained, independently decodable unit, which is what makes quality switching possible mid-stream. When Video Downloader Plus downloads an HLS or DASH stream, it fetches every segment in sequence and then joins them into a single continuous output file.
   </Accordion>
 
   <Accordion title="Manifest">
-    A generic term for the index file that describes an adaptive stream's structure. The manifest lists the available quality levels, the URL or byte range for each segment, and any supplementary tracks such as alternate audio languages or subtitle streams. HLS manifests are m3u8 files; DASH manifests are MPD files. Vidow's detection logic targets manifest requests because intercepting the manifest gives access to the entire stream.
+    A generic term for the index file that describes an adaptive stream's structure. The manifest lists the available quality levels, the URL or byte range for each segment, and any supplementary tracks such as alternate audio languages or subtitle streams. HLS manifests are m3u8 files; DASH manifests are MPD files. Video Downloader Plus's detection logic targets manifest requests because intercepting the manifest gives access to the entire stream.
   </Accordion>
 
   <Accordion title="Muxing">
-    Short for multiplexing — the operation of combining separate elementary streams (most commonly a video track and an audio track) into one output file. Many adaptive streams deliver audio and video as entirely separate segment sequences so that players can mix and match video resolution with audio language independently. Vidow automatically muxes the appropriate tracks together during download so you receive a single, properly synchronised file.
+    Short for multiplexing — the operation of combining separate elementary streams (most commonly a video track and an audio track) into one output file. Many adaptive streams deliver audio and video as entirely separate segment sequences so that players can mix and match video resolution with audio language independently. Video Downloader Plus automatically muxes the appropriate tracks together during download so you receive a single, properly synchronised file.
   </Accordion>
 
   <Accordion title="Transmuxing">
-    Changing a video's container format without touching the encoded content inside. During transmuxing, the raw compressed frames are extracted from one wrapper and repacked into another — for instance, moving MPEG-TS data from HLS segments into an MP4 container. Because no decoding or re-encoding takes place, transmuxing is fast and causes zero quality loss. Vidow transmuxes HLS segment data into standard containers during download, giving you a universally compatible file without degrading the original encoding.
+    Changing a video's container format without touching the encoded content inside. During transmuxing, the raw compressed frames are extracted from one wrapper and repacked into another — for instance, moving MPEG-TS data from HLS segments into an MP4 container. Because no decoding or re-encoding takes place, transmuxing is fast and causes zero quality loss. Video Downloader Plus transmuxes HLS segment data into standard containers during download, giving you a universally compatible file without degrading the original encoding.
   </Accordion>
 
   <Accordion title="Container format">
@@ -64,7 +64,7 @@ description: "A video streaming glossary covering HLS, DASH, codecs, m3u8, trans
 
 <AccordionGroup>
   <Accordion title="MP4 (.mp4)">
-    The MPEG-4 Part 14 container is the closest thing the video world has to a universal format. It plays natively on every major operating system, browser, smart TV, and mobile device without any additional software. MP4 typically wraps H.264 or H.265 video and AAC audio, striking a balance between file size and broad compatibility. It is Vidow's default output format for this reason.
+    The MPEG-4 Part 14 container is the closest thing the video world has to a universal format. It plays natively on every major operating system, browser, smart TV, and mobile device without any additional software. MP4 typically wraps H.264 or H.265 video and AAC audio, striking a balance between file size and broad compatibility. It is Video Downloader Plus's default output format for this reason.
   </Accordion>
 
   <Accordion title="MKV (.mkv)">
@@ -80,7 +80,7 @@ description: "A video streaming glossary covering HLS, DASH, codecs, m3u8, trans
   </Accordion>
 
   <Accordion title="MPEG-TS (.ts)">
-    MPEG Transport Stream is the low-level container that HLS uses for its individual segments. It was originally designed for broadcast television, where robustness against packet loss mattered more than file efficiency. Raw HLS downloads produce .ts files. While many media players can handle .ts files directly, Vidow converts them to MP4 or another standard container during download to maximise compatibility.
+    MPEG Transport Stream is the low-level container that HLS uses for its individual segments. It was originally designed for broadcast television, where robustness against packet loss mattered more than file efficiency. Raw HLS downloads produce .ts files. While many media players can handle .ts files directly, Video Downloader Plus converts them to MP4 or another standard container during download to maximise compatibility.
   </Accordion>
 </AccordionGroup>
 
@@ -88,7 +88,7 @@ description: "A video streaming glossary covering HLS, DASH, codecs, m3u8, trans
 
 <AccordionGroup>
   <Accordion title="OAuth 2.0">
-    An industry-standard authorisation framework that lets you give Vidow permission to write files to your cloud storage account without ever sharing your password. Instead of credentials, the service issues Vidow a scoped access token that covers only the specific operations you approved — typically uploading files to a folder. You can revoke this token at any time from your Google Drive or Dropbox security settings, instantly cutting off Vidow's access.
+    An industry-standard authorisation framework that lets you give Video Downloader Plus permission to write files to your cloud storage account without ever sharing your password. Instead of credentials, the service issues Video Downloader Plus a scoped access token that covers only the specific operations you approved — typically uploading files to a folder. You can revoke this token at any time from your Google Drive or Dropbox security settings, instantly cutting off Video Downloader Plus's access.
   </Accordion>
 
   <Accordion title="Multipart upload">
@@ -96,11 +96,11 @@ description: "A video streaming glossary covering HLS, DASH, codecs, m3u8, trans
   </Accordion>
 
   <Accordion title="Resumable upload">
-    An upload protocol, most commonly associated with Google Drive's API, that maintains a server-side session so an interrupted transfer can continue from its last confirmed byte rather than from the beginning. When Vidow starts a Google Drive upload, it opens a resumable session URL. If your network drops or the browser tab is closed and reopened, Vidow queries how many bytes were received and picks up exactly where the transfer stopped.
+    An upload protocol, most commonly associated with Google Drive's API, that maintains a server-side session so an interrupted transfer can continue from its last confirmed byte rather than from the beginning. When Video Downloader Plus starts a Google Drive upload, it opens a resumable session URL. If your network drops or the browser tab is closed and reopened, Video Downloader Plus queries how many bytes were received and picks up exactly where the transfer stopped.
   </Accordion>
 
   <Accordion title="Egress fees">
-    Charges that cloud storage providers levy when data leaves their infrastructure — typically when you download a file or when a CDN serves it to end users. AWS S3 charges egress fees per gigabyte transferred out. Cloudflare R2, by contrast, has no egress fees, which makes it significantly cheaper for use cases that involve frequent retrieval of stored videos. This cost difference is one reason Vidow surfaces R2 as a storage option alongside S3.
+    Charges that cloud storage providers levy when data leaves their infrastructure — typically when you download a file or when a CDN serves it to end users. AWS S3 charges egress fees per gigabyte transferred out. Cloudflare R2, by contrast, has no egress fees, which makes it significantly cheaper for use cases that involve frequent retrieval of stored videos. This cost difference is one reason Video Downloader Plus surfaces R2 as a storage option alongside S3.
   </Accordion>
 </AccordionGroup>
 
@@ -108,18 +108,18 @@ description: "A video streaming glossary covering HLS, DASH, codecs, m3u8, trans
 
 <AccordionGroup>
   <Accordion title="SPA (Single-Page Application)">
-    A category of web application that loads once and then updates the visible content by manipulating the DOM rather than requesting entirely new pages from the server. Navigation feels instant because only data — not full HTML documents — travels over the wire. Frameworks like React, Vue, and Angular are commonly used to build SPAs. Because the page never fully reloads, a browser extension must actively watch for URL and DOM changes to detect newly loaded video players. Vidow is built to handle SPA navigation without missing embeds that appear after the initial load.
+    A category of web application that loads once and then updates the visible content by manipulating the DOM rather than requesting entirely new pages from the server. Navigation feels instant because only data — not full HTML documents — travels over the wire. Frameworks like React, Vue, and Angular are commonly used to build SPAs. Because the page never fully reloads, a browser extension must actively watch for URL and DOM changes to detect newly loaded video players. Video Downloader Plus is built to handle SPA navigation without missing embeds that appear after the initial load.
   </Accordion>
 
   <Accordion title="DRM (Digital Rights Management)">
-    A family of technologies that encrypt video streams so that only authorised playback environments can decrypt and render them. Common DRM systems include Widevine (Google), FairPlay (Apple), and PlayReady (Microsoft). Encrypted streams are useless without the corresponding decryption key, which is tied to the licensed player environment and never exposed to extensions or third-party software. Vidow does not attempt to bypass or circumvent DRM — content protected this way is simply not available for download.
+    A family of technologies that encrypt video streams so that only authorised playback environments can decrypt and render them. Common DRM systems include Widevine (Google), FairPlay (Apple), and PlayReady (Microsoft). Encrypted streams are useless without the corresponding decryption key, which is tied to the licensed player environment and never exposed to extensions or third-party software. Video Downloader Plus does not attempt to bypass or circumvent DRM — content protected this way is simply not available for download.
   </Accordion>
 
   <Accordion title="Service Worker">
-    A JavaScript file that runs in its own background thread, separate from any web page, and persists across tab opens and closes. In the context of browser extensions built to the Manifest V3 specification, the service worker replaces the long-lived background page from Manifest V2. Because service workers are event-driven and can be terminated by the browser when idle, extensions must store any persistent state in `chrome.storage` rather than in memory. Vidow's extension architecture is designed around this constraint to avoid losing detected stream data when the service worker is suspended.
+    A JavaScript file that runs in its own background thread, separate from any web page, and persists across tab opens and closes. In the context of browser extensions built to the Manifest V3 specification, the service worker replaces the long-lived background page from Manifest V2. Because service workers are event-driven and can be terminated by the browser when idle, extensions must store any persistent state in `chrome.storage` rather than in memory. Video Downloader Plus's extension architecture is designed around this constraint to avoid losing detected stream data when the service worker is suspended.
   </Accordion>
 
   <Accordion title="Manifest V3">
-    The current Chrome extension platform specification introduced by Google to improve security, performance, and privacy compared to the legacy Manifest V2 model. Key changes include replacing persistent background pages with ephemeral service workers, restricting the use of remotely hosted code, and replacing the `webRequestBlocking` API (which could intercept and modify network requests) with the `declarativeNetRequest` API (which uses declarative rules evaluated by the browser). Extensions must declare their full set of rules at install time. Vidow's Manifest V3 implementation uses a service worker plus `chrome.storage` to reliably track streaming sessions within these constraints.
+    The current Chrome extension platform specification introduced by Google to improve security, performance, and privacy compared to the legacy Manifest V2 model. Key changes include replacing persistent background pages with ephemeral service workers, restricting the use of remotely hosted code, and replacing the `webRequestBlocking` API (which could intercept and modify network requests) with the `declarativeNetRequest` API (which uses declarative rules evaluated by the browser). Extensions must declare their full set of rules at install time. Video Downloader Plus's Manifest V3 implementation uses a service worker plus `chrome.storage` to reliably track streaming sessions within these constraints.
   </Accordion>
 </AccordionGroup>

@@ -1,14 +1,14 @@
 ---
-title: "Privacy & Security — How Vidow Protects Your Data"
+title: "Privacy & Security — How Video Downloader Plus Protects Your Data"
 sidebarTitle: "Privacy & Security"
-description: "Vidow's full privacy policy for the Chrome extension and web app — what runs locally, what reaches our servers, and how your data stays secure."
+description: "Video Downloader Plus's full privacy policy for the Chrome extension and web app — what runs locally, what reaches our servers, and how your data stays secure."
 ---
 
-Vidow is built around a simple principle: process as much as possible in your browser, and be transparent about the rest. This page explains exactly what data Vidow touches, where it goes, and why.
+Video Downloader Plus is built around a simple principle: process as much as possible in your browser, and be transparent about the rest. This page explains exactly what data Video Downloader Plus touches, where it goes, and why.
 
 ## Processing happens in your browser
 
-The following operations run entirely on your device. No video data, no media files, and no page content are uploaded to Vidow's servers for these tasks.
+The following operations run entirely on your device. No video data, no media files, and no page content are uploaded to Video Downloader Plus's servers for these tasks.
 
 | Operation | Where it runs |
 |---|---|
@@ -18,9 +18,9 @@ The following operations run entirely on your device. No video data, no media fi
 | Audio extraction | Your browser (WebAssembly workers) |
 | Cloud sync uploads | Direct from your browser to your chosen provider (Google Drive, Dropbox, S3, R2) |
 
-## What Vidow stores in your browser
+## What Video Downloader Plus stores in your browser
 
-Vidow persists state in two Chrome storage areas — `sync` for preferences that follow you across devices, and `local` for tab-level data and auth state.
+Video Downloader Plus persists state in two Chrome storage areas — `sync` for preferences that follow you across devices, and `local` for tab-level data and auth state.
 
 **Extension preferences** (sync storage): theme, badge display mode, blocked sites list, format filters, default download path, minimum file size threshold.
 
@@ -30,13 +30,13 @@ Vidow persists state in two Chrome storage areas — `sync` for preferences that
 
 **HD download limit cache**: the current state of your download allowance, cached locally to avoid redundant server round-trips.
 
-**Saved video hashes**: a set of content hashes used to keep your extension library in sync with your Vidow account, so the UI can accurately reflect which videos you have already saved.
+**Saved video hashes**: a set of content hashes used to keep your extension library in sync with your Video Downloader Plus account, so the UI can accurately reflect which videos you have already saved.
 
-## What Vidow sends to our servers
+## What Video Downloader Plus sends to our servers
 
-Vidow does contact our servers in specific, bounded situations. Here is every case, stated plainly:
+Video Downloader Plus does contact our servers in specific, bounded situations. Here is every case, stated plainly:
 
-- **Last-resort video detection**: when network interception alone cannot find any video streams on a page, the page URL is sent to a Vidow API endpoint that attempts server-side detection. No page content is transmitted — only the URL.
+- **Last-resort video detection**: when network interception alone cannot find any video streams on a page, the page URL is sent to a Video Downloader Plus API endpoint that attempts server-side detection. No page content is transmitted — only the URL.
 - **Save to library**: when you explicitly click to save a video, the video title, the originating page link, and the thumbnail URL are sent to our servers to create the library entry.
 - **Bug reports**: the page URL, your browser name, and error details are transmitted only when you actively submit a bug report through the extension UI. No automatic crash reporting occurs.
 - **Device claim**: your `device_key` is sent to our servers on first login to merge any anonymous usage activity into your user account.
@@ -44,19 +44,19 @@ Vidow does contact our servers in specific, bounded situations. Here is every ca
 - **Authentication state**: session cookies set by the vidow.io web app are included with API requests to verify your login status. The extension itself never handles credentials — authentication happens entirely through the vidow.io web interface.
 - **Outbound link tracking**: all URLs that open vidow.io from the extension have UTM parameters appended (`utm_source=extension`, `utm_medium`, `utm_campaign`, `utm_content` set to the context that triggered the link, e.g. `cast_premium_only` or `daily_limit_reached`), along with your browser name and extension version. This lets us understand which extension actions drive web visits.
 
-## What Vidow does not collect
+## What Video Downloader Plus does not collect
 
 - **Passwords or login credentials**: authentication is handled via session cookies set on the vidow.io web app. The extension never intercepts, stores, or transmits login credentials.
-- **General browsing history**: Vidow only processes pages where you take an explicit action or where a video stream is detected. Unrelated browsing is never observed.
+- **General browsing history**: Video Downloader Plus only processes pages where you take an explicit action or where a video stream is detected. Unrelated browsing is never observed.
 - **Keystrokes, form data, or mouse activity**: no input monitoring of any kind.
 - **Payment information**: all billing is processed by Stripe server-side. The extension has no access to payment data.
-- **Video content or downloaded files**: media files are downloaded directly to your device and never pass through Vidow's infrastructure.
+- **Video content or downloaded files**: media files are downloaded directly to your device and never pass through Video Downloader Plus's infrastructure.
 - **Location data**: no geolocation is requested or inferred.
 - **Personal communications**: no access to email, messages, or any communication channels.
 
 ## Extension permissions
 
-The following table covers every permission in Vidow's manifest and explains its exact purpose.
+The following table covers every permission in Video Downloader Plus's manifest and explains its exact purpose.
 
 | Permission | Purpose |
 |---|---|
@@ -67,31 +67,31 @@ The following table covers every permission in Vidow's manifest and explains its
 | `downloads` *(optional)* | Requested at runtime only when you initiate a download. Triggers the browser's native download dialog with proper file naming. Never requested upfront |
 | `all_urls` (host permission) | Monitor network requests for video stream detection across all domains; run content scripts for DOM scanning and thumbnail extraction; fetch HLS/DASH manifests from arbitrary CDN origins |
 
-Vidow does not request access to your bookmarks, cookies, or other extensions' data.
+Video Downloader Plus does not request access to your bookmarks, cookies, or other extensions' data.
 
 ## Cloud storage security
 
 ### OAuth providers (Google Drive, Dropbox)
 
-Vidow connects using industry-standard OAuth 2.0. Your Google or Dropbox password is never shared with Vidow at any point. The authorization grant is scoped to the minimum permissions needed — upload access to a dedicated folder — and can be revoked at any time from your provider's account settings. Refresh tokens are stored encrypted on Vidow's servers and rotated automatically before expiry.
+Video Downloader Plus connects using industry-standard OAuth 2.0. Your Google or Dropbox password is never shared with Video Downloader Plus at any point. The authorization grant is scoped to the minimum permissions needed — upload access to a dedicated folder — and can be revoked at any time from your provider's account settings. Refresh tokens are stored encrypted on Video Downloader Plus's servers and rotated automatically before expiry.
 
 ### API key providers (AWS S3, Cloudflare R2)
 
-Your access keys are transmitted over HTTPS and stored encrypted on Vidow's servers. We recommend creating a dedicated IAM user with write-only permissions scoped to a single bucket, rather than using root credentials. You can rotate your keys at any time and update them in Vidow's settings.
+Your access keys are transmitted over HTTPS and stored encrypted on Video Downloader Plus's servers. We recommend creating a dedicated IAM user with write-only permissions scoped to a single bucket, rather than using root credentials. You can rotate your keys at any time and update them in Video Downloader Plus's settings.
 
 ## Payment security
 
-All payment processing is handled by [Stripe](https://stripe.com), a PCI DSS Level 1 certified payment processor. Vidow never receives, stores, or processes your card number. Payment details are entered directly into Stripe's hosted payment forms, and billing webhooks communicate the outcome back to Vidow without card data ever leaving Stripe's infrastructure.
+All payment processing is handled by [Stripe](https://stripe.com), a PCI DSS Level 1 certified payment processor. Video Downloader Plus never receives, stores, or processes your card number. Payment details are entered directly into Stripe's hosted payment forms, and billing webhooks communicate the outcome back to Video Downloader Plus without card data ever leaving Stripe's infrastructure.
 
 ## Extension verification
 
-Vidow is published on the Chrome Web Store and passes Google's review process before each release. The extension enforces a strict Content Security Policy: `script-src 'self'; object-src 'self'`. This means only code shipped with the extension can execute — no inline scripts, no external script sources, and no runtime code injection.
+Video Downloader Plus is published on the Chrome Web Store and passes Google's review process before each release. The extension enforces a strict Content Security Policy: `script-src 'self'; object-src 'self'`. This means only code shipped with the extension can execute — no inline scripts, no external script sources, and no runtime code injection.
 
 ## Account deletion
 
 You can permanently delete your account at any time from [vidow.io/settings/security](https://vidow.io/settings/security). Deletion immediately and irreversibly:
 
-- Removes all personal data from Vidow's servers
+- Removes all personal data from Video Downloader Plus's servers
 - Erases your saved video library
 - Cancels any active subscription
 
@@ -99,4 +99,4 @@ You can permanently delete your account at any time from [vidow.io/settings/secu
 
 ## Contact
 
-Questions about Vidow's privacy practices? Reach us at [vidow.io/contact](https://vidow.io/contact).
+Questions about Video Downloader Plus's privacy practices? Reach us at [vidow.io/contact](https://vidow.io/contact).

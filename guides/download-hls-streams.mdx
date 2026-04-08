@@ -1,10 +1,10 @@
 ---
-title: "M3U8 Downloader — How to Download HLS Streams with Vidow"
+title: "M3U8 Downloader — How to Download HLS Streams with Video Downloader Plus"
 sidebarTitle: "Download HLS Streams"
-description: "Vidow is a full-featured m3u8 downloader for Chrome. Detect, save, and convert HLS streams to MP4, MKV, MOV, or WebM — no separate software needed."
+description: "Video Downloader Plus is a full-featured m3u8 downloader for Chrome. Detect, save, and convert HLS streams to MP4, MKV, MOV, or WebM — no separate software needed."
 ---
 
-HLS (HTTP Live Streaming) is the dominant adaptive streaming format on the web today. News sites, educational platforms, sports broadcasters, and corporate video portals all rely on it. Vidow functions as a built-in m3u8 downloader inside Chrome — no desktop app, no command-line tools required.
+HLS (HTTP Live Streaming) is the dominant adaptive streaming format on the web today. News sites, educational platforms, sports broadcasters, and corporate video portals all rely on it. Video Downloader Plus functions as a built-in m3u8 downloader inside Chrome — no desktop app, no command-line tools required.
 
 ## What is HLS?
 
@@ -19,22 +19,22 @@ For a deeper technical breakdown, see the [HLS glossary entry](/glossary/hls).
     Navigate to any site delivering video through HLS. This covers most news publishers, course platforms, sports streaming sites, and video CDNs.
   </Step>
   <Step title="Start playback">
-    Press play on the video. Many platforms use lazy initialization — the M3U8 manifest is only requested once the player activates. Starting playback triggers the network request that Vidow intercepts.
+    Press play on the video. Many platforms use lazy initialization — the M3U8 manifest is only requested once the player activates. Starting playback triggers the network request that Video Downloader Plus intercepts.
   </Step>
-  <Step title="Open Vidow">
-    Click the Vidow icon in your Chrome toolbar. When streams are present, the icon badge lights up with a count. The popup lists every detected stream along with quality variants and estimated file sizes.
+  <Step title="Open Video Downloader Plus">
+    Click the Video Downloader Plus icon in your Chrome toolbar. When streams are present, the icon badge lights up with a count. The popup lists every detected stream along with quality variants and estimated file sizes.
   </Step>
   <Step title="Pick a quality level">
     HLS streams typically offer several renditions — 360p, 480p, 720p, 1080p, and sometimes 4K. Select the quality that suits your storage and playback needs.
   </Step>
   <Step title="Start the download">
-    Click **Download**. Vidow fetches all segments in parallel, then assembles them into a single output file. Progress is shown in the popup.
+    Click **Download**. Video Downloader Plus fetches all segments in parallel, then assembles them into a single output file. Progress is shown in the popup.
   </Step>
 </Steps>
 
 ## Converting HLS to MP4
 
-When you download an HLS stream in its native format, you get a `.ts` container. This plays in VLC and most media players, but some devices — particularly mobile ones — handle it poorly. Vidow's Professional plan includes in-browser format conversion, so you can target the container that fits your workflow.
+When you download an HLS stream in its native format, you get a `.ts` container. This plays in VLC and most media players, but some devices — particularly mobile ones — handle it poorly. Video Downloader Plus's Professional plan includes in-browser format conversion, so you can target the container that fits your workflow.
 
 | Format | Best for |
 |--------|----------|
@@ -49,22 +49,22 @@ Conversion runs entirely in your browser using WebAssembly — no files are tran
 
 ## Live stream recording
 
-Vidow can capture ongoing HLS live streams, not just on-demand videos. When you detect a live stream in the popup, the download behaves differently from a standard VOD:
+Video Downloader Plus can capture ongoing HLS live streams, not just on-demand videos. When you detect a live stream in the popup, the download behaves differently from a standard VOD:
 
-1. Click **Download** to begin recording. Vidow starts buffering incoming segments immediately.
+1. Click **Download** to begin recording. Video Downloader Plus starts buffering incoming segments immediately.
 2. Segments are fetched and stored as they arrive from the CDN.
 3. Click **Stop** in the popup whenever you want to end the recording.
-4. Vidow combines all captured segments into a single file for playback or export.
+4. Video Downloader Plus combines all captured segments into a single file for playback or export.
 
 <Note>Live stream recording requires the Professional plan. The recording length is bounded by how long your browser tab remains open and active.</Note>
 
 ## Separate audio and video tracks
 
-Newer HLS streams commonly split audio and video into separate media playlists — a technique called demuxed audio. This allows broadcasters to serve multiple audio languages from a single video track. Vidow detects both the video rendition and the matching audio rendition, downloads them simultaneously, and muxes them into one file. You do not need to merge tracks manually.
+Newer HLS streams commonly split audio and video into separate media playlists — a technique called demuxed audio. This allows broadcasters to serve multiple audio languages from a single video track. Video Downloader Plus detects both the video rendition and the matching audio rendition, downloads them simultaneously, and muxes them into one file. You do not need to merge tracks manually.
 
 ## Tips for better HLS downloads
 
-- **Refresh and play if detection misses** — If the Vidow badge does not appear, reload the page and press play before checking again. Some players defer the manifest request until user interaction.
-- **Compare quality options** — Vidow often exposes more quality levels than the site's native player interface shows. Check the popup for hidden higher-resolution options.
+- **Refresh and play if detection misses** — If the Video Downloader Plus badge does not appear, reload the page and press play before checking again. Some players defer the manifest request until user interaction.
+- **Compare quality options** — Video Downloader Plus often exposes more quality levels than the site's native player interface shows. Check the popup for hidden higher-resolution options.
 - **Plan storage before long downloads** — A two-hour stream at 1080p can reach 4 GB or more. The popup displays an estimated file size so you can verify available disk space before committing.
 - **Use file size previews** — For m3u8 video downloader use cases where bandwidth matters (mobile hotspot, metered connections), the size estimate helps you decide whether to step down to 720p or 480p.
