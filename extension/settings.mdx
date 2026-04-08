@@ -1,106 +1,120 @@
 ---
-title: "Extension Settings"
-description: "Configure SaveMate's format detection, download behavior, casting, and site blocking."
+title: "Extension Settings — Customize Detection, Downloads & Casting"
+description: "Configure Vidow's format filters, file size threshold, download path, badge display, theme, and blocked sites from the extension options page."
 ---
 
-SaveMate's options page lets you customize how the extension detects, downloads, and manages video streams.
+The Vidow options page gives you full control over what the extension detects, how files are saved, and how the toolbar icon behaves. To open it, right-click the Vidow icon in your toolbar and select **Options**, or click the gear icon inside the extension popup.
 
-To open settings, right-click the SaveMate icon in your toolbar and select **Options**, or click the gear icon in the extension popup.
+## Format options
 
-## Format Options
-
-Control which video and audio formats SaveMate detects as you browse.
+Vidow detects video and audio streams by matching against a list of known container formats. You can enable or disable each format independently to reduce noise when browsing sites that serve a lot of media you don't care about.
 
 ### Video formats
 
-Toggle detection for each video container format:
-
-| Format | Default |
-|--------|---------|
-| MP4 (.mp4, .m4v) | Enabled |
-| WebM (.webm) | Enabled |
-| MKV (.mkv) | Enabled |
-| MOV (.mov) | Enabled |
-| TS (.ts, .m2ts, .mts) | Enabled |
-| AVI (.avi) | Enabled |
-| OGG (.ogg) | Enabled |
-| MPEG (.mpg) | Enabled |
-| WMV (.wmv) | Enabled |
-| FLV (.flv) | Enabled |
-| 3GP (.3gp) | Enabled |
+| Format | File extensions |
+|--------|----------------|
+| MP4 | `.mp4`, `.m4v` |
+| WebM | `.webm` |
+| MKV | `.mkv` |
+| MOV | `.mov` |
+| TS | `.ts`, `.m2ts`, `.mts` |
+| AVI | `.avi` |
+| OGG | `.ogg` |
+| MPEG | `.mpg`, `.mpeg` |
+| WMV | `.wmv` |
+| FLV | `.flv` |
+| 3GP | `.3gp` |
 
 ### Audio formats
 
-Toggle detection for standalone audio streams:
+| Format | File extensions |
+|--------|----------------|
+| MP3 | `.mp3` |
+| AAC | `.aac` |
+| M4A | `.m4a` |
+| FLAC | `.flac` |
+| WAV | `.wav` |
 
-| Format | Default |
-|--------|---------|
-| MP3 (.mp3) | Enabled |
-| AAC (.aac) | Enabled |
-| M4A (.m4a) | Enabled |
-| FLAC (.flac) | Enabled |
-| WAV (.wav) | Enabled |
+<Tip>Turning off formats you never download — such as OGG or 3GP — keeps the detected streams list focused on the files you actually want.</Tip>
 
-<Tip>Disabling formats you don't need reduces noise in the popup when browsing media-heavy sites.</Tip>
+## Minimum file size
 
-## Minimum File Size
+This setting filters out media files below a given size threshold. Small files are often ad segments, sound effects, or interface audio rather than real video content.
 
-Filter out small media files that are typically ads, icons, or UI sounds rather than actual video content.
+| Preset | Typical use |
+|--------|------------|
+| **10 KB** | Show nearly everything, including very short audio clips |
+| **100 KB** | Remove tiny files while still catching brief video segments |
+| **1 MB** | Practical default — skips ad segments and most UI audio |
+| **2 MB** | Focus on substantial video files only |
+| **Custom** | Type any value in MB for precise control over the threshold |
 
-| Preset | Best for |
-|--------|----------|
-| **10 KB** | Catch almost everything, including small audio clips |
-| **100 KB** | Filter out tiny files while keeping short clips |
-| **1 MB** | Standard — filters ads and small UI media (recommended) |
-| **2 MB** | Only show substantial video files |
-| **Custom** | Enter any value in MB for precise control |
+<Info>The size filter applies only to progressive downloads where the file size is available from HTTP response headers. HLS and DASH streams appear regardless of this setting because their total size is not known at detection time.</Info>
 
-<Info>The minimum file size filter applies to progressive downloads where the file size is known from HTTP headers. HLS and DASH streams are always shown regardless of this setting.</Info>
-
-## Download Settings
+## Download settings
 
 ### Download management
 
-When enabled, SaveMate uses the browser's download API for better control over file naming and save location. This requires an optional browser permission that is requested when you toggle it on.
+Toggling download management on gives Vidow access to the browser's download API. This enables proper file naming and lets you route downloads into a specific folder. When you turn this on for the first time, your browser will ask you to grant an optional downloads permission — accept it to activate the feature.
 
-**Enabled:** Files are saved through the browser's download manager with proper file names and your chosen download path.
+With download management **enabled**, files pass through the browser's download manager with accurate names and your configured path prefix applied.
 
-**Disabled:** Files are saved using the default browser save dialog.
+With download management **disabled**, the browser opens its standard save dialog, and you choose the location each time.
 
 ### Download path
 
-Set a folder prefix for all SaveMate downloads. For example, setting this to `SaveMate/` saves all files into a `SaveMate` subfolder within your browser's default download directory.
+When download management is active, you can set a folder prefix that Vidow applies to all saved files. For example, entering `Vidow/` routes everything into a `Vidow` subfolder inside your browser's default download directory.
 
-<Note>The download path setting only appears when download management is enabled.</Note>
+<Note>The download path field only appears when download management is enabled.</Note>
 
 ## Chromecast
 
-Toggle Chromecast and AirPlay casting support. When enabled, a **Cast** button appears alongside download options for detected streams.
+Enable this option to add a **Cast** button to the detected streams list in the popup. When cast support is on, you can send any detected stream directly to a Chromecast or AirPlay-compatible device without downloading the file first.
 
-Disabling this removes the cast option from the popup to simplify the interface if you don't use casting.
+Turn it off if you don't use casting — this removes the Cast button from the interface entirely and keeps the popup layout compact.
 
-## Website Controls
+## Badge mode
 
-Block specific domains from stream detection. When a site is blocked, SaveMate won't monitor network activity or show the detection indicator on that domain.
+The badge mode setting controls how the Vidow toolbar icon communicates detection status when streams are found on a page:
 
-### Adding blocked sites
+- **Count mode** — The icon displays the number of detected video streams as a numeric badge. Useful when you want to know exactly how many streams are available before opening the popup.
+- **Dot mode** — The icon shows a simple colored dot indicator regardless of how many streams were detected. Cleaner appearance for users who only care whether streams exist, not how many.
 
-1. Enter a domain (e.g., `example.com`) in the input field
+Switch between modes in settings to match your preference.
+
+## Theme
+
+Vidow's popup and options page support three appearance modes:
+
+- **Light** — Always uses the light interface regardless of your OS setting
+- **Dark** — Always uses the dark interface
+- **System** — Automatically follows your operating system's light or dark mode preference
+
+Theme selection is stored via `chrome.storage.sync`, so it carries over to any other browser profile where you're signed in with the same account.
+
+## Website controls
+
+### Blocking a site
+
+Add a domain to the blocked list to stop Vidow from monitoring network traffic or showing a detection indicator on that site. This is useful for domains where the extension consistently picks up media you have no interest in downloading.
+
+To block a site:
+
+1. Type the domain (for example, `example.com`) into the input field
 2. Click **Add** or press Enter
-3. The domain and all its subdomains will be excluded from detection
+3. Vidow will exclude that domain and all its subdomains from detection immediately after saving
 
-### Removing blocked sites
+### Removing a blocked site
 
-Click the **X** button next to any blocked domain to re-enable detection on that site.
+Click the **X** button next to any entry in the blocked sites list to remove it. Vidow will resume stream detection on that domain after you save.
 
-<Tip>Block sites where SaveMate detects unwanted media (like video ads on news sites) to keep your popup clean.</Tip>
+<Tip>Blocking ad-heavy news sites or video platform domains you visit for reasons other than downloading keeps your popup clean without disabling the extension entirely.</Tip>
 
-## Saving settings
+## Saving your changes
 
-Changes are not applied automatically. After adjusting any settings:
+Settings do not apply automatically as you adjust them. When you have finished making changes:
 
-1. A **Save** button appears at the bottom of the page
-2. Click **Save** to apply your changes
-3. A confirmation toast appears when settings are saved successfully
+1. Click the **Save** button at the bottom of the options page
+2. A confirmation message appears to confirm the changes took effect
 
-Settings sync across browser profiles if you're signed into Chrome sync.
+If you navigate away before saving, your changes will be lost.

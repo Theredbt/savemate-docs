@@ -1,82 +1,76 @@
 ---
-title: "Format Conversion"
-description: "Convert HLS and DASH streams to MP4, MKV, MOV, or WebM. Extract audio to MP3 or AAC."
+title: "Format Conversion — Convert HLS & DASH Streams to MP4, MKV, MOV"
+description: "Convert HLS and DASH streams into standard video containers, or pull out the audio track as MP3 or AAC. All processing happens locally via WebAssembly."
 ---
 
-<Info>Format conversion is a **Professional** feature. [Upgrade your plan](/billing/plans) to access it.</Info>
+<Info>Format conversion is a **Professional** feature. [Upgrade your plan](/billing/plans) to unlock it.</Info>
 
-SaveMate can convert HLS (m3u8) and DASH (mpd) streams into standard video container formats, and extract audio tracks into common audio formats.
+Vidow can remux HLS (m3u8) and DASH (mpd) streams into standard video containers and extract audio tracks into standalone audio files. Conversion runs entirely inside your browser — nothing is uploaded to a server.
 
-## Video format conversion
-
-Convert detected HLS and DASH streams to any of these formats:
+## Video conversion targets
 
 | Target format | Best for |
 |--------------|----------|
-| **MP4** | Universal compatibility — works on all devices, browsers, and media players |
-| **MKV** | Multiple audio tracks, subtitles, and metadata-rich video files |
-| **MOV** | Apple ecosystem, Final Cut Pro, and professional video editing |
-| **WebM** | Web embedding, open-source workflows |
+| **MP4** | Broadest device and browser compatibility — the safe default for most use cases |
+| **MKV** | Archiving with multiple audio tracks, multiple subtitle tracks, and rich metadata |
+| **MOV** | Editing in Final Cut Pro or working within the Apple ecosystem |
+| **WebM** | Embedding on web pages and open-format workflows |
 
-## Audio extraction
-
-Extract audio from video streams into standalone audio files:
+## Audio extraction targets
 
 | Target format | Best for |
 |--------------|----------|
-| **MP3** | Universal audio compatibility, music players, podcasts |
-| **AAC** | Higher quality at lower bitrates, Apple ecosystem |
+| **MP3** | Maximum compatibility across every audio player and platform |
+| **AAC** | Better quality-to-size ratio, especially for Apple devices and services |
 
 ## How conversion works
 
 <Steps>
-  <Step title="Detect and download">
-    SaveMate detects the HLS or DASH stream and downloads all video/audio segments.
+  <Step title="Detect the stream">
+    Vidow identifies an HLS or DASH stream on the page and surfaces it in the popup.
   </Step>
-  <Step title="Select target format">
-    Choose your desired output format from the format picker.
+  <Step title="Choose a target format">
+    Select your desired output format from the format picker before starting the download.
   </Step>
-  <Step title="Local processing">
-    SaveMate converts the stream locally in your browser using WebAssembly-based processing. No data is uploaded to any server.
+  <Step title="Local processing via WebAssembly">
+    Vidow downloads all segments and passes them through a WebAssembly-based media engine running in your browser. No data leaves your device during this step.
   </Step>
-  <Step title="Save the result">
-    The converted file is saved to your downloads folder.
+  <Step title="Save the output file">
+    The finished file is written to your downloads folder in the format you selected.
   </Step>
 </Steps>
 
 ## Format comparison
 
-Use this table to choose the right format for your use case:
-
 | | MP4 | MKV | MOV | WebM |
 |---|---|---|---|---|
 | **Device compatibility** | Universal | Good (VLC, most players) | Apple ecosystem | Browsers, Linux |
 | **Multiple audio tracks** | Limited | Excellent | Good | Limited |
-| **Subtitle support** | Basic | Excellent (multiple formats) | Good | Basic (WebVTT) |
-| **File size** | Medium | Medium | Medium-Large | Smaller |
+| **Subtitle support** | Basic | Excellent (SRT, ASS, PGS) | Good | Basic (WebVTT) |
+| **File size** | Medium | Medium | Medium–Large | Smaller |
 | **Streaming friendly** | Excellent | Poor | Good | Good |
 | **Professional editing** | Good | Limited | Excellent (Final Cut) | Limited |
 | **Web embedding** | Good | Not recommended | Not recommended | Excellent |
 
 ### When to use each format
 
-- **MP4** — Default choice. Works everywhere. Best for sharing, mobile playback, and general use.
-- **MKV** — Best for archiving. Supports multiple audio tracks (different languages), many subtitle formats, and rich metadata. Ideal for media servers like Plex or Jellyfin.
-- **MOV** — Choose this for editing in Final Cut Pro or if you primarily use Apple devices.
-- **WebM** — Smallest file size for web use. Choose this for embedding on websites or if you prefer open formats.
+- **MP4** — The right choice for almost everything. Works on every phone, TV, tablet, and browser without configuration.
+- **MKV** — When you want to preserve alternate language tracks, multiple subtitle files, or attach metadata for a media server like Plex or Jellyfin.
+- **MOV** — When the file is headed into Final Cut Pro or another Apple editing tool that handles MOV natively.
+- **WebM** — When file size matters and the destination is a browser or Linux environment. Also the format to reach for when you want VP9 or AV1 output.
 
 ### Audio format comparison
 
 | | MP3 | AAC |
 |---|---|---|
-| **Compatibility** | Universal | Very wide (all modern devices) |
-| **Quality at low bitrates** | Adequate | Better |
-| **File size** | Larger | Smaller at same quality |
-| **Best for** | Maximum compatibility | Higher quality, Apple ecosystem |
+| **Compatibility** | Universal | Excellent on all modern devices |
+| **Quality at low bitrates** | Adequate | Noticeably better |
+| **File size at equivalent quality** | Larger | Smaller |
+| **Best for** | Broadest reach, legacy players | Higher fidelity, Apple ecosystem |
 
 ## Key details
 
-- **All processing is local** — Conversion happens in your browser using efficient WebAssembly code. Your video data never leaves your device.
-- **Quality preservation** — SaveMate converts container formats without re-encoding, so there's no quality loss for compatible codec combinations.
-- **Separate audio/video** — When an HLS or DASH stream has separate audio and video tracks, SaveMate automatically muxes them into a single output file.
-- **DASH SegmentBase detection** — For DASH streams using SegmentBase (direct MP4), SaveMate downloads the file directly without conversion overhead.
+- **Local-only processing** — The WebAssembly media engine runs entirely in your browser. Your video data stays on your machine.
+- **Lossless quality** — Vidow remuxes streams into the target container without re-encoding video or audio, so there is no quality degradation for supported codec combinations.
+- **Automatic track muxing** — HLS and DASH streams with separate audio and video renditions are merged into a single output file before being saved.
+- **DASH SegmentBase passthrough** — When a DASH stream uses SegmentBase (meaning the content is already a standard MP4 with byte-range requests), Vidow downloads the file directly and skips the conversion step entirely.

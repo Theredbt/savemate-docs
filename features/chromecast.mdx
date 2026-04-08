@@ -1,50 +1,50 @@
 ---
-title: "Chromecast & AirPlay"
-description: "Cast detected video streams to your TV or external display using Chromecast."
+title: "Chromecast & AirPlay — Cast Detected Videos to Your TV"
+description: "Cast any video Vidow detects directly to your Chromecast or AirPlay device — no app install on the TV, no sideloading, just pick a stream and send it to the big screen."
 ---
 
-SaveMate lets you cast detected video streams directly to Chromecast and AirPlay-compatible devices, so you can watch on the big screen.
+Vidow includes a built-in cast player that forwards any detected video stream to a Chromecast or AirPlay-compatible device on your local network. If the stream can be detected, it can be cast.
 
 ## How to cast
 
 <Steps>
-  <Step title="Detect a stream">
-    Navigate to a page with video content. Wait for the SaveMate icon to light up.
+  <Step title="Detect a video stream">
+    Browse to a page with video content and wait for the Vidow icon to turn blue, indicating a stream has been found.
   </Step>
   <Step title="Open the cast player">
-    Click the SaveMate icon and select the **Cast** option for the detected stream. This opens the SaveMate cast player.
+    Click the Vidow icon, find the stream you want, and select the **Cast** option. This opens the Vidow cast player in a new tab.
   </Step>
-  <Step title="Choose your device">
-    The cast player will show available Chromecast and AirPlay devices on your local network. Select your TV or display.
+  <Step title="Select a device">
+    The cast player scans your local network for available Chromecast and AirPlay receivers. Choose the TV or display you want to use.
   </Step>
-  <Step title="Start casting">
-    The video stream begins playing on your selected device. Use the on-screen controls to play, pause, seek, and adjust volume.
+  <Step title="Start watching">
+    The video begins on your selected device. Use the cast player interface on your computer to control playback.
   </Step>
 </Steps>
 
 ## Cast player features
 
-The SaveMate cast player provides a full playback experience:
+The Vidow cast player runs in a dedicated tab and gives you full control over the session:
 
-- **Play/pause/seek** — Standard playback controls
-- **Volume control** — Adjust volume from the player interface
-- **Quality selection** — Choose stream quality based on your network and device
-- **Thumbnail preview** — See a preview of the stream before and during casting
-- **Session management** — Each cast session gets a unique identifier for tracking
+- **Play, pause, and seek** — Standard transport controls that sync with the cast device
+- **Volume control** — Adjust audio level directly from the player interface
+- **Quality selection** — Switch between the quality variants available in the stream manifest
+- **Thumbnail preview** — Shows a preview image for the stream before and during the session
+- **Session management** — Each session has a unique ID so multiple tabs or devices don't interfere with each other
 
 ## Availability
 
-Chromecast and AirPlay casting is available on both Free and Professional plans. No account required — casting works for anonymous users too.
+Casting is available on both Free and Professional plans. Free users may have daily session limits. No account is required to cast — the feature works for signed-out users as well, subject to those same session limits.
 
 ## Technical details
 
-- Cast sessions are UUID-based for secure, unique identification
-- Sessions automatically expire after 2 hours of inactivity
-- Thumbnails are polled during active sessions for preview updates
-- The cast player uses HLS.js for adaptive bitrate streaming to the cast device
+- Each cast session is assigned a UUID that uniquely identifies it for the duration of the viewing window
+- Sessions expire after 2 hours of inactivity to free up server-side session state
+- The cast player uses HLS.js to handle adaptive bitrate delivery to the receiving device
+- Thumbnail polling runs at a low frequency during active sessions to keep the preview image current
 
 ## Requirements
 
-- A Chromecast, Chromecast with Google TV, or AirPlay-compatible device
-- The cast device must be on the same Wi-Fi network as your computer
-- A Chromium-based browser (Chrome, Edge, or Brave)
+- A Chromecast, Chromecast with Google TV, or an AirPlay-compatible receiver (Apple TV, AirPlay 2 TV)
+- The cast device and your computer must be connected to the same Wi-Fi network
+- A Chromium-based browser: Chrome, Edge, or Brave

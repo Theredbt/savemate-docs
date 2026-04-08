@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "SaveMate",
+  "name": "Vidow",
   "colors": {
     "primary": "#2563EB",
     "light": "#3B82F6",
@@ -15,10 +15,7 @@
         "groups": [
           {
             "group": "Getting Started",
-            "pages": [
-              "index",
-              "quickstart"
-            ]
+            "pages": ["index", "quickstart"]
           },
           {
             "group": "Browser Extension",
@@ -41,10 +38,27 @@
             ]
           },
           {
+            "group": "Video Tools",
+            "pages": [
+              "tools/video-compressor",
+              "tools/video-trimmer",
+              "tools/video-to-gif",
+              "tools/merge-videos",
+              "tools/add-audio",
+              "tools/hls-player",
+              "tools/cast-player"
+            ]
+          },
+          {
             "group": "Download Guides",
             "pages": [
               "guides/download-hls-streams",
               "guides/download-from-vimeo",
+              "guides/download-from-facebook",
+              "guides/download-from-instagram",
+              "guides/download-from-tiktok",
+              "guides/download-from-pinterest",
+              "guides/download-from-reddit",
               "guides/youtube-and-chrome-extensions",
               "guides/tips-and-tricks"
             ]
@@ -84,10 +98,7 @@
           },
           {
             "group": "Legal",
-            "pages": [
-              "privacy",
-              "guides/copyright-and-fair-use"
-            ]
+            "pages": ["privacy", "guides/copyright-and-fair-use"]
           }
         ]
       }
@@ -96,17 +107,17 @@
       "anchors": [
         {
           "anchor": "Website",
-          "href": "https://savemate.io",
+          "href": "https://vidow.io",
           "icon": "globe"
         },
         {
           "anchor": "Blog",
-          "href": "https://savemate.io/blog",
+          "href": "https://vidow.io/blog",
           "icon": "newspaper"
         },
         {
           "anchor": "Downloads",
-          "href": "https://savemate.io/downloads",
+          "href": "https://vidow.io/downloads",
           "icon": "download"
         }
       ]
@@ -120,23 +131,21 @@
     "links": [
       {
         "label": "Contact",
-        "href": "https://savemate.io/contact"
+        "href": "https://vidow.io/contact"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Get SaveMate",
-      "href": "https://savemate.io/downloads"
+      "label": "Get Vidow",
+      "href": "https://vidow.io/downloads"
     }
   },
   "contextual": {
-    "options": [
-      "view"
-    ]
+    "options": ["view"]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/savemate_io",
+      "x": "https://x.com/vidow_io",
       "github": "https://github.com"
     }
   },

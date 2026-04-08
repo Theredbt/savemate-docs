@@ -1,0 +1,61 @@
+---
+title: "Video Compressor — Reduce Video File Size in Your Browser"
+description: "Compress video files directly in your browser with Vidow. Reduce file size while preserving quality — no uploads, no server processing."
+---
+
+<Info>The video compressor is a **Professional** feature. [Upgrade your plan](/billing/plans) to access it.</Info>
+
+The Vidow video compressor reduces video file size directly in your browser. No uploads, no waiting on a server — compression runs locally using WebAssembly.
+
+## How to compress a video
+
+<Steps>
+  <Step title="Open the tool">
+    Go to [vidow.io/tools/compress](https://vidow.io/tools/compress).
+  </Step>
+  <Step title="Upload your video">
+    Click **Upload** or drag a video file onto the page.
+  </Step>
+  <Step title="Choose your settings">
+    Select a quality preset or set a target file size. Optionally scale down the resolution.
+  </Step>
+  <Step title="Compress">
+    Click **Compress**. Processing runs entirely in your browser — no data is sent to any server.
+  </Step>
+  <Step title="Download the result">
+    When compression finishes, download the compressed file.
+  </Step>
+</Steps>
+
+## Supported formats
+
+| | Formats |
+|---|---|
+| **Input** | MP4, WebM, MKV, MOV, AVI |
+| **Output** | MP4, WebM |
+
+## Compression options
+
+| Option | Description |
+|--------|-------------|
+| **Quality preset** | High, Medium, or Low — balances file size against visual quality |
+| **Target file size** | Set a maximum size in MB; Vidow selects an appropriate quality level |
+| **Resolution scaling** | Downscale to 1080p, 720p, 480p, or 360p to reduce file size further |
+
+## How it works
+
+Compression runs locally in your browser using a WebAssembly build of FFmpeg. Your video file is never uploaded to any server. Processing speed depends on your device — modern computers handle typical files in under a minute.
+
+## Related tools
+
+<CardGroup cols={3}>
+  <Card title="Video Trimmer" href="/tools/video-trimmer">
+    Cut your video to the exact length you need before compressing.
+  </Card>
+  <Card title="Video to GIF" href="/tools/video-to-gif">
+    Convert short clips into animated GIFs.
+  </Card>
+  <Card title="Merge Videos" href="/tools/merge-videos">
+    Join multiple video files into one before compressing.
+  </Card>
+</CardGroup>

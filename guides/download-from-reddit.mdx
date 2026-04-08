@@ -1,0 +1,80 @@
+---
+title: "Reddit Video Downloader — Save Reddit Videos with Vidow"
+description: "Download Reddit videos with the Vidow browser extension. Automatically detects and combines Reddit's separate audio and video streams."
+---
+
+Vidow works as a Reddit video downloader that handles Reddit's unusual video delivery format automatically. Reddit hosts its own video using DASH-style delivery where audio and video are sent as separate streams — a quirk that causes the "no audio" problem many users run into. Vidow detects both streams and combines them into a single file with audio included.
+
+## How Vidow detects Reddit videos
+
+Reddit-hosted video (v.redd.it) uses DASH-style delivery: the video track and audio track are served as separate files from Reddit's CDN. Your browser downloads both and plays them in sync. When you play a Reddit video, Vidow's network monitoring captures both the video stream and the audio stream as they load.
+
+Vidow then automatically combines (muxes) them into a single output file, so the download you get has audio — no manual merging needed.
+
+<Note>This auto-muxing behavior applies to Reddit-hosted videos (v.redd.it). Videos embedded from other platforms (YouTube, Streamable, Imgur) are detected through their own respective format and do not need muxing.</Note>
+
+## How to download a Reddit video
+
+<Steps>
+  <Step title="Open Reddit on desktop">
+    Go to reddit.com or old.reddit.com in Chrome. Vidow works on both the new Reddit interface and old Reddit.
+  </Step>
+  <Step title="Navigate to the post">
+    Find the Reddit post containing the video. Click on the post to open it if you are browsing a feed.
+  </Step>
+  <Step title="Play the video">
+    Click play on the Reddit video player. This triggers both the video and audio stream requests that Vidow needs to detect.
+  </Step>
+  <Step title="Click the Vidow icon">
+    Once both streams are detected, the Vidow icon in your toolbar lights up. Click it to open the download panel. You will see the detected video with audio included in the output.
+  </Step>
+  <Step title="Select quality and download">
+    Choose your preferred quality and click **Download**. Vidow downloads and combines both streams automatically.
+  </Step>
+</Steps>
+
+## Available quality options
+
+Reddit offers multiple quality tiers for its hosted videos depending on the original upload.
+
+| Quality | Availability |
+|---------|-------------|
+| 360p | Usually available |
+| 480p | Usually available |
+| 720p | Available for most uploads |
+| 1080p | Available for high-quality uploads |
+
+<Note>The qualities available depend on what the poster uploaded. Not every Reddit video will have all quality tiers.</Note>
+
+## Tips for downloading Reddit videos
+
+- **Play the video first** — Both the video and audio tracks are only fetched when the video plays. Press play before clicking the Vidow icon.
+- **Audio is handled automatically** — You do not need to do anything special for audio. Vidow detects both tracks and combines them. The "Reddit video has no audio" issue that affects other tools does not apply when using Vidow.
+- **Old Reddit and new Reddit both work** — Vidow detects v.redd.it streams regardless of which Reddit interface you use. old.reddit.com, new Reddit, and Reddit's redesigned interface all serve the same underlying streams.
+- **Embedded videos from other platforms** — If a Reddit post embeds a YouTube video, Streamable clip, or other hosted video, Vidow detects those through their own streaming format. They appear in the popup alongside any Reddit-hosted content.
+- **GIFs posted to Reddit** — Reddit converts GIFs to silent MP4 files when they are uploaded. Vidow detects these as video streams. There is no audio track to add since GIFs are inherently silent.
+
+<Tip>If only the video stream is detected and not the audio, refresh the page and replay the video from the start. Both streams need to load for Vidow to combine them correctly.</Tip>
+
+## Frequently asked questions
+
+<AccordionGroup>
+  <Accordion title="Why does Reddit video have no audio in other downloaders?">
+    Reddit serves video and audio as separate files (a DASH-style split). Most simple downloaders only grab the video track and miss the separate audio stream entirely. Vidow detects both tracks from your browser's network traffic and combines them automatically, so the downloaded file includes audio.
+  </Accordion>
+  <Accordion title="Does it work with Reddit-hosted videos vs embedded videos?">
+    Both work, but they are handled differently. Reddit-hosted videos (v.redd.it) go through Vidow's auto-muxing to combine audio and video. Embedded videos from YouTube, Streamable, Imgur, or other platforms are detected through their own streaming formats — no muxing needed, since those platforms deliver combined audio and video.
+  </Accordion>
+  <Accordion title="Can I download Reddit GIFs?">
+    Yes. Reddit converts uploaded GIFs to silent MP4 files. Vidow detects these as video streams and you can download them. There is no audio track since GIFs are silent by nature — this is not a limitation of Vidow, it is how Reddit stores them.
+  </Accordion>
+  <Accordion title="Does it work on old Reddit and new Reddit?">
+    Yes. Both old.reddit.com and new Reddit serve video through the same v.redd.it CDN. Vidow detects the streams regardless of which Reddit interface you are using.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+<Card title="Get Vidow for Chrome" icon="chrome" href="https://chromewebstore.google.com/detail/hkdmdpdhfaamhgaojpelccmeehpfljgf">
+  Install the Vidow extension to download Reddit videos with audio, automatically combined.
+</Card>

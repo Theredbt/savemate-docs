@@ -1,0 +1,60 @@
+---
+title: "Merge Videos — Combine Multiple Video Files into One"
+description: "Join multiple video files into a single continuous video. Drag to reorder, then merge — all processing happens locally in your browser."
+---
+
+<Info>The video merger is a **Professional** feature. [Upgrade your plan](/billing/plans) to access it.</Info>
+
+The Vidow video merger combines multiple video files into a single continuous output. Add your files, drag to set the order, choose an output format, and merge — everything runs locally in your browser.
+
+## How to merge videos
+
+<Steps>
+  <Step title="Open the tool">
+    Go to [vidow.io/tools/merge](https://vidow.io/tools/merge).
+  </Step>
+  <Step title="Add video files">
+    Click **Add videos** and select multiple files, or drag them onto the page. You can add files from multiple sources.
+  </Step>
+  <Step title="Drag to reorder">
+    Drag the video clips into the order they should appear in the final output.
+  </Step>
+  <Step title="Choose output format">
+    Select your preferred output container format.
+  </Step>
+  <Step title="Merge">
+    Click **Merge**. Processing runs entirely in your browser — no data is uploaded.
+  </Step>
+  <Step title="Download">
+    Download the merged video file when processing is complete.
+  </Step>
+</Steps>
+
+## Supported formats
+
+| | Formats |
+|---|---|
+| **Input** | MP4, WebM, MKV |
+| **Output** | MP4, WebM, MKV |
+
+## Notes on compatibility
+
+For best results, input files should share the same codec, resolution, and frame rate. When the tool detects incompatible files, it re-encodes them to a common format before merging — this takes longer but always produces a valid output.
+
+## How it works
+
+Merging runs locally in your browser using a WebAssembly build of FFmpeg. When input files are compatible, the merger concatenates them directly without re-encoding for fast, lossless results. Re-encoding is applied automatically when needed. No data is sent to any server.
+
+## Related tools
+
+<CardGroup cols={3}>
+  <Card title="Video Trimmer" href="/tools/video-trimmer">
+    Trim individual clips before merging them.
+  </Card>
+  <Card title="Add Audio" href="/tools/add-audio">
+    Add a background track or narration to the merged video.
+  </Card>
+  <Card title="Video Compressor" href="/tools/video-compressor">
+    Reduce the file size of the merged output.
+  </Card>
+</CardGroup>

@@ -1,0 +1,63 @@
+---
+title: "Video to GIF Converter — Create Animated GIFs from Video"
+description: "Convert any video clip into an animated GIF. Control frame rate, dimensions, and duration — processed entirely in your browser."
+---
+
+<Info>The video to GIF converter is a **Professional** feature. [Upgrade your plan](/billing/plans) to access it.</Info>
+
+The Vidow video to GIF converter turns any video clip into an animated GIF. Control frame rate, dimensions, and duration to get the exact output you need — everything runs in your browser.
+
+## How to convert a video to GIF
+
+<Steps>
+  <Step title="Open the tool">
+    Go to [vidow.io/tools/video-to-gif](https://vidow.io/tools/video-to-gif).
+  </Step>
+  <Step title="Upload your video">
+    Click **Upload** or drag a video file onto the page.
+  </Step>
+  <Step title="Select the clip range">
+    Set the start and end timestamps for the portion of the video you want to convert.
+  </Step>
+  <Step title="Adjust settings">
+    Set the frame rate, maximum width, and quality level to control GIF size and smoothness.
+  </Step>
+  <Step title="Convert">
+    Click **Convert to GIF**. Processing runs entirely in your browser.
+  </Step>
+  <Step title="Download the GIF">
+    When conversion is complete, download your animated GIF.
+  </Step>
+</Steps>
+
+## Supported input formats
+
+MP4, WebM, MKV, MOV
+
+## GIF settings
+
+| Setting | Range | Notes |
+|---------|-------|-------|
+| **Frame rate** | 5 – 30 fps | Lower frame rates reduce file size significantly |
+| **Max width** | 240 – 1080 px | Height scales proportionally |
+| **Duration** | Up to clip length | Shorter clips produce smaller files |
+| **Quality** | Low / Medium / High | Controls color palette depth and dithering |
+
+## How it works
+
+GIF conversion runs locally in your browser using a WebAssembly build of FFmpeg. The tool extracts frames from your selected clip, applies palette optimization, and encodes the GIF — entirely on your device. Nothing is uploaded to any server.
+
+<Tip>
+  GIF files are inherently large compared to video. For sharing on messaging apps or social platforms, keep clips under 5 seconds and use a width of 480px or less.
+</Tip>
+
+## Related tools
+
+<CardGroup cols={2}>
+  <Card title="Video Trimmer" href="/tools/video-trimmer">
+    Trim your video to the exact clip length before converting to GIF.
+  </Card>
+  <Card title="Video Compressor" href="/tools/video-compressor">
+    Compress the original video to reduce processing time.
+  </Card>
+</CardGroup>

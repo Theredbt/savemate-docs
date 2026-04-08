@@ -1,0 +1,72 @@
+---
+title: "Pinterest Video Downloader — Download Pinterest Videos Easily"
+description: "Download Pinterest video pins with the Vidow browser extension. Automatically detects video streams on pinterest.com."
+---
+
+Vidow works as a Pinterest video downloader by detecting the HLS streams and MP4 files that Pinterest loads when you view a video pin. It runs directly in your browser and requires no external services — just open a Pinterest video, let it play, and Vidow handles the rest.
+
+## How Vidow detects Pinterest videos
+
+Pinterest delivers video content using HLS adaptive streaming with an MP4 fallback. When you open a video pin and it starts playing, your browser fetches an HLS manifest or an MP4 file from Pinterest's CDN. Vidow monitors your browser's network traffic and intercepts these stream requests as they load.
+
+This is Vidow's standard universal detection — the same mechanism that works across all streaming platforms. No Pinterest-specific integration is needed.
+
+## How to download a Pinterest video
+
+<Steps>
+  <Step title="Open Pinterest on desktop">
+    Go to pinterest.com in Chrome. Vidow is a desktop browser extension and requires the full desktop site.
+  </Step>
+  <Step title="Click into the pin">
+    Find the video pin you want to download and click on it to open the full pin view. Video pins displayed in the feed may not fully load the stream until you open them.
+  </Step>
+  <Step title="Play the video">
+    The video should start playing automatically when you open the pin. If it does not, click the play button to trigger the stream load.
+  </Step>
+  <Step title="Click the Vidow icon">
+    Once Vidow detects the stream, the icon in your browser toolbar lights up. Click it to see the available download options.
+  </Step>
+  <Step title="Download">
+    Select a quality and click **Download**.
+  </Step>
+</Steps>
+
+## Available quality options
+
+| Quality | Availability |
+|---------|-------------|
+| 720p | Typically available |
+
+<Note>Pinterest re-encodes uploaded videos and typically serves them at 720p. The exact resolution depends on the original upload quality and Pinterest's encoding pipeline.</Note>
+
+## Tips for downloading Pinterest videos
+
+- **Click into the pin** — Videos shown as thumbnails in the Pinterest feed do not fully load the stream. Click into the individual pin to open it fully before trying to download.
+- **Use pinterest.com on desktop** — Vidow requires the desktop site. The Pinterest mobile website and app load content differently.
+- **Let it autoplay** — Pinterest autoplays video pins when you open them. Give it a moment to start before clicking the Vidow icon.
+- **Idea Pins** — Pinterest Idea Pins (formerly Story Pins) that contain video are also delivered as video streams and should be detectable through the same process.
+
+<Tip>If the Vidow icon does not light up after opening a pin, try scrolling the pin into full view and allowing it to play for a few seconds before clicking the icon.</Tip>
+
+## Frequently asked questions
+
+<AccordionGroup>
+  <Accordion title="Does it work with Video Pins?">
+    Yes. Standard Pinterest Video Pins are served via HLS streaming or MP4, and Vidow detects both. Open the pin, let the video play, and click the icon.
+  </Accordion>
+  <Accordion title="Can I download Pinterest Idea Pins?">
+    Pinterest Idea Pins that include video content are delivered as video streams that Vidow can detect. Open the Idea Pin and allow it to play. Note that some Idea Pins may contain multiple slides with video — Vidow will detect the streams as they load for each slide.
+  </Accordion>
+  <Accordion title="Why do I need to click into the pin?">
+    Pinterest uses lazy loading for video content in the feed. The video stream is only requested from Pinterest's servers when you open the full pin view. Vidow can only detect streams that your browser has already loaded, so clicking into the pin is required to trigger that network request.
+  </Accordion>
+  <Accordion title="Why does only one quality show up?">
+    Pinterest typically encodes video pins at a single quality level (720p). Unlike platforms that serve multiple quality tiers, Pinterest generally does not offer multiple resolution options for the same video. What Vidow shows is what Pinterest provides.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+<Card title="Get Vidow for Chrome" icon="chrome" href="https://chromewebstore.google.com/detail/hkdmdpdhfaamhgaojpelccmeehpfljgf">
+  Install the Vidow extension to start downloading Pinterest video pins from your desktop browser.
+</Card>

@@ -1,87 +1,88 @@
 ---
-title: "Set Up Google Drive"
-description: "Connect Google Drive to SaveMate for automatic cloud sync."
+title: "Set Up Google Drive — Cloud Video Storage with Vidow"
+description: "Link your Google Drive account to Vidow and start saving videos directly to your own storage in a few clicks."
 ---
 
-Google Drive uses OAuth 2.0 authentication, so you authorize SaveMate through your Google account without sharing your password.
+Google Drive connects through OAuth 2.0, which means Vidow never sees your Google password. You authorize access once, and Google issues a token that Vidow uses for uploads.
 
 ## Prerequisites
 
-- A SaveMate account with a [Professional plan](/billing/plans)
-- A Google account with Google Drive storage available
+- A Vidow account on the [Professional plan](/billing/plans)
+- A Google account with sufficient Drive storage for your videos
 
 ## Connect Google Drive
 
 <Steps>
   <Step title="Open Cloud Sync">
-    Navigate to [savemate.io/cloud-sync](https://savemate.io/cloud-sync) and sign in to your SaveMate account.
+    Go to [vidow.io/cloud-sync](https://vidow.io/cloud-sync) and sign in to your Vidow account.
   </Step>
   <Step title="Click Connect on Google Drive">
-    Find the Google Drive card and click **Connect**. You'll be redirected to Google's authorization page.
+    Locate the Google Drive card and click **Connect**. Vidow redirects you to Google's OAuth authorization page.
   </Step>
   <Step title="Choose your Google account">
-    Select the Google account you want to use for cloud storage. If you have multiple accounts, choose the one with enough free space.
+    Pick the Google account you want to use. If several accounts are listed, select the one with enough free space for video storage.
   </Step>
   <Step title="Grant permissions">
-    Google will ask you to grant SaveMate permission to manage files in your Google Drive. SaveMate only accesses a dedicated folder — it cannot read or modify your other files.
+    Google asks you to confirm that Vidow can manage files in your Drive. Vidow writes only to a dedicated folder it creates — your existing files and folders remain untouched.
 
-    Click **Allow** to proceed.
+    Click **Allow** to complete the authorization.
   </Step>
   <Step title="Connection confirmed">
-    You'll be redirected back to SaveMate. The Google Drive card will show a **Connected** status with a green indicator.
+    You're returned to Vidow. The Google Drive card now displays a green **Connected** indicator, and you can start syncing videos.
   </Step>
 </Steps>
 
 ## How uploads work
 
-Google Drive uses a **resumable upload** protocol:
+Vidow uses Google's **resumable upload** protocol, which is designed to handle large files reliably:
 
-- Small files (under 100MB) upload in a single request
-- Larger files use resumable sessions that automatically handle network interruptions
-- If your connection drops mid-upload, it resumes from where it left off
-- Uploads are chunked in 5MB segments
+- Files smaller than 100MB are sent in a single HTTP request
+- Larger files open a resumable session, which tolerates network interruptions
+- If a transfer drops partway through, it picks up from the last confirmed byte rather than restarting
+- All uploads are chunked into 5MB segments to keep memory usage predictable
 
 ## Storage location
 
-SaveMate creates a dedicated folder in your Google Drive root directory. All uploaded files are organized within this folder.
+Vidow creates a dedicated folder at the root of your Google Drive. Every synced video lands in that folder. You can move or rename files inside Drive after the upload without affecting Vidow's ability to write new ones.
 
 ## Managing the connection
 
-### Check connection health
+### Connection health
 
-Your Google Drive connection status shows on the Cloud Sync page:
+The Cloud Sync page shows a live status for each connected provider:
 
-- **Healthy** — OAuth token is valid and uploads work normally
-- **Broken** — Token expired or was invalidated. Click **Reconnect** to re-authorize
-- **Revoked** — You revoked SaveMate's access from your Google account settings. Reconnect to restore
+- **Healthy** — The OAuth token is current and uploads are working normally
+- **Broken** — The token was invalidated or expired. Click **Reconnect** to go through authorization again
+- **Revoked** — You removed Vidow's access from your Google account. Reconnect from the Cloud Sync page to restore it
 
-<Tip>SaveMate proactively refreshes OAuth tokens before they expire, so you shouldn't see "Broken" status under normal conditions.</Tip>
+<Tip>Vidow refreshes OAuth tokens automatically before they expire, so you should rarely see a Broken status during normal use.</Tip>
 
 ### Disconnect
 
-To disconnect Google Drive:
+To remove the Google Drive connection from Vidow:
 
-1. Go to [savemate.io/cloud-sync](https://savemate.io/cloud-sync)
-2. Click the disconnect option on the Google Drive card
-3. The connection is removed from SaveMate
+1. Visit [vidow.io/cloud-sync](https://vidow.io/cloud-sync)
+2. Open the options on the Google Drive card and choose **Disconnect**
+3. The connection is deleted from Vidow — no files in Drive are affected
 
-To also revoke SaveMate's access from Google's side, visit [myaccount.google.com/permissions](https://myaccount.google.com/permissions) and remove SaveMate.
+To also cut off access from Google's side, visit [myaccount.google.com/permissions](https://myaccount.google.com/permissions) and remove Vidow from the list of connected apps.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="Upload fails with permission error">
-    Your OAuth token may have expired. Go to Cloud Sync, disconnect Google Drive, and reconnect.
+  <Accordion title="Upload fails with a permission error">
+    The most likely cause is an expired or revoked OAuth token. Go to [vidow.io/cloud-sync](https://vidow.io/cloud-sync), disconnect Google Drive, then reconnect and reauthorize. New tokens are issued during the reconnect flow.
   </Accordion>
   <Accordion title="Storage quota exceeded">
-    Check your Google Drive storage at [drive.google.com/settings](https://drive.google.com/settings). Free Google accounts include 15GB shared across Drive, Gmail, and Photos. Consider upgrading your Google storage or switching to a different provider.
+    Check how much space is available at [drive.google.com/settings](https://drive.google.com/settings). Free Google accounts share 15GB across Drive, Gmail, and Google Photos. If you're running low, free up space in Drive or consider upgrading your Google One storage plan.
   </Accordion>
   <Accordion title="Connection shows as broken">
-    This typically means Google invalidated your token. This can happen if:
-    - You changed your Google password
-    - You revoked third-party app access in Google settings
-    - Google detected unusual activity
+    Google can invalidate a token for several reasons:
 
-    Click **Reconnect** to re-authorize.
+    - You changed your Google account password
+    - You manually removed Vidow's access in your Google account settings
+    - Google flagged unusual activity on your account
+
+    In any of these cases, click **Reconnect** on the Cloud Sync page to issue a fresh token.
   </Accordion>
 </AccordionGroup>

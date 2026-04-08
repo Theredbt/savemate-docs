@@ -1,68 +1,72 @@
 ---
-title: "Security"
-description: "Secure your SaveMate account with two-factor authentication and session management."
+title: "Security — Two-Factor Authentication & Session Management"
+description: "Change your password, enable two-factor authentication, and control which browser sessions have access to your Vidow account."
 ---
 
-Manage your account security at [savemate.io/settings/security](https://savemate.io/settings/security).
+Security settings are at [vidow.io/settings/security](https://vidow.io/settings/security). From here you can update your password, turn on two-factor authentication, and review active sessions.
 
 ## Password
 
 ### Update your password
 
-1. Go to Security settings
+1. Open your security settings
 2. Enter your current password
-3. Enter and confirm your new password
+3. Type your new password and confirm it
 4. Click **Save**
 
-Use a strong, unique password that you don't use on other sites.
+Pick a password that is unique to Vidow. Reusing passwords across services is the most common way accounts get compromised.
 
-## Two-factor authentication (2FA)
+## Two-factor authentication
 
-Add an extra layer of security to your account with two-factor authentication using a TOTP authenticator app.
+Two-factor authentication (2FA) adds a second check after your password — a time-based code from an authenticator app. Even if your password is exposed, an attacker cannot get in without physical access to your device.
 
 ### Set up 2FA
 
 <Steps>
   <Step title="Open security settings">
-    Go to [savemate.io/settings/security](https://savemate.io/settings/security).
+    Go to [vidow.io/settings/security](https://vidow.io/settings/security).
   </Step>
-  <Step title="Enable 2FA">
-    Click **Enable two-factor authentication**.
+  <Step title="Enable two-factor authentication">
+    Click the **Enable two-factor authentication** button.
   </Step>
   <Step title="Scan the QR code">
-    Open your authenticator app (Google Authenticator, Authy, 1Password, etc.) and scan the QR code displayed on screen.
+    Open an authenticator app on your phone — Google Authenticator, Authy, and 1Password all work — and scan the QR code displayed on screen.
   </Step>
-  <Step title="Enter verification code">
-    Enter the 6-digit code from your authenticator app to confirm setup.
+  <Step title="Enter the 6-digit code">
+    Type the code your authenticator app generates to confirm the setup completed successfully.
   </Step>
-  <Step title="Save recovery codes">
-    Save the recovery codes in a secure location. These codes let you access your account if you lose your authenticator device.
+  <Step title="Save your recovery codes">
+    Copy or download the recovery codes shown on the final screen and store them somewhere safe.
   </Step>
 </Steps>
 
 <Warning>
-  Store your recovery codes securely. If you lose both your authenticator device and recovery codes, you'll need to contact support to regain access to your account.
+  Recovery codes are your only fallback if you lose access to your authenticator device. Store them somewhere you can reach without your phone — a password manager, printed copy in a secure location, or an encrypted note. If you lose both your authenticator and your recovery codes, you will need to contact support to recover your account.
 </Warning>
 
-### Signing in with 2FA
+### Signing in with 2FA enabled
 
-When 2FA is enabled, the login flow requires:
+Once 2FA is active, the login sequence changes:
 
-1. Enter your email and password
-2. Enter the 6-digit code from your authenticator app
-3. Alternatively, use a recovery code if your authenticator is unavailable
+1. Enter your email and password as usual
+2. When prompted, enter the 6-digit code from your authenticator app
+3. If your authenticator is unavailable, enter one of your saved recovery codes instead
+
+Recovery codes are single-use. Each one becomes invalid after it is used.
 
 ## Browser sessions
 
-The security settings page shows all active browser sessions on your account:
+The security page lists every browser session currently signed in to your account. For each session you can see:
 
-- **Current session** — Marked as your active session
-- **Other sessions** — Shows browser, operating system, IP address, and last activity time
+- Whether it is your **current session**
+- The browser and operating system being used
+- The IP address of the session
+- The time of last activity
 
-### Logout other sessions
+### Log out other sessions
 
-Click **Log Out Other Browser Sessions** to immediately terminate all sessions except your current one. You'll be prompted to enter your password to confirm.
+Click **Log Out Other Browser Sessions** to end all sessions except the one you are currently using. You will need to enter your password to confirm the action.
 
 <Tip>
-  If you suspect unauthorized access, log out all other sessions and change your password immediately.
+  If you notice a session you do not recognize, log out all other sessions immediately and change your password. This cuts off any unauthorized access that may already be active.
 </Tip>

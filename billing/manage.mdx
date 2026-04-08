@@ -1,78 +1,73 @@
 ---
-title: "Manage Subscription"
-description: "Update your plan, payment methods, and view billing history."
+title: "Manage Subscription — Billing Dashboard"
+description: "Control your Vidow plan, update payment methods, download invoices, and apply discounts from the billing dashboard at vidow.io/billing."
 ---
 
-Manage your SaveMate subscription from the billing dashboard at [savemate.io/billing](https://savemate.io/billing).
+Everything subscription-related lives in one place: [vidow.io/billing](https://vidow.io/billing). You do not need to contact support to change your plan, swap a card, or grab a past invoice.
 
 ## Billing dashboard
 
-The billing page shows your complete subscription overview:
+When you open the billing page, you will see:
 
-- **Current plan** — Your active plan name and status (Active, Canceling, Past Due)
-- **Next billing date** — When your subscription renews
-- **Payment methods** — Your saved cards and default payment method
-- **Invoices** — Complete billing history with downloadable receipts
+- **Current plan** — the plan name and its current status (Active, On Grace Period, Past Due)
+- **Next billing date** — the exact date your subscription renews and charges your card
+- **Payment methods** — saved cards with a clear indicator of which one is set as default
+- **Invoices** — a full record of every charge with PDF download links
 
 ## Change your plan
 
-### Upgrade
+### Upgrade to Professional
 
-To upgrade from Free to Professional:
+<Steps>
+  <Step title="Open the billing dashboard">
+    Go to [vidow.io/billing](https://vidow.io/billing) and click **Upgrade**.
+  </Step>
+  <Step title="Pick a billing interval">
+    Choose Monthly, Yearly, or Lifetime. Current pricing for each option is shown inline.
+  </Step>
+  <Step title="Enter payment details">
+    Complete checkout through the Stripe payment form. Your upgrade is active the moment the charge goes through.
+  </Step>
+</Steps>
 
-1. Go to [savemate.io/billing](https://savemate.io/billing)
-2. Select your preferred plan (Monthly, Yearly, or Lifetime)
-3. Enter your payment details
-4. Your upgrade takes effect immediately
+### Switch between monthly and yearly
 
-### Switch intervals
+To move between billing intervals, open your billing dashboard and select the new interval. The change applies at the start of your next billing period. Any balance from the current period is credited proportionally so you are not charged for time you have already paid for.
 
-To switch between monthly and yearly billing:
+### Cancel your subscription
 
-1. Go to your billing dashboard
-2. Select the new billing interval
-3. The change takes effect at your next billing date, with prorated credits applied
-
-### Downgrade / Cancel
-
-To cancel your Professional subscription:
-
-1. Go to your billing dashboard
-2. Click **Cancel subscription**
-3. Your Professional features remain active until the end of your current billing period
-4. After the billing period ends, your account reverts to the Free plan
+To cancel, open the billing dashboard and click **Cancel subscription**. Cancellation does not cut off access immediately — your Professional features stay active through the end of the period you paid for. After that date, the account moves to the free plan automatically.
 
 <Tip>
-  You can resume a cancelled subscription at any time before the billing period ends. Your access continues uninterrupted.
+  Changed your mind before the period ends? You can resume a cancelled subscription from the billing dashboard at any point before the expiry date. Your access continues without interruption and no new billing cycle starts until the original one would have.
 </Tip>
 
 ## Payment methods
 
-### Add a payment method
+### Add a card
 
-1. Go to your billing dashboard
-2. Click **Add payment method**
-3. Enter your card details through the secure Stripe payment form
-4. The new card is saved to your account
+Open the billing dashboard and click **Add payment method**. The Stripe secure form handles card entry — Vidow never sees or stores raw card numbers. Once added, the card is saved and available for future charges.
 
-### Set a default method
+### Set a default card
 
-If you have multiple payment methods, click the method you want to use as default. All future charges will use this card.
+If you have more than one card on file, click the card you want to use going forward. All upcoming subscription renewals and charges will route to the default card.
 
-### Remove a payment method
+### Remove a card
 
-Click the remove button next to any non-default payment method to delete it from your account.
+Any card that is not currently set as the default can be removed. Click the remove button next to it. You cannot remove the active default card while a subscription is running — set a different card as default first.
 
 ## Invoices
 
-View and download all past invoices from your billing dashboard. Each invoice includes:
+Every charge generates an invoice in your billing dashboard. Each entry shows:
 
-- Invoice number and date
-- Plan details and billing period
-- Amount charged
-- Payment method used
-- Downloadable PDF receipt
+- Invoice number and issue date
+- Plan name and the billing period it covers
+- Total amount charged
+- Payment method used for that charge
+- A link to download the PDF receipt
+
+Invoices are available immediately after each successful charge and are kept indefinitely in your account.
 
 ## Coupons and discounts
 
-If you have a coupon code, apply it during checkout or from your billing dashboard. Active discounts are shown on your plan details.
+Coupon codes can be applied in two ways: during checkout before you confirm the first charge, or from the billing dashboard under **Apply coupon** after you are already subscribed. Once a coupon is active, the discount is shown on your plan summary so you always know the adjusted amount before it charges.

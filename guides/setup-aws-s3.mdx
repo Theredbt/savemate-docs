@@ -1,35 +1,37 @@
 ---
-title: "Set Up AWS S3"
-description: "Connect AWS S3 to SaveMate for cloud storage of your downloaded videos."
+title: "Set Up AWS S3 — Cloud Video Storage with Vidow"
+description: "Configure an AWS S3 bucket and IAM credentials to use S3 as your Vidow video storage destination with full multipart upload support."
 ---
 
-AWS S3 uses API key authentication. You'll need to create an IAM user with the right permissions and provide your credentials to SaveMate.
+AWS S3 connects via API keys rather than OAuth. You create a dedicated IAM user with narrowly scoped permissions, generate an access key pair, and enter those credentials in Vidow. Your AWS root account is never involved.
 
 ## Prerequisites
 
-- A SaveMate account with a [Professional plan](/billing/plans)
-- An AWS account with an S3 bucket
-- An IAM user with S3 write permissions
+- A Vidow account on the [Professional plan](/billing/plans)
+- An AWS account with S3 access
+- An S3 bucket to use for video storage
+- An IAM user with upload permissions on that bucket
 
 ## Step 1: Create an S3 bucket
 
-If you don't already have a bucket:
+If you haven't set one up yet:
 
-1. Sign in to the [AWS Management Console](https://console.aws.amazon.com/s3/)
+1. Open the [AWS S3 Console](https://console.aws.amazon.com/s3/)
 2. Click **Create bucket**
-3. Enter a bucket name (e.g., `my-savemate-videos`)
-4. Choose a region close to you for faster uploads
-5. Leave other settings as default and click **Create bucket**
+3. Give the bucket a name — for example, `my-vidow-videos`
+4. Pick the AWS region geographically closest to you; this reduces upload latency
+5. Leave Block Public Access enabled and all other defaults in place
+6. Click **Create bucket**
 
 ## Step 2: Create an IAM user
 
-SaveMate needs an IAM user with limited permissions to upload files:
+Vidow needs a dedicated IAM user with the minimum permissions required to upload files:
 
-1. Go to the [IAM Console](https://console.aws.amazon.com/iam/)
-2. Navigate to **Users** and click **Create user**
-3. Enter a username (e.g., `savemate-uploader`)
-4. Select **Attach policies directly**
-5. Create and attach a custom policy with these permissions:
+1. Open the [IAM Console](https://console.aws.amazon.com/iam/)
+2. Go to **Users** and click **Create user**
+3. Give the user a descriptive name such as `vidow-uploader`
+4. On the permissions step, choose **Attach policies directly**
+5. Click **Create policy**, switch to the JSON editor, and paste the following:
 
 ```json
 {
@@ -51,80 +53,79 @@ SaveMate needs an IAM user with limited permissions to upload files:
 }
 ```
 
-Replace `YOUR-BUCKET-NAME` with your actual bucket name.
+Replace `YOUR-BUCKET-NAME` with the name of the bucket you created in Step 1.
 
-<Warning>Only grant the minimum permissions listed above. Do not use `s3:*` or attach the `AmazonS3FullAccess` policy.</Warning>
+6. Save the policy, then attach it to the new IAM user
+
+<Warning>Use only the six actions listed above. Do not use the wildcard `s3:*` or attach the managed `AmazonS3FullAccess` policy — those grant far more access than Vidow needs.</Warning>
 
 ## Step 3: Generate access keys
 
-1. In the IAM Console, click on your new user
-2. Go to the **Security credentials** tab
+1. In the IAM Console, click the user you just created
+2. Open the **Security credentials** tab
 3. Under **Access keys**, click **Create access key**
-4. Select **Third-party service** as the use case
-5. Copy both the **Access Key ID** and **Secret Access Key**
+4. Select **Third-party service** when asked for the use case
+5. Copy both the **Access Key ID** and the **Secret Access Key**
 
-<Warning>The Secret Access Key is only shown once. Save it securely before closing the dialog.</Warning>
+<Warning>AWS shows the Secret Access Key only at the moment of creation. Store it somewhere secure before closing the dialog — if you lose it, you'll need to delete the key and create a new one.</Warning>
 
-## Step 4: Connect in SaveMate
+## Step 4: Connect in Vidow
 
 <Steps>
   <Step title="Open Cloud Sync">
-    Navigate to [savemate.io/cloud-sync](https://savemate.io/cloud-sync) and sign in.
+    Go to [vidow.io/cloud-sync](https://vidow.io/cloud-sync) and sign in.
   </Step>
   <Step title="Click Connect on AWS S3">
-    Find the AWS S3 card and click **Connect**.
+    Find the AWS S3 card and click **Connect** to open the credentials form.
   </Step>
   <Step title="Enter your credentials">
-    Fill in the connection form:
-    - **Access Key ID** — Your IAM user's access key
-    - **Secret Access Key** — Your IAM user's secret key
-    - **Bucket name** — Your S3 bucket name
-    - **Region** — The AWS region where your bucket is located
+    Fill in the four fields:
+    - **Access Key ID** — The key ID from your IAM user
+    - **Secret Access Key** — The secret from the key you created
+    - **Bucket name** — Your S3 bucket name exactly as it appears in the console
+    - **Region** — The AWS region where the bucket lives (e.g., `us-east-1`)
   </Step>
   <Step title="Test and save">
-    SaveMate validates the credentials by attempting a test upload. If successful, the connection is saved.
+    Vidow performs a quick validation against your bucket. If the credentials are correct and the permissions are in place, the connection is saved and you can start syncing.
   </Step>
 </Steps>
 
 ## How uploads work
 
-S3 uses **multipart upload** for files over 100MB:
+Vidow uses **multipart upload** for files larger than 100MB:
 
-- Files are split into 10MB parts
-- Parts upload in parallel for maximum speed
-- Uploads can be **paused and resumed** at any time
-- Supports files up to 50TB
-- Failed parts are automatically retried
+- Each file is split into 10MB parts
+- Parts transfer in parallel, which saturates available bandwidth and reduces total upload time
+- Individual parts can be paused and resumed without restarting the whole transfer
+- If a part fails, only that part is retried
+- Multipart upload supports files up to 50TB
 
-For files under 100MB, SaveMate uses a direct single-request upload via presigned URLs.
+Files under 100MB skip the multipart flow and upload in a single direct request, which is faster for smaller videos.
 
 ## Managing the connection
 
-### Update credentials
+### Rotate credentials
 
-If you rotate your IAM access keys:
+When you need to replace your IAM access keys:
 
-1. Generate new keys in the IAM Console
-2. Go to Cloud Sync settings in SaveMate
-3. Update the credentials on the S3 card
+1. Create a new key pair in the IAM Console
+2. Go to [vidow.io/cloud-sync](https://vidow.io/cloud-sync) and edit the S3 connection
+3. Replace the old credentials with the new ones and save
 
 ### Disconnect
 
-Click disconnect on the S3 card to remove the connection. Your bucket and files are not affected — only the SaveMate connection is removed.
+Click disconnect on the S3 card to remove the connection from Vidow. Your S3 bucket and all previously uploaded files stay intact — Vidow only removes its own stored credentials.
 
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="Access denied error">
-    Verify that your IAM policy includes all required actions (`PutObject`, `CreateMultipartUpload`, `UploadPart`, `CompleteMultipartUpload`, `AbortMultipartUpload`, `ListMultipartUploadParts`) and that the Resource ARN matches your bucket name.
+    Check that your IAM policy includes all six required actions: `PutObject`, `CreateMultipartUpload`, `UploadPart`, `CompleteMultipartUpload`, `AbortMultipartUpload`, and `ListMultipartUploadParts`. Also confirm the `Resource` ARN in the policy ends with `/*` and matches your bucket name exactly.
   </Accordion>
   <Accordion title="Wrong region error">
-    S3 bucket names are globally unique but buckets exist in specific regions. Make sure the region in SaveMate matches where your bucket was created.
+    S3 bucket names are globally unique, but each bucket is tied to a specific region. The region you enter in Vidow must match the region where the bucket was created. Check the bucket details in the S3 Console if you're unsure.
   </Accordion>
   <Accordion title="Upload timeout">
-    Large file uploads over slow connections can time out. Try:
-    - Using a more stable connection
-    - Pausing and resuming the upload to reset the connection
-    - Checking if your S3 bucket has any lifecycle policies that might interfere
+    On slower or unstable connections, large file transfers can stall. Try pausing and resuming the upload from the Cloud Sync page — this resets the active connection without losing progress. Also check whether your bucket has any lifecycle rules or policies that might be terminating in-progress multipart uploads.
   </Accordion>
 </AccordionGroup>

@@ -1,0 +1,64 @@
+---
+title: "Add Audio to Video — Replace or Overlay Audio Tracks"
+description: "Add background music, replace the audio track, or overlay narration on any video file. Browser-based processing, no uploads required."
+---
+
+<Info>Add audio is a **Professional** feature. [Upgrade your plan](/billing/plans) to access it.</Info>
+
+The Vidow add audio tool lets you replace a video's existing audio track or mix in a new one — background music, narration, or any audio file. All processing runs locally in your browser.
+
+## How to add audio to a video
+
+<Steps>
+  <Step title="Open the tool">
+    Go to [vidow.io/tools/add-audio](https://vidow.io/tools/add-audio).
+  </Step>
+  <Step title="Upload your video">
+    Click **Upload video** or drag a video file onto the page.
+  </Step>
+  <Step title="Upload your audio file">
+    Click **Upload audio** and select the audio file you want to add.
+  </Step>
+  <Step title="Choose a mode">
+    Select **Replace** to swap out the existing audio track, or **Overlay** to mix the new audio with the original.
+  </Step>
+  <Step title="Adjust timing">
+    Set the offset for when the audio should start relative to the beginning of the video.
+  </Step>
+  <Step title="Export">
+    Click **Export**. The output file is saved to your downloads folder.
+  </Step>
+</Steps>
+
+## Supported formats
+
+| | Formats |
+|---|---|
+| **Video input** | MP4, WebM, MKV, MOV |
+| **Audio input** | MP3, AAC, M4A, WAV, FLAC |
+| **Output** | MP4, WebM |
+
+## Audio modes
+
+| Mode | Description |
+|------|-------------|
+| **Replace** | Removes the original audio track and replaces it with the uploaded audio file |
+| **Overlay** | Mixes the new audio with the existing audio track at equal volume |
+
+## How it works
+
+Audio processing runs locally in your browser using a WebAssembly build of FFmpeg. The tool muxes your audio file into the video container without re-encoding the video stream, keeping processing fast and preserving video quality. No data is uploaded to any server.
+
+## Related tools
+
+<CardGroup cols={3}>
+  <Card title="Merge Videos" href="/tools/merge-videos">
+    Join multiple clips before adding audio.
+  </Card>
+  <Card title="Video Trimmer" href="/tools/video-trimmer">
+    Trim your video to the right length first.
+  </Card>
+  <Card title="Video Compressor" href="/tools/video-compressor">
+    Reduce file size after adding the audio track.
+  </Card>
+</CardGroup>

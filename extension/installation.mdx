@@ -1,76 +1,81 @@
 ---
-title: "Installation"
-description: "Install the SaveMate browser extension on Chrome, Edge, or Brave."
+title: "Install Vidow — Video Downloader Extension for Chrome, Edge & Brave"
+description: "Get the video downloader extension for Chrome, Edge, and Brave in under a minute. Detect HLS, DASH, and MP4 streams on any website."
 ---
 
-## Install from Chrome Web Store
+Vidow is a free video downloader extension for Chrome that detects HLS, DASH, and direct MP4 streams as you browse — no paste-and-download, no site restrictions. Install takes under a minute.
 
-SaveMate v2.0 is available on the [Chrome Web Store](https://chromewebstore.google.com/detail/lejgkageoahacjmljeogapbkhbfldigd) and works with all Chromium-based browsers.
+## Add Vidow from the Chrome Web Store
+
+Vidow v2.0 is published on the Chrome Web Store and installs directly into Chrome, Edge, and Brave.
 
 <Steps>
-  <Step title="Open the extension page">
-    Visit the [SaveMate Chrome Web Store page](https://chromewebstore.google.com/detail/lejgkageoahacjmljeogapbkhbfldigd) in your browser.
+  <Step title="Open the Chrome Web Store listing">
+    Go to the [Vidow extension page](https://chromewebstore.google.com/detail/hkdmdpdhfaamhgaojpelccmeehpfljgf) in your browser. Edge and Brave users can use the same link — both browsers accept Chrome Web Store extensions natively.
   </Step>
-  <Step title="Click Add to Chrome">
-    Click the blue **Add to Chrome** button in the top right corner of the page.
+  <Step title="Add to your browser">
+    Click the **Add to Chrome** button (Edge shows **Get**, Brave shows **Add to Brave**) in the upper-right corner of the listing page.
   </Step>
-  <Step title="Confirm permissions">
-    A dialog will appear asking you to confirm the extension's permissions. Click **Add extension** to proceed.
-
-    SaveMate requests only the permissions needed for stream detection. See [Supported Browsers](/extension/supported-browsers#extension-permissions) for details on each permission.
+  <Step title="Accept the permission request">
+    A dialog lists the permissions Vidow needs. Click **Add extension** to confirm. For details on what each permission does, see [Extension permissions](/extension/supported-browsers#extension-permissions).
   </Step>
-  <Step title="Installation complete">
-    You'll see a confirmation message and the SaveMate icon will appear in your browser's extension area. We recommend [pinning the extension](/extension/pinning) for easy access.
+  <Step title="Start detecting streams">
+    Vidow is installed. The icon will appear in your browser's extension area. Head to any video-hosting site and the icon will update as streams are detected. We recommend [pinning Vidow to your toolbar](/extension/pinning) so the detection indicator is always visible.
   </Step>
 </Steps>
 
-## Supported browsers
+## Browser compatibility
 
-| Browser | Status | Install method |
-|---------|--------|----------------|
-| **Google Chrome** | Fully supported | [Chrome Web Store](https://chromewebstore.google.com/detail/lejgkageoahacjmljeogapbkhbfldigd) |
-| **Microsoft Edge** | Fully supported | Chrome Web Store (Edge supports Chrome extensions) |
-| **Brave** | Fully supported | Chrome Web Store |
-| **Mozilla Firefox** | Coming soon | - |
+| Browser | Support status | Installation |
+|---------|---------------|--------------|
+| **Google Chrome** | Fully supported | [Chrome Web Store](https://chromewebstore.google.com/detail/hkdmdpdhfaamhgaojpelccmeehpfljgf) |
+| **Microsoft Edge** | Fully supported | Same Chrome Web Store link |
+| **Brave** | Fully supported | Same Chrome Web Store link |
+| **Mozilla Firefox** | Coming soon | — |
 
 <Info>
-  Edge and Brave users install from the same Chrome Web Store link. These browsers natively support Chrome extensions.
+  Edge and Brave include built-in support for Chrome Web Store extensions. No workarounds or developer mode required.
 </Info>
 
 ## System requirements
 
 - **Operating system**: macOS, Windows, or Linux
-- **Browser**: Any Chromium-based browser with Manifest V3 support (Chrome 88+, Edge 88+, Brave 1.20+)
-- **Internet**: Required for installation and stream detection. Downloads can be watched offline.
+- **Browser version**: Chrome 88 or later, Edge 88 or later, Brave 1.20 or later
+- **Internet connection**: Required during installation and for stream detection on certain sites
 
-## Privacy and security
+## Privacy and data handling
 
-SaveMate has been verified by the Google Chrome Web Store security team:
+Vidow monitors network traffic locally inside your browser to detect video streams by inspecting response headers and URLs. Page URLs may be sent to Vidow servers for fallback detection on sites where network interception alone is insufficient to identify streams. No account or login is required to use the extension.
 
-- All video processing happens locally in your browser
-- No browsing data is collected or transmitted
-- No analytics or tracking scripts
-- Stream detection runs entirely within the extension sandbox
-- Extension source uses strict Content Security Policy (`script-src 'self'; object-src 'self'`)
+Extension code runs under a strict Content Security Policy (`script-src 'self'; object-src 'self'`), which prevents injection of third-party scripts.
 
 ## Configure the extension
 
-After installation, you can customize SaveMate from the options page:
+After adding Vidow, open its options page by right-clicking the toolbar icon and selecting **Options**. The settings available include:
 
-- **Format filtering** — Choose which video and audio formats to detect
-- **Minimum file size** — Filter out small files (10KB, 100KB, 1MB, 2MB, or custom)
-- **Download management** — Enable browser download API for custom file naming and save location
-- **Download path** — Set a custom folder prefix for organized downloads
-- **Chromecast** — Toggle Chromecast casting support
-- **Blocked sites** — Exclude specific domains from detection
+- **Format filtering** — Select which video and audio container formats to track (MP4, WebM, MKV, TS, and more)
+- **Minimum file size** — Set a threshold to skip small files that are typically ads or UI elements (10 KB, 100 KB, 1 MB, 2 MB, or a custom value)
+- **Download management** — Let Vidow use the browser download API for proper file naming and folder routing
+- **Download path** — Specify a subfolder prefix within your browser's download directory
+- **Chromecast** — Enable or disable the Cast button for detected streams
+- **Badge mode** — Switch between a video count badge or a simple dot indicator on the toolbar icon
+- **Theme** — Choose light, dark, or system (follows your OS preference), synced via chrome.storage.sync
+- **Blocked sites** — Exclude specific domains from all stream detection
 
-To access settings, right-click the SaveMate icon and select **Options**.
+The best video downloader extension for Chrome is the one that stays out of your way — Vidow's detection runs silently in the background and only surfaces when streams are found.
 
-## Updating the extension
+## Keeping Vidow up to date
 
-Chrome, Edge, and Brave automatically update extensions in the background. You'll always have the latest version without any manual steps.
+Chrome, Edge, and Brave manage extension updates automatically. Vidow updates install in the background without any action on your part.
 
-To check your current version:
-1. Right-click the SaveMate icon in your toolbar
+To check which version is currently installed:
+
+1. Right-click the Vidow icon in your toolbar
 2. Select **Manage extension**
-3. Your version number is displayed on the extension details page
+3. The version number appears on the extension detail page
+
+If the icon is not visible in your toolbar, see [Pin Vidow to your toolbar](/extension/pinning).
+
+---
+
+Looking for the free video downloader Chrome extension that works with streaming platforms? Vidow detects streams on any website — no allowlist, no site-specific plugins needed.

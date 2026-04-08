@@ -1,57 +1,59 @@
 ---
-title: "Introduction"
-description: "SaveMate is a browser extension that detects, downloads, and manages video streams from across the web."
+title: "Vidow — Video Downloader Extension for Chrome, Edge & Brave"
+description: "Vidow is a free video downloader extension that detects and saves HLS, DASH, MP4, and WebM streams from any website you visit."
 ---
 
-SaveMate is the universal video stream detector for your browser. It automatically identifies HLS, DASH, MP4, WebM, and 16+ video formats on any website, letting you download, convert, cast, and organize your video content.
+Vidow is a browser video downloader that works by intercepting network requests as you browse, giving you one-click access to the underlying video stream — whether it's a standard MP4 file or an adaptive HLS or DASH playlist. Install it once and it runs quietly in the background on every tab.
 
-## What can SaveMate do?
+If you've ever tried a generic online video downloader only to find it fails on streaming sites, Vidow solves that at the source: it reads what your browser already received, rather than fetching the page again externally.
+
+## What Vidow does
 
 <CardGroup cols={2}>
   <Card title="Stream Detection" icon="signal-stream" href="/features/stream-detection">
-    Automatically detects HLS, DASH, MP4, WebM, and 16+ video formats as you browse. The SaveMate icon lights up when a stream is found.
+    Passively monitors network traffic to [detect HLS and DASH streams](/features/stream-detection), along with MP4, WebM, MKV, and 16+ additional formats. The toolbar icon activates the moment a stream is found.
   </Card>
   <Card title="Video Downloads" icon="download" href="/features/video-downloads">
-    Download videos in qualities up to 4K and 8K. Choose your preferred format and quality before saving.
+    Pull the full video at any available quality — up to 4K or 8K where the source supports it. Select your resolution and quality tier before the download begins.
   </Card>
   <Card title="Format Conversion" icon="arrows-rotate" href="/features/format-conversion">
-    Convert HLS and DASH streams to MP4, MKV, MOV, or WebM. Extract audio to MP3 or AAC.
+    Remux or transcode streams into MP4, MKV, MOV, or WebM on the way out. Audio-only exports are also available as MP3 or AAC.
   </Card>
   <Card title="Chromecast" icon="tv" href="/features/chromecast">
-    Cast detected streams directly to your Chromecast or AirPlay-compatible devices.
+    Push a detected stream directly to a Chromecast or AirPlay-compatible TV without downloading it first.
   </Card>
   <Card title="Cloud Storage" icon="cloud-arrow-up" href="/features/cloud-storage">
-    Sync downloads to Google Drive, Dropbox, AWS S3, or Cloudflare R2 automatically.
+    Route completed downloads straight to [Google Drive, Dropbox, AWS S3, or Cloudflare R2](/features/cloud-storage) without touching your local disk.
   </Card>
   <Card title="Video Library" icon="folder-open" href="/features/video-library">
-    Save and organize videos in your cloud library. Access them from any device.
+    Maintain a persistent cloud library of everything you've saved and retrieve it from any device.
   </Card>
 </CardGroup>
 
-## Get started
+## Get started in three steps
 
 <Steps>
-  <Step title="Install the extension">
-    Add SaveMate to Chrome, Edge, or Brave from the [Chrome Web Store](https://chromewebstore.google.com/detail/lejgkageoahacjmljeogapbkhbfldigd). Takes less than 10 seconds.
+  <Step title="Install Vidow">
+    Add Vidow to [Chrome, Edge, or Brave](https://chromewebstore.google.com/detail/hkdmdpdhfaamhgaojpelccmeehpfljgf) from the Chrome Web Store. No account required to start — the extension is active immediately after installation.
   </Step>
-  <Step title="Browse any video site">
-    Visit a website with video content. The SaveMate icon in your toolbar lights up when a stream is detected.
+  <Step title="Open a page with video">
+    Navigate to any site that plays video. Vidow monitors requests in the background and highlights the toolbar icon as soon as it identifies a downloadable stream.
   </Step>
-  <Step title="Save or cast">
-    Click the icon to download, convert, or cast the video. Choose your preferred quality and format.
+  <Step title="Download, convert, or cast">
+    Click the Vidow icon, pick your quality and output format, and either save the file locally, send it to cloud storage, or cast it to a connected TV.
   </Step>
 </Steps>
 
 <Card title="Quick Start Guide" icon="rocket" href="/quickstart" horizontal>
-  Follow the step-by-step guide to set up SaveMate and download your first video.
+  Step-by-step walkthrough: install Vidow, capture your first stream, and configure storage preferences.
 </Card>
 
 ## Free vs Professional
 
-SaveMate is free to install and use. The free plan includes standard quality downloads (up to 720p), 3 HD downloads per day, and storage for 10 videos in your cloud library.
+Vidow is free to install and doesn't require an account. The free plan covers standard-quality downloads (up to 720p), a daily allowance of HD downloads, and a 10-video cloud library.
 
-Upgrade to Professional for unlimited 4K/8K downloads, cloud sync, format conversion, and an unlimited video library.
+Professional removes those limits entirely. You get unrestricted 4K and 8K downloads, automatic cloud sync on every save, the full format conversion toolkit, and an unlimited video library. Vidow Professional is also available in 59 languages, making it the most capable browser video downloader for international users.
 
 <Card title="Compare plans" icon="table" href="/billing/plans" horizontal>
-  See the full feature comparison between Free and Professional plans.
+  Full side-by-side breakdown of Free and Professional features, limits, and pricing.
 </Card>

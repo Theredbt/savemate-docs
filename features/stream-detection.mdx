@@ -1,31 +1,31 @@
 ---
-title: "Stream Detection"
-description: "SaveMate automatically detects HLS, DASH, MP4, WebM, and 16+ video formats as you browse."
+title: "Stream Detection — Automatically Find HLS, DASH & MP4 Videos"
+description: "Vidow is a stream video downloader that identifies HLS, DASH, and 16+ progressive formats as you browse — no manual URL hunting required."
 ---
 
-SaveMate's core feature is universal stream detection. As you browse the web, SaveMate monitors network activity for video streams and notifies you when one is found.
+Vidow watches network traffic in the background while you browse. The moment it identifies a video stream on the page, the extension icon activates and shows you everything it found.
 
-## How it works
+## How detection works
 
-1. **Passive monitoring** — SaveMate listens for HTTP responses that match known video stream patterns via the browser's network APIs
-2. **Stream identification** — When a match is found, SaveMate parses the stream metadata (title, quality, duration, file size)
-3. **Visual notification** — The extension icon lights up with a blue indicator
-4. **User action** — Click the icon to view stream details and choose what to do (download, cast, save)
+1. **Passive monitoring** — Vidow intercepts outgoing HTTP requests through the browser's `webRequest` APIs, watching for responses that match known video formats and MIME types.
+2. **Stream identification** — Each intercepted response is analyzed to extract format, quality variants, duration, file size, and codec information.
+3. **Visual notification** — Once a match is confirmed, the extension icon turns blue to signal that something is ready to act on.
+4. **User action** — Open the popup to review detected streams by quality tier and decide whether to download, cast, or save them.
 
-All detection happens locally in your browser. No data is sent to external servers.
+Detection runs locally in your browser. For sites where network interception alone isn't sufficient, Vidow uses a server-assisted fallback to identify streams.
 
 ## Supported stream types
 
 ### Adaptive streaming
 
-| Type | Format | Description |
-|------|--------|-------------|
-| **HLS** | `.m3u8` | HTTP Live Streaming — the most common adaptive streaming format. SaveMate parses master manifests, extracts all quality variants, and detects separate audio tracks. |
-| **DASH** | `.mpd` | Dynamic Adaptive Streaming over HTTP — used by many modern video platforms. SaveMate parses MPD manifests to extract available qualities and bandwidth information. |
+| Type | Format | Notes |
+|------|--------|-------|
+| **HLS** | `.m3u8` | Vidow parses master playlists to enumerate every quality variant and detect separate audio renditions. |
+| **DASH** | `.mpd` | MPD manifests are parsed to extract available resolutions, bitrates, and segment templates. |
 
 ### Progressive video
 
-SaveMate detects direct video files served over HTTP in 16 formats:
+Vidow detects direct video files in 16 container formats:
 
 | Format | Extensions |
 |--------|-----------|
@@ -43,75 +43,73 @@ SaveMate detects direct video files served over HTTP in 16 formats:
 
 ### Audio formats
 
-SaveMate can also detect standalone audio streams:
-
-`.mp3`, `.aac`, `.m4a`, `.flac`, `.wav`
+Vidow also picks up standalone audio streams: `.mp3`, `.aac`, `.m4a`, `.flac`, `.wav`
 
 ### Platform-specific detection
 
-SaveMate includes enhanced detection for specific platforms:
+Some platforms wrap their stream URLs inside API responses rather than exposing them as direct network requests. Vidow handles these with dedicated interceptors:
 
-- **Vimeo** — Intercepts player config API to extract both progressive MP4 files and HLS playlists with accurate file sizes
+- **Vimeo** — Intercepts the player configuration API call to extract both progressive MP4 download URLs and HLS playlists, along with accurate file sizes that aren't available from headers alone.
 
 ## Detection indicator
 
-The SaveMate extension icon provides real-time feedback:
+The Vidow icon in your toolbar reflects the current state of the page:
 
-- **Default state** — No streams detected on the current page
-- **Active (blue)** — One or more video streams have been detected
+- **Default state** — No video streams have been found on the active tab.
+- **Active (blue)** — At least one stream has been detected and is ready to act on.
 
-Click the icon when it's active to see all detected streams, grouped by quality variant.
+Clicking the active icon opens the stream list, organized by quality variant when multiple options exist.
 
 ## Stream metadata
 
-When a stream is detected, SaveMate extracts and displays:
+For each detected stream, Vidow surfaces the following information:
 
-- **Title** — The video title from the page or stream metadata
-- **Thumbnail** — A preview image extracted from the page
-- **Quality** — Available quality levels (480p, 720p, 1080p, 4K, 8K, etc.)
-- **File size** — Estimated or exact file size (from `Content-Length` headers or bandwidth calculations)
-- **Duration** — Video length when available (sampled from manifest variants)
-- **Source URL** — The originating page
+- **Title** — Pulled from page metadata or stream manifest tags
+- **Thumbnail** — Preview image extracted from Open Graph tags or the page's video element
+- **Quality** — All resolution variants available in the manifest (e.g., 480p, 1080p, 4K)
+- **File size** — Exact size from `Content-Length` headers for progressive files; estimated from bitrate and duration for HLS/DASH
+- **Duration** — Video length when present in manifest or media metadata
+- **Source URL** — The page the stream was found on
 
 <Tip>
-  File sizes for progressive videos are extracted from HTTP headers. For HLS and DASH streams, SaveMate calculates estimated sizes from the stream's bandwidth and duration.
+  HLS and DASH file size estimates are calculated from the stream's declared bandwidth and total segment duration. These are close approximations — actual download sizes may vary slightly.
 </Tip>
 
 ## Quality tiers
 
-| Quality | Resolution | Availability |
-|---------|-----------|--------------|
-| SD | 480p and below | Free |
-| HD | 720p | Free |
-| Full HD | 1080p | Free (3/day limit) |
-| QHD | 1440p | Professional |
-| 2K | 2048p | Professional |
-| 4K | 2160p | Professional |
-| 5K | 5120p | Professional |
-| 6K | 6144p | Professional |
-| 8K | 7680p | Professional |
-| 60fps | Any resolution | Professional |
+| Quality | Resolution | Free | Professional |
+|---------|-----------|------|-------------|
+| SD | 480p and below | Unlimited | Unlimited |
+| HD | 720p | Unlimited | Unlimited |
+| Full HD | 1080p | 3 per day | Unlimited |
+| QHD | 1440p | — | Unlimited |
+| 2K | 2048p | — | Unlimited |
+| 4K | 2160p | — | Unlimited |
+| 5K | 5120p | — | Unlimited |
+| 6K | 6144p | — | Unlimited |
+| 8K | 7680p | — | Unlimited |
+| 60fps | Any resolution | — | Unlimited |
 
 <Note>
-  Free users can download unlimited 720p and below. HD downloads (1080p+) are limited to 3 per day. [Upgrade to Professional](/billing/plans) for unlimited high-quality downloads.
+  Free users get unlimited downloads up to 720p. Full HD (1080p) is available on the Free plan at 3 downloads per day. Anything above 1080p or 60fps content requires [Professional](/billing/plans).
 </Note>
 
 ## Detection settings
 
-You can customize stream detection from the extension's options page:
+Open the extension's options page to tune how Vidow monitors traffic:
 
-- **Format filtering** — Enable or disable detection for specific video and audio formats
-- **Minimum file size** — Filter out small files (presets: 10KB, 100KB, 1MB, 2MB, or custom)
-- **Blocked sites** — Exclude specific domains from detection using domain patterns
+- **Format filtering** — Turn detection on or off for individual video and audio format types
+- **Minimum file size** — Skip files below a threshold to filter out ads and preview clips (presets: 10KB, 100KB, 1MB, 2MB, or enter a custom value)
+- **Blocked sites** — Specify domains where Vidow should not activate, using pattern matching
 
 <Info>
-  To access settings, right-click the SaveMate icon and select **Options**, or click the gear icon in the popup.
+  Reach options by right-clicking the Vidow icon and selecting **Options**, or by clicking the gear icon inside the popup.
 </Info>
 
 ## Supported sites
 
-SaveMate works with any website that delivers video using HLS, DASH, MP4, WebM, or any of the other supported formats. This covers the vast majority of video hosting and streaming platforms on the web.
+Vidow works with any site that delivers video through HLS, DASH, MP4, WebM, or any of the other supported formats. This covers the overwhelming majority of video hosting platforms, media sites, and web apps built on standard streaming infrastructure.
 
 <Warning>
-  SaveMate is designed for personal archiving and fair use. Always respect content creators' rights and the terms of service of the websites you visit.
+  Vidow is intended for personal archiving and fair-use scenarios. Respect the rights of content creators and review the terms of service of any site before downloading.
 </Warning>

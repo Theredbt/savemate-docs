@@ -1,36 +1,35 @@
 ---
-title: "Cloud Storage"
-description: "Sync your downloaded videos to Google Drive, Dropbox, AWS S3, or Cloudflare R2."
+title: "Cloud Storage — Sync Downloads to Google Drive, Dropbox, S3 & R2"
+description: "Connect Vidow to Google Drive, Dropbox, AWS S3, or Cloudflare R2 and send downloaded videos straight to your cloud storage — no manual file moving required."
 ---
 
-<Info>Cloud storage sync is a **Professional** feature. [Upgrade your plan](/billing/plans) to access it.</Info>
+<Info>Cloud storage sync is a **Professional** feature. [Upgrade your plan](/billing/plans) to enable it.</Info>
 
-SaveMate can automatically upload your downloaded videos to your preferred cloud storage provider, keeping your content backed up and accessible from any device.
+Once you connect a cloud storage provider, Vidow can push your downloaded videos there automatically. Files go directly from the download pipeline to your storage bucket or folder — no intermediate step required.
 
 ## Supported providers
 
 | Provider | Authentication | Upload method | Best for |
 |----------|---------------|---------------|----------|
-| **Google Drive** | OAuth 2.0 | Resumable upload | Personal cloud storage, easy sharing |
-| **Dropbox** | OAuth 2.0 | Standard API | Cross-platform file sync |
-| **AWS S3** | Access Key + Secret | Multipart upload | Large files, professional workflows |
-| **Cloudflare R2** | Access Key + Secret | Multipart upload (S3-compatible) | Cost-effective object storage |
+| **Google Drive** | OAuth 2.0 | Resumable upload | Personal cloud storage, easy file sharing |
+| **Dropbox** | OAuth 2.0 | Standard API | Cross-platform sync, team folders |
+| **AWS S3** | Access Key + Secret | Multipart upload | High-volume workflows, programmatic access |
+| **Cloudflare R2** | Access Key + Secret | Multipart upload (S3-compatible) | Cost-effective object storage with zero egress fees |
 
-## Connect a provider
+## Connecting a provider
 
 <Steps>
-  <Step title="Go to Cloud Sync">
-    Navigate to [savemate.io/cloud-sync](https://savemate.io/cloud-sync) and sign in to your SaveMate account.
+  <Step title="Open Cloud Sync">
+    Go to [vidow.io/cloud-sync](https://vidow.io/cloud-sync) and sign into your Vidow account.
   </Step>
-  <Step title="Choose a provider">
-    Click **Connect** on the provider you want to use.
+  <Step title="Pick a provider">
+    Find the provider you want to use and click **Connect**.
   </Step>
   <Step title="Authenticate">
-    - **Google Drive / Dropbox**: You'll be redirected to authorize SaveMate via OAuth. Grant the requested permissions.
-    - **AWS S3 / Cloudflare R2**: Enter your Access Key ID and Secret Access Key. SaveMate stores these credentials securely.
+    For **Google Drive** and **Dropbox**, you'll be redirected through an OAuth flow to grant Vidow access to your storage. For **AWS S3** and **Cloudflare R2**, enter your Access Key ID and Secret Access Key — Vidow stores these credentials encrypted.
   </Step>
   <Step title="Start syncing">
-    Once connected, your downloads can be automatically uploaded to your cloud storage.
+    Connected providers are immediately active. Your next download will be uploaded to the configured destination.
   </Step>
 </Steps>
 
@@ -38,34 +37,33 @@ SaveMate can automatically upload your downloaded videos to your preferred cloud
 
 ### Direct upload (files under 100MB)
 
-For smaller files, SaveMate uploads directly from your browser to the cloud provider. This is fast and requires no intermediate storage.
+Smaller files are sent to the cloud provider in a single request from your browser. This is the fastest path and works for all four providers.
 
-### Multipart upload (files over 100MB)
+### Multipart upload (S3 and R2, files over 100MB)
 
-For larger files (AWS S3 and Cloudflare R2), SaveMate uses multipart upload:
+For large files on AWS S3 and Cloudflare R2, Vidow splits the content into parts and uploads them concurrently:
 
-- Files are split into smaller chunks
-- Chunks upload in parallel for maximum speed
-- Uploads can be **paused and resumed**
+- Parts transfer in parallel, making better use of your available bandwidth
+- You can pause and resume uploads without starting over
 - Supports files up to 50TB
 
 ### Resumable upload (Google Drive)
 
-Google Drive uses its resumable upload protocol, which automatically handles network interruptions and retries.
+Google Drive uploads use the Google resumable upload protocol, which handles network drops and timeouts gracefully. If the connection is interrupted, the upload picks up where it left off automatically.
 
 ## Upload history
 
-Track all your cloud uploads from the Cloud Sync page:
+The Cloud Sync page keeps a log of every upload attempt, so you always know what made it to your storage:
 
-- **Status filters** — View all, completed, failed, or cancelled uploads
-- **File details** — Name, provider, size, and upload date
-- **Direct links** — Click through to view the file in your cloud storage
-- **Retry failed uploads** — Re-attempt uploads that failed due to network issues
+- **Status filters** — Filter by all uploads, completed, failed, or cancelled
+- **File details** — File name, destination provider, size, and timestamp
+- **Direct links** — Jump straight to the file in your cloud storage from the log entry
+- **Retry failed uploads** — Re-trigger uploads that didn't complete due to network or credential issues
 
 ## Managing connections
 
-You can manage your cloud connections from the Cloud Sync settings:
+From the Cloud Sync settings panel you can:
 
-- **Update credentials** — Refresh OAuth tokens or update API keys
-- **Disconnect** — Remove a provider and revoke access
-- **Request a provider** — Suggest new cloud storage providers for SaveMate to support
+- **Update credentials** — Refresh expired OAuth tokens or replace API keys that have been rotated
+- **Disconnect a provider** — Removes the connection and revokes Vidow's access to that storage account
+- **Request a new provider** — Submit a request to add support for a cloud storage service not currently listed

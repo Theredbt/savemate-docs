@@ -1,0 +1,61 @@
+---
+title: "Video Trimmer — Cut & Trim Videos in Your Browser"
+description: "Trim video clips to the exact length you need. Set precise start and end points, preview your selection, and export — all in your browser."
+---
+
+<Info>The video trimmer is a **Professional** feature. [Upgrade your plan](/billing/plans) to access it.</Info>
+
+The Vidow video trimmer lets you cut any video to the exact length you need. Set start and end points, preview the selection, and export — all without leaving your browser.
+
+## How to trim a video
+
+<Steps>
+  <Step title="Open the tool">
+    Go to [vidow.io/tools/trim](https://vidow.io/tools/trim).
+  </Step>
+  <Step title="Upload your video">
+    Click **Upload** or drag a video file onto the page.
+  </Step>
+  <Step title="Set start and end points">
+    Use the visual timeline scrubber to set your trim range, or type precise timestamps directly into the start and end fields.
+  </Step>
+  <Step title="Preview the selection">
+    Play back your trimmed selection to confirm it looks right before exporting.
+  </Step>
+  <Step title="Export the trimmed file">
+    Click **Export**. The output file is saved to your downloads folder.
+  </Step>
+</Steps>
+
+## Supported formats
+
+| | Formats |
+|---|---|
+| **Input** | MP4, WebM, MKV, MOV |
+| **Output** | MP4, WebM, MKV, MOV |
+
+## Trimming options
+
+| Option | Description |
+|--------|-------------|
+| **Timestamp input** | Type exact start and end times in HH:MM:SS.mmm format |
+| **Timeline scrubber** | Drag handles on the visual timeline to set the trim range |
+| **Preview playback** | Play your selection before exporting to verify the result |
+
+## How it works
+
+Trimming runs locally in your browser using a WebAssembly build of FFmpeg. For compatible video files, the trim is performed without re-encoding, so the process is fast and there is no quality loss. Re-encoding is used when the source format requires it. No data is uploaded to any server.
+
+## Related tools
+
+<CardGroup cols={3}>
+  <Card title="Video Compressor" href="/tools/video-compressor">
+    Reduce file size after trimming your clip.
+  </Card>
+  <Card title="Merge Videos" href="/tools/merge-videos">
+    Combine trimmed clips into a single video.
+  </Card>
+  <Card title="Add Audio" href="/tools/add-audio">
+    Replace or overlay audio on your trimmed clip.
+  </Card>
+</CardGroup>

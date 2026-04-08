@@ -1,101 +1,101 @@
 ---
-title: "Privacy & Security"
-description: "How SaveMate protects your data and privacy."
+title: "Privacy & Security — How Vidow Protects Your Data"
+description: "Vidow's full privacy policy for the Chrome extension and web app — what runs locally, what reaches our servers, and how your data stays secure."
 ---
 
-SaveMate is designed with privacy as a core principle. Here's exactly what the extension does and doesn't do with your data.
+Vidow is built around a simple principle: process as much as possible in your browser, and be transparent about the rest. This page explains exactly what data Vidow touches, where it goes, and why.
 
-## Local-first processing
+## Processing happens in your browser
 
-All video detection, downloading, and format conversion happens entirely in your browser. SaveMate does not upload your video data to any external server for processing.
+The following operations run entirely on your device. No video data, no media files, and no page content are uploaded to Vidow's servers for these tasks.
 
-| Operation | Where it happens |
-|-----------|-----------------|
-| Stream detection | Your browser |
-| Video downloading | Your browser |
-| Format conversion | Your browser |
-| Audio extraction | Your browser |
-| Cloud sync upload | Directly from your browser to your chosen provider (Google Drive, Dropbox, S3, R2) |
+| Operation | Where it runs |
+|---|---|
+| Stream detection | Your browser (network interception + DOM scanning) |
+| Video downloading | Your browser (direct fetch from the source CDN) |
+| Format conversion | Your browser (WebAssembly workers) |
+| Audio extraction | Your browser (WebAssembly workers) |
+| Cloud sync uploads | Direct from your browser to your chosen provider (Google Drive, Dropbox, S3, R2) |
 
-## Data collection
+## What Vidow stores in your browser
 
-### What SaveMate does NOT collect
+Vidow persists state in two Chrome storage areas — `sync` for preferences that follow you across devices, and `local` for tab-level data and auth state.
 
-- Browsing history or visited URLs
-- Video content or downloaded files
-- Personal information beyond your account details
-- Analytics or tracking data
-- Keystroke or form input data
+**Extension preferences** (sync storage): theme, badge display mode, blocked sites list, format filters, default download path, minimum file size threshold.
 
-### What SaveMate stores locally
+**Detected video metadata per tab** (local storage): the page URL where a video was found, detected video stream URLs, video title, thumbnail URL, available quality options, and stream type (HLS, DASH, or direct MP4). This data is cleared automatically when the tab closes and is also purged after 24 hours regardless of tab state.
 
-The extension stores settings and detection data in your browser's local storage:
+**Authentication state** (local storage): a boolean flag for whether you are logged in, an upgraded flag indicating premium status, a `device_key` identifier that ties the extension to your account, a `device_claimed` flag, and counters and timestamps tracking authentication failure events.
 
-- **Extension settings** — Format preferences, download path, blocked sites, minimum file size
-- **Detected streams** — Temporarily cached metadata (title, thumbnail, quality info) for the current tab. Cleared when you close the tab
-- **Saved video library** — Video metadata (title, URL, thumbnail) for your cloud library — not the video files themselves
-- **Authentication state** — Session token for logged-in users
+**HD download limit cache**: the current state of your download allowance, cached locally to avoid redundant server round-trips.
 
-### What SaveMate sends to our servers
+**Saved video hashes**: a set of content hashes used to keep your extension library in sync with your Vidow account, so the UI can accurately reflect which videos you have already saved.
 
-When you have an account and are logged in:
+## What Vidow sends to our servers
 
-- **Authentication** — Your login credentials (email and password, securely encrypted)
-- **Saved video metadata** — Title, source URL, and thumbnail URL when you save a video to your library
-- **Cloud upload metadata** — File name, size, and status for cloud sync tracking
-- **Bug reports** — Only when you explicitly submit a report through the extension
+Vidow does contact our servers in specific, bounded situations. Here is every case, stated plainly:
+
+- **Last-resort video detection**: when network interception alone cannot find any video streams on a page, the page URL is sent to a Vidow API endpoint that attempts server-side detection. No page content is transmitted — only the URL.
+- **Save to library**: when you explicitly click to save a video, the video title, the originating page link, and the thumbnail URL are sent to our servers to create the library entry.
+- **Bug reports**: the page URL, your browser name, and error details are transmitted only when you actively submit a bug report through the extension UI. No automatic crash reporting occurs.
+- **Device claim**: your `device_key` is sent to our servers on first login to merge any anonymous usage activity into your user account.
+- **Limit checks**: your `device_key` is sent when the extension checks whether you have remaining downloads or cast actions under your current plan.
+- **Authentication state**: session cookies set by the vidow.io web app are included with API requests to verify your login status. The extension itself never handles credentials — authentication happens entirely through the vidow.io web interface.
+- **Outbound link tracking**: all URLs that open vidow.io from the extension have UTM parameters appended (`utm_source=extension`, `utm_medium`, `utm_campaign`, `utm_content` set to the context that triggered the link, e.g. `cast_premium_only` or `daily_limit_reached`), along with your browser name and extension version. This lets us understand which extension actions drive web visits.
+
+## What Vidow does not collect
+
+- **Passwords or login credentials**: authentication is handled via session cookies set on the vidow.io web app. The extension never intercepts, stores, or transmits login credentials.
+- **General browsing history**: Vidow only processes pages where you take an explicit action or where a video stream is detected. Unrelated browsing is never observed.
+- **Keystrokes, form data, or mouse activity**: no input monitoring of any kind.
+- **Payment information**: all billing is processed by Stripe server-side. The extension has no access to payment data.
+- **Video content or downloaded files**: media files are downloaded directly to your device and never pass through Vidow's infrastructure.
+- **Location data**: no geolocation is requested or inferred.
+- **Personal communications**: no access to email, messages, or any communication channels.
+
+## Extension permissions
+
+The following table covers every permission in Vidow's manifest and explains its exact purpose.
+
+| Permission | Purpose |
+|---|---|
+| `tabs` | Associate detected video streams with their originating tab; update the badge icon and stream count per tab; detect tab navigation and closure to clear stale data; open install, uninstall, and download pages |
+| `webRequest` | Intercept HTTP response headers to identify video media streams (HLS, DASH, MP4) as they load; capture request headers needed to replay authenticated streams accurately |
+| `declarativeNetRequest` | Fallback download method via `Content-Disposition` header injection; forward streaming bridge headers for cast and stream player pages on vidow.io |
+| `storage` | Persist extension state: preferences in sync storage; detected video data, authentication state, and limit cache in local storage |
+| `downloads` *(optional)* | Requested at runtime only when you initiate a download. Triggers the browser's native download dialog with proper file naming. Never requested upfront |
+| `all_urls` (host permission) | Monitor network requests for video stream detection across all domains; run content scripts for DOM scanning and thumbnail extraction; fetch HLS/DASH manifests from arbitrary CDN origins |
+
+Vidow does not request access to your bookmarks, cookies, or other extensions' data.
 
 ## Cloud storage security
 
 ### OAuth providers (Google Drive, Dropbox)
 
-- SaveMate uses industry-standard secure authorization (OAuth)
-- Your Google/Dropbox password is never shared with SaveMate
-- You can revoke access at any time from your Google or Dropbox account settings
-- SaveMate only requests the minimum permissions needed to upload files to a dedicated folder
-- Your connection credentials are stored encrypted on SaveMate's servers and refreshed automatically
+Vidow connects using industry-standard OAuth 2.0. Your Google or Dropbox password is never shared with Vidow at any point. The authorization grant is scoped to the minimum permissions needed — upload access to a dedicated folder — and can be revoked at any time from your provider's account settings. Refresh tokens are stored encrypted on Vidow's servers and rotated automatically before expiry.
 
 ### API key providers (AWS S3, Cloudflare R2)
 
-- Your access keys are transmitted over HTTPS and stored encrypted on SaveMate's servers
-- We recommend creating a dedicated IAM user with minimal write-only permissions (see the [AWS S3 setup guide](/guides/setup-aws-s3))
-- You can rotate keys at any time and update them in SaveMate
-
-## Extension permissions
-
-SaveMate requests only the permissions required for its functionality:
-
-| Permission | Why it's needed |
-|------------|----------------|
-| **Read and change data on websites** | Monitor network requests to detect video streams |
-| **Downloads** | Save downloaded files to your computer (optional, enabled in settings) |
-| **Storage** | Save extension settings and cached detection data locally |
-
-SaveMate does not request permissions for:
-- Reading your bookmarks
-- Accessing your browsing history
-- Reading or modifying cookies
-- Accessing other extensions' data
+Your access keys are transmitted over HTTPS and stored encrypted on Vidow's servers. We recommend creating a dedicated IAM user with write-only permissions scoped to a single bucket, rather than using root credentials. You can rotate your keys at any time and update them in Vidow's settings.
 
 ## Payment security
 
-All payment processing is handled by [Stripe](https://stripe.com), a PCI DSS Level 1 certified payment processor. SaveMate never sees, stores, or processes your credit card number. Payment information is entered directly into Stripe's secure forms.
+All payment processing is handled by [Stripe](https://stripe.com), a PCI DSS Level 1 certified payment processor. Vidow never receives, stores, or processes your card number. Payment details are entered directly into Stripe's hosted payment forms, and billing webhooks communicate the outcome back to Vidow without card data ever leaving Stripe's infrastructure.
 
 ## Extension verification
 
-SaveMate is published on the [Chrome Web Store](https://chromewebstore.google.com/detail/lejgkageoahacjmljeogapbkhbfldigd) and has been reviewed by Google's security team. The extension uses strict security policies that prevent any external code from running within it — only SaveMate's own code is allowed to execute.
+Vidow is published on the Chrome Web Store and passes Google's review process before each release. The extension enforces a strict Content Security Policy: `script-src 'self'; object-src 'self'`. This means only code shipped with the extension can execute — no inline scripts, no external script sources, and no runtime code injection.
 
 ## Account deletion
 
-You can delete your SaveMate account at any time from [Account Security settings](https://savemate.io/settings/security). Account deletion:
+You can permanently delete your account at any time from [vidow.io/settings/security](https://vidow.io/settings/security). Deletion immediately and irreversibly:
 
-- Permanently removes all personal data from our servers
-- Removes your saved video library
+- Removes all personal data from Vidow's servers
+- Erases your saved video library
 - Cancels any active subscription
-- Is irreversible
 
-<Warning>Account deletion cannot be undone. Make sure to download any data you want to keep before deleting your account.</Warning>
+<Warning>Account deletion cannot be undone. Export or note any data you want to keep before proceeding.</Warning>
 
 ## Contact
 
-If you have questions about SaveMate's privacy practices, contact us at [savemate.io/contact](https://savemate.io/contact).
+Questions about Vidow's privacy practices? Reach us at [vidow.io/contact](https://vidow.io/contact).

@@ -1,57 +1,61 @@
 ---
-title: "Glossary"
-description: "Definitions of technical terms used in SaveMate documentation."
+title: "Glossary — Video Streaming & Download Terms Explained"
+description: "A video streaming glossary covering HLS, DASH, codecs, m3u8, transmuxing, cloud storage, DRM, Manifest V3, and every term you'll encounter while downloading or streaming video."
 ---
 
 ## Streaming & Video
 
 <AccordionGroup>
   <Accordion title="HLS (HTTP Live Streaming)">
-    An adaptive streaming protocol developed by Apple. HLS breaks video into small segments listed in a `.m3u8` manifest file. The player downloads segments sequentially, and can switch between quality levels based on network conditions. HLS is the most common streaming format on the web.
+    A video delivery protocol originally created by Apple and now the dominant streaming format across the web. HLS works by splitting a video into a series of short segments and pointing to them through a text-based index file called an m3u8 manifest. Players fetch segments one at a time over standard HTTP, which means the stream works through firewalls and CDNs without any special infrastructure. Because multiple quality versions of the same segments exist, the player can step up or down in resolution on the fly as your connection changes.
   </Accordion>
 
   <Accordion title="DASH (Dynamic Adaptive Streaming over HTTP)">
-    An adaptive streaming protocol similar to HLS, using `.mpd` (Media Presentation Description) manifest files. DASH is an open standard used by many modern video platforms as an alternative to HLS.
+    An open-standard adaptive streaming protocol that works on the same principles as HLS but uses an XML-based index file called an MPD. Whereas HLS was initially Apple-proprietary, DASH was designed from the ground up as a vendor-neutral specification, and many large platforms use it alongside or instead of HLS. From a user perspective the experience is identical — quality adjusts automatically and playback happens over ordinary HTTP.
   </Accordion>
 
   <Accordion title="m3u8">
-    The file extension for HLS manifest files. An m3u8 file is a text-based playlist that lists the URLs of video segments and their metadata. When SaveMate detects an m3u8 file, it means an HLS stream has been found.
+    The file extension that identifies an HLS playlist. It is a plain-text file structured as an extended M3U playlist, containing the addresses of each video segment along with duration hints and, in master playlists, links to alternate quality renditions and audio tracks. When Vidow encounters an m3u8 URL in network traffic, it recognises an HLS stream and can begin assembling a complete download from all the listed segments.
   </Accordion>
 
   <Accordion title="MPD (Media Presentation Description)">
-    The file format used by DASH streams. Similar to m3u8 for HLS, an MPD file describes available video qualities and audio tracks.
+    The XML manifest format used by DASH streams, analogous to the m3u8 file in HLS. An MPD describes every available quality tier, frame rate, audio language, and subtitle track, along with the exact byte ranges or URLs that correspond to each segment. Vidow parses MPD files to identify all representations and select the highest-quality stream for download.
   </Accordion>
 
   <Accordion title="Adaptive bitrate streaming">
-    A technique where video is encoded at multiple quality levels. The player automatically switches between qualities based on your internet speed, ensuring smooth playback. Both HLS and DASH use adaptive bitrate streaming.
+    A delivery strategy where video is pre-encoded at several quality levels — for example 360p, 720p, and 1080p — and each level is sliced into identically timed segments. The player monitors real-time throughput and buffer health, then requests segments from whichever quality tier keeps playback smooth. If your bandwidth drops, it steps down; when bandwidth recovers, it steps back up. Both HLS and DASH are built around this principle. Vidow downloads the highest available tier by default, giving you the best copy the source offers.
   </Accordion>
 
   <Accordion title="Progressive download">
-    A direct video file download (e.g., a single MP4 file) as opposed to segmented streaming. The browser downloads the file from start to finish. File size is usually known upfront.
+    The straightforward alternative to adaptive streaming: a single video file served at a fixed URL, downloaded linearly from byte zero to the end. The browser knows the total file size upfront and can display a deterministic progress bar. Progressive downloads are simpler to capture because the entire video is one resource rather than hundreds of segments — Vidow handles both approaches automatically.
   </Accordion>
 
   <Accordion title="Segments">
-    Small chunks of video (typically 2-10 seconds each) that make up an HLS or DASH stream. SaveMate downloads all segments and combines them into a single continuous file.
+    The individual short-duration video chunks — typically two to six seconds each — that adaptive streams are divided into. Each segment is a self-contained, independently decodable unit, which is what makes quality switching possible mid-stream. When Vidow downloads an HLS or DASH stream, it fetches every segment in sequence and then joins them into a single continuous output file.
   </Accordion>
 
   <Accordion title="Manifest">
-    A file that describes the structure of an adaptive stream. HLS uses m3u8 manifests, DASH uses MPD manifests. The manifest lists available qualities, segment URLs, and audio/video track information.
+    A generic term for the index file that describes an adaptive stream's structure. The manifest lists the available quality levels, the URL or byte range for each segment, and any supplementary tracks such as alternate audio languages or subtitle streams. HLS manifests are m3u8 files; DASH manifests are MPD files. Vidow's detection logic targets manifest requests because intercepting the manifest gives access to the entire stream.
   </Accordion>
 
   <Accordion title="Muxing">
-    The process of combining separate audio and video streams into a single file. Many HLS/DASH streams deliver audio and video separately, and SaveMate automatically muxes them during download.
+    Short for multiplexing — the operation of combining separate elementary streams (most commonly a video track and an audio track) into one output file. Many adaptive streams deliver audio and video as entirely separate segment sequences so that players can mix and match video resolution with audio language independently. Vidow automatically muxes the appropriate tracks together during download so you receive a single, properly synchronised file.
+  </Accordion>
+
+  <Accordion title="Transmuxing">
+    Changing a video's container format without touching the encoded content inside. During transmuxing, the raw compressed frames are extracted from one wrapper and repacked into another — for instance, moving MPEG-TS data from HLS segments into an MP4 container. Because no decoding or re-encoding takes place, transmuxing is fast and causes zero quality loss. Vidow transmuxes HLS segment data into standard containers during download, giving you a universally compatible file without degrading the original encoding.
   </Accordion>
 
   <Accordion title="Container format">
-    A file format that wraps video and audio data together. Common containers include MP4, MKV, MOV, and WebM. Different containers support different codecs and features (like subtitles or multiple audio tracks).
+    The file format that acts as a wrapper around compressed audio and video data. The container defines how tracks are interleaved, how metadata is stored, and what codecs are supported. Common containers include MP4, MKV, MOV, and WebM. Two videos can use the same codec yet be in different containers, and the same container can hold content encoded with different codecs. The container determines the file extension you see; the codec determines the compression algorithm inside.
   </Accordion>
 
   <Accordion title="Codec">
-    The algorithm used to encode and decode video or audio data. Common video codecs include H.264, H.265, VP9, and AV1. The codec determines quality and file size, while the container format determines the file extension.
+    The compression algorithm used to encode and decode audio or video. Codecs dramatically reduce file size compared to raw video by exploiting spatial and temporal redundancy between frames. Widely used video codecs include H.264 (AVC), H.265 (HEVC), VP9, and AV1. Each generation offers better compression efficiency at the cost of higher computational complexity. The codec lives inside the container and is independent from it — an MP4 file can hold H.264, H.265, or AV1 content.
   </Accordion>
 
-  <Accordion title="Transcoding vs. transmuxing">
-    **Transmuxing** changes the container format without re-encoding (fast, no quality loss). **Transcoding** re-encodes the video with a different codec (slow, potential quality change). SaveMate transmuxes when possible to preserve quality.
+  <Accordion title="Transcoding">
+    Fully decoding a video from its original codec and then re-encoding it using a different codec or different encoding settings. Transcoding is computationally intensive and always involves some generation loss, because you are making new compression decisions on already-compressed data. It is the right tool when you need to change codec (e.g., H.264 to AV1) or drastically reduce file size, but the wrong tool when you just need a different container — use transmuxing instead.
   </Accordion>
 </AccordionGroup>
 
@@ -59,23 +63,23 @@ description: "Definitions of technical terms used in SaveMate documentation."
 
 <AccordionGroup>
   <Accordion title="MP4 (.mp4)">
-    The most widely supported video container format. Works on virtually every device, browser, and media player. Uses H.264 or H.265 codecs. The default choice for most users.
+    The MPEG-4 Part 14 container is the closest thing the video world has to a universal format. It plays natively on every major operating system, browser, smart TV, and mobile device without any additional software. MP4 typically wraps H.264 or H.265 video and AAC audio, striking a balance between file size and broad compatibility. It is Vidow's default output format for this reason.
   </Accordion>
 
   <Accordion title="MKV (.mkv)">
-    Matroska Video — an open container format that supports multiple audio tracks, subtitles, and rich metadata in a single file. Popular for archiving and media server use.
+    The Matroska Video container is an open-source format built to hold virtually any combination of video codecs, audio tracks, subtitle streams, chapter markers, and attachment files in a single package. MKV's flexibility makes it popular for storing high-quality video collections and for use with media servers like Plex or Jellyfin. Playback on stock mobile or browser environments may require additional codecs or a third-party player.
   </Accordion>
 
   <Accordion title="WebM (.webm)">
-    An open video format developed by Google, typically using VP9 or AV1 codecs. Common on web platforms and produces smaller files than MP4 at similar quality. Best for web embedding.
+    An open container format developed by Google specifically for web delivery, designed to pair with the VP8, VP9, or AV1 video codecs and the Vorbis or Opus audio codecs. WebM files are typically smaller than equivalent MP4 files at the same perceived quality, which benefits bandwidth-constrained streaming. Native browser support is excellent, though some older devices and editing applications do not recognise it.
   </Accordion>
 
   <Accordion title="MOV (.mov)">
-    Apple's video container format, native to macOS and iOS. Preferred for Apple ecosystem workflows and professional video editing with Final Cut Pro.
+    Apple's QuickTime container format, which predates MPEG-4 and served as one of its primary inspirations. MOV files play natively across macOS and iOS and integrate seamlessly with Apple's professional software ecosystem, including Final Cut Pro and Logic Pro. The format supports the same H.264 and H.265 codecs as MP4 and uses a nearly identical internal structure, though the two are not freely interchangeable without remuxing.
   </Accordion>
 
   <Accordion title="MPEG-TS (.ts)">
-    Transport Stream — the native segment format used by HLS streams. When downloading HLS without conversion, you get a .ts file. Can be converted to MP4, MKV, or other formats.
+    MPEG Transport Stream is the low-level container that HLS uses for its individual segments. It was originally designed for broadcast television, where robustness against packet loss mattered more than file efficiency. Raw HLS downloads produce .ts files. While many media players can handle .ts files directly, Vidow converts them to MP4 or another standard container during download to maximise compatibility.
   </Accordion>
 </AccordionGroup>
 
@@ -83,19 +87,19 @@ description: "Definitions of technical terms used in SaveMate documentation."
 
 <AccordionGroup>
   <Accordion title="OAuth 2.0">
-    An authorization protocol that lets you grant SaveMate access to your cloud storage without sharing your password. Used by Google Drive and Dropbox. You can revoke access at any time from the provider's settings.
+    An industry-standard authorisation framework that lets you give Vidow permission to write files to your cloud storage account without ever sharing your password. Instead of credentials, the service issues Vidow a scoped access token that covers only the specific operations you approved — typically uploading files to a folder. You can revoke this token at any time from your Google Drive or Dropbox security settings, instantly cutting off Vidow's access.
   </Accordion>
 
   <Accordion title="Multipart upload">
-    A method for uploading large files by splitting them into smaller parts that upload in parallel. Used by AWS S3 and Cloudflare R2 for files over 100MB. Supports pause/resume and handles network interruptions gracefully.
+    A technique used by object storage services like AWS S3 and Cloudflare R2 where a large file is broken into numbered parts and each part is uploaded independently, often in parallel. Once all parts are confirmed as received, the service reassembles them server-side into a single object. This approach tolerates network interruptions gracefully — a failed part can be retried without restarting the entire upload — and dramatically speeds up transfers for files over 100 MB.
   </Accordion>
 
   <Accordion title="Resumable upload">
-    An upload method that can automatically recover from network interruptions without restarting from scratch. Used by Google Drive. If your connection drops, the upload resumes from where it left off.
+    An upload protocol, most commonly associated with Google Drive's API, that maintains a server-side session so an interrupted transfer can continue from its last confirmed byte rather than from the beginning. When Vidow starts a Google Drive upload, it opens a resumable session URL. If your network drops or the browser tab is closed and reopened, Vidow queries how many bytes were received and picks up exactly where the transfer stopped.
   </Accordion>
 
   <Accordion title="Egress fees">
-    Charges for downloading data from cloud storage. AWS S3 charges egress fees when you access your files, while Cloudflare R2 does not — a key cost advantage if you frequently access your uploaded videos.
+    Charges that cloud storage providers levy when data leaves their infrastructure — typically when you download a file or when a CDN serves it to end users. AWS S3 charges egress fees per gigabyte transferred out. Cloudflare R2, by contrast, has no egress fees, which makes it significantly cheaper for use cases that involve frequent retrieval of stored videos. This cost difference is one reason Vidow surfaces R2 as a storage option alongside S3.
   </Accordion>
 </AccordionGroup>
 
@@ -103,10 +107,18 @@ description: "Definitions of technical terms used in SaveMate documentation."
 
 <AccordionGroup>
   <Accordion title="SPA (Single-Page Application)">
-    A modern type of website that updates content without reloading the full page (think Gmail, Twitter, or most React/Vue apps). SaveMate includes special support for SPAs to re-detect videos when you navigate between pages.
+    A category of web application that loads once and then updates the visible content by manipulating the DOM rather than requesting entirely new pages from the server. Navigation feels instant because only data — not full HTML documents — travels over the wire. Frameworks like React, Vue, and Angular are commonly used to build SPAs. Because the page never fully reloads, a browser extension must actively watch for URL and DOM changes to detect newly loaded video players. Vidow is built to handle SPA navigation without missing embeds that appear after the initial load.
   </Accordion>
 
   <Accordion title="DRM (Digital Rights Management)">
-    Copy protection technology used by some streaming services to prevent downloading. SaveMate cannot detect or download DRM-protected content. Sites that use DRM include most major subscription streaming services.
+    A family of technologies that encrypt video streams so that only authorised playback environments can decrypt and render them. Common DRM systems include Widevine (Google), FairPlay (Apple), and PlayReady (Microsoft). Encrypted streams are useless without the corresponding decryption key, which is tied to the licensed player environment and never exposed to extensions or third-party software. Vidow does not attempt to bypass or circumvent DRM — content protected this way is simply not available for download.
+  </Accordion>
+
+  <Accordion title="Service Worker">
+    A JavaScript file that runs in its own background thread, separate from any web page, and persists across tab opens and closes. In the context of browser extensions built to the Manifest V3 specification, the service worker replaces the long-lived background page from Manifest V2. Because service workers are event-driven and can be terminated by the browser when idle, extensions must store any persistent state in `chrome.storage` rather than in memory. Vidow's extension architecture is designed around this constraint to avoid losing detected stream data when the service worker is suspended.
+  </Accordion>
+
+  <Accordion title="Manifest V3">
+    The current Chrome extension platform specification introduced by Google to improve security, performance, and privacy compared to the legacy Manifest V2 model. Key changes include replacing persistent background pages with ephemeral service workers, restricting the use of remotely hosted code, and replacing the `webRequestBlocking` API (which could intercept and modify network requests) with the `declarativeNetRequest` API (which uses declarative rules evaluated by the browser). Extensions must declare their full set of rules at install time. Vidow's Manifest V3 implementation uses a service worker plus `chrome.storage` to reliably track streaming sessions within these constraints.
   </Accordion>
 </AccordionGroup>

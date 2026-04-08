@@ -1,0 +1,74 @@
+---
+title: "TikTok Video Downloader — Save TikTok Videos with Vidow"
+description: "Download TikTok videos with the Vidow browser extension. Detect and save TikTok video streams directly from your desktop browser."
+---
+
+Vidow lets you download TikTok videos by detecting the video streams that load in your browser when you watch a TikTok on the desktop site. No third-party tools, no paste-a-link services — just direct stream detection from the network traffic your browser already handles.
+
+## How Vidow detects TikTok videos
+
+TikTok serves video content as MP4 files. When you watch a TikTok on tiktok.com, your browser requests those MP4 files from TikTok's CDN. Vidow monitors your browser's network traffic and captures these requests as they happen.
+
+This is the same universal detection mechanism Vidow uses on every other site. No TikTok-specific code, no API calls — just watching what your browser loads.
+
+## How to download a TikTok video
+
+<Steps>
+  <Step title="Open TikTok on desktop">
+    Go to tiktok.com in Chrome. Vidow is a desktop browser extension and does not work in the TikTok mobile app or on mobile browsers.
+  </Step>
+  <Step title="Navigate to the video">
+    Click on the video you want to download to open it. This takes you to the individual video page.
+  </Step>
+  <Step title="Play the video">
+    The video will typically start playing automatically on the TikTok video page. If it does not, press play to trigger the stream load.
+  </Step>
+  <Step title="Click the Vidow icon">
+    Once the video stream is detected, the Vidow icon in your toolbar lights up. Click it to open the download panel.
+  </Step>
+  <Step title="Select quality and download">
+    Choose your preferred quality from the available options and click **Download**.
+  </Step>
+</Steps>
+
+## Available quality options
+
+| Quality | Availability |
+|---------|-------------|
+| 720p | Typically available |
+| 1080p | Available for most videos |
+
+<Note>TikTok's available qualities depend on the original upload and how TikTok encodes each video. Vidow shows all streams it detects — there may be more than one quality option.</Note>
+
+## Tips for downloading TikTok videos
+
+- **Use tiktok.com on desktop** — The desktop website is required. Vidow does not run inside the TikTok app or on mobile browsers.
+- **Click into the video** — Videos that auto-play in the TikTok For You feed while scrolling may also be detected, but opening the individual video page is the most reliable approach.
+- **Scroll to load** — If you are browsing a creator's profile, scroll through their videos to trigger lazy loading. Vidow captures streams as they load.
+- **Try refreshing if not detected** — If the icon does not light up, refresh the page and allow the video to start playing again.
+- **Quality varies** — TikTok serves different quality levels depending on the video. Some videos may only have one detected stream.
+
+<Tip>For the most reliable detection, open the individual video page (the URL that contains the video ID), let it autoplay for a couple of seconds, then click the Vidow icon.</Tip>
+
+## Frequently asked questions
+
+<AccordionGroup>
+  <Accordion title="Can I download TikTok videos without a watermark?">
+    Vidow downloads the video stream as TikTok delivers it to your browser. Whether a watermark appears depends on what TikTok encodes into the video stream itself. Vidow does not add or remove watermarks — it saves exactly what TikTok sends.
+  </Accordion>
+  <Accordion title="Does it work on the TikTok app?">
+    No. Vidow is a Chrome desktop browser extension. It works on tiktok.com in your desktop browser and does not integrate with the TikTok iOS or Android app.
+  </Accordion>
+  <Accordion title="Why isn't the video being detected?">
+    The most common reasons: the video has not started playing yet, you are on a mobile browser where the extension does not run, or the video page has not fully loaded. Try refreshing the page, waiting for the video to auto-play, and then clicking the icon.
+  </Accordion>
+  <Accordion title="Can I download TikTok Live?">
+    TikTok Live streams are delivered as HLS streams. Vidow can detect live HLS streams, but live recording availability depends on your Vidow plan. Once detected, the stream will appear in the extension popup like any other stream.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+<Card title="Get Vidow for Chrome" icon="chrome" href="https://chromewebstore.google.com/detail/hkdmdpdhfaamhgaojpelccmeehpfljgf">
+  Install the Vidow extension to start downloading TikTok videos from your desktop browser.
+</Card>

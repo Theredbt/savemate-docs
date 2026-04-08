@@ -1,71 +1,69 @@
 ---
-title: "Supported Browsers"
-description: "SaveMate works with Chrome, Edge, Brave, and more Chromium-based browsers."
+title: "Supported Browsers — Chrome, Edge, Brave & More"
+description: "Vidow runs on Chrome, Edge, and Brave across macOS, Windows, and Linux. Check version requirements, language support, and extension permissions."
 ---
+
+Vidow v2.0 is built on the Manifest V3 extension platform and supports all major Chromium-based desktop browsers.
 
 ## Browser compatibility
 
-SaveMate v2.0 is built on Manifest V3 and supports all major Chromium-based browsers on desktop.
-
-| Browser | Platform | Status | Notes |
-|---------|----------|--------|-------|
-| Google Chrome | macOS, Windows, Linux | Fully supported | Recommended for best performance |
-| Microsoft Edge | macOS, Windows, Linux | Fully supported | Install via Chrome Web Store |
-| Brave | macOS, Windows, Linux | Fully supported | Privacy-focused, fully compatible |
-| Mozilla Firefox | macOS, Windows, Linux | Coming soon | In development |
+| Browser | macOS | Windows | Linux | Status |
+|---------|-------|---------|-------|--------|
+| **Google Chrome** | Yes | Yes | Yes | Fully supported |
+| **Microsoft Edge** | Yes | Yes | Yes | Fully supported |
+| **Brave** | Yes | Yes | Yes | Fully supported |
+| **Mozilla Firefox** | — | — | — | Coming soon |
 
 ## Operating system support
 
-SaveMate works on all desktop operating systems:
-
-- **macOS** — 10.15 (Catalina) and later
+- **macOS** — 10.15 Catalina and later
 - **Windows** — Windows 10 and later
-- **Linux** — Any distribution that runs a supported browser
+- **Linux** — Any distribution capable of running a supported Chromium-based browser
 
 ## Mobile support
 
-Browser extensions are a desktop-only feature. SaveMate cannot be installed on mobile browsers (iOS Safari, Android Chrome).
+Browser extensions are a desktop-only technology. Vidow cannot be installed on mobile browsers including iOS Safari, Chrome for Android, or any in-app browser. Mobile platform support is not currently planned.
 
 ## Minimum browser versions
 
-SaveMate requires Manifest V3 support:
+Vidow requires Manifest V3 support, which was introduced in these versions:
 
-- Chrome 88+
-- Edge 88+
-- Brave 1.20+
+- **Chrome** 88 or later
+- **Edge** 88 or later
+- **Brave** 1.20 or later
 
-If you're running an older browser version, update to the latest version for full compatibility.
+Running an older version? Update your browser to the latest stable release to ensure full compatibility.
 
 ## Language support
 
-SaveMate is available in the following languages:
+Vidow is localized into 59 languages. The extension automatically matches your browser's language setting — no manual selection required. Supported languages include:
 
-- English
-- French (Fran&ccedil;ais)
-- Arabic (العربية)
-
-The extension automatically uses your browser's language setting.
+English, French, Arabic, Spanish, German, Portuguese, Chinese (Simplified), Japanese, Korean, Hindi, Russian, Italian, Dutch, Turkish, Polish, and 44 additional languages.
 
 ## Extension permissions
 
-SaveMate requests the following permissions during installation:
+When you install Vidow, the browser asks you to approve a set of permissions. Here is what each one is used for:
 
-| Permission | Why it's needed |
-|------------|----------------|
-| **Read and change all your data on all websites** | Required to monitor network requests for video stream detection on any site you visit |
-| **Manage your downloads** (optional) | Requested at runtime if you enable download management in settings. Provides better control over file naming and save location |
+| Permission | Purpose |
+|------------|---------|
+| **tabs** | Associate detected streams with the correct browser tab, update the detection badge when you switch tabs, and clean up stream data when a tab is closed |
+| **webRequest** | Monitor network responses to identify video streams — HLS manifests, DASH segments, and direct MP4 files — by inspecting Content-Type headers and URL patterns |
+| **declarativeNetRequest** | Used as a fallback download mechanism and to manage streaming bridge headers when direct network interception is insufficient |
+| **storage** | Save your preferences, detected stream data for the current session, and authentication state locally on your device |
+| **downloads** (optional) | Enable saving files through the browser's download dialog with proper file names and folder routing — this permission is only requested when you turn on download management in settings |
+| **all_urls** (host permission) | Detect video streams on any website — required because video content can be hosted on any domain, not just a fixed list of known platforms |
 
 <Info>
-  SaveMate uses the `declarativeNetRequest` API for downloads and `webRequest` for stream detection. All processing is local — no browsing data is sent anywhere.
+  Page URLs may be sent to Vidow servers on certain websites where network-level interception alone cannot identify streams. This is used exclusively for fallback stream detection.
 </Info>
 
 ## Why Chromium only?
 
-SaveMate uses Manifest V3 Chromium extension APIs including:
+Vidow relies on a set of browser APIs that are currently stable only in Chromium-based browsers:
 
-- **`webRequest`** — Real-time network monitoring for stream detection
-- **`declarativeNetRequest`** — Dynamic download rules for file saving
-- **`storage.sync`** — Settings synchronization across devices
-- **Background service worker** — Efficient background processing
+- **`webRequest`** — Low-level network monitoring needed to identify streams in real time as pages load
+- **`declarativeNetRequest`** — Declarative download rules and header manipulation for reliable file saving
+- **`storage.sync`** — Settings that synchronize automatically across all your browser profiles and devices
+- **Background service worker** — Persistent processing without a persistent background page, keeping resource use low
 
-These APIs provide the best performance and reliability for real-time video stream detection. Firefox support using the WebExtension API is in development.
+Firefox exposes some equivalent APIs through the WebExtension standard, but the behavior diverges enough that a separate implementation is required. Firefox support is currently in development.

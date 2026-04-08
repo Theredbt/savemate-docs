@@ -1,74 +1,81 @@
 ---
-title: "Set Up Dropbox"
-description: "Connect Dropbox to SaveMate for automatic cloud sync."
+title: "Set Up Dropbox — Cloud Video Storage with Vidow"
+description: "Connect your Dropbox account to Vidow and send saved videos straight to your Dropbox folder across all your devices."
 ---
 
-Dropbox uses OAuth 2.0 authentication, so you authorize SaveMate through your Dropbox account without sharing your password.
+Dropbox authorization goes through OAuth 2.0. Vidow never handles your Dropbox password — you log in through Dropbox's own interface and grant access from there.
 
 ## Prerequisites
 
-- A SaveMate account with a [Professional plan](/billing/plans)
-- A Dropbox account with storage available
+- A Vidow account on the [Professional plan](/billing/plans)
+- A Dropbox account with storage available for video files
 
 ## Connect Dropbox
 
 <Steps>
   <Step title="Open Cloud Sync">
-    Navigate to [savemate.io/cloud-sync](https://savemate.io/cloud-sync) and sign in to your SaveMate account.
+    Go to [vidow.io/cloud-sync](https://vidow.io/cloud-sync) and sign in to your Vidow account.
   </Step>
   <Step title="Click Connect on Dropbox">
-    Find the Dropbox card and click **Connect**. You'll be redirected to Dropbox's authorization page.
+    Find the Dropbox card and click **Connect**. You'll be taken to Dropbox's authorization page.
   </Step>
   <Step title="Sign in to Dropbox">
-    Log in with your Dropbox credentials if prompted.
+    Enter your Dropbox credentials if you aren't already logged in. You can also sign in with Google or Apple if your Dropbox account uses those.
   </Step>
   <Step title="Grant permissions">
-    Dropbox will ask you to grant SaveMate permission to upload files. SaveMate only accesses a dedicated folder — it cannot read or modify your other files.
+    Dropbox asks you to confirm that Vidow can write files to your account. Vidow operates within a dedicated folder only — nothing outside that folder is accessible.
 
     Click **Allow** to proceed.
   </Step>
   <Step title="Connection confirmed">
-    You'll be redirected back to SaveMate. The Dropbox card will show a **Connected** status.
+    Dropbox redirects you back to Vidow. The Dropbox card updates to show a **Connected** status, and you're ready to sync.
   </Step>
 </Steps>
 
 ## How uploads work
 
-Dropbox uses a **standard upload** protocol:
+Vidow uses the Dropbox upload API with chunked transfers for larger files:
 
-- Small files upload in a single API call
-- Larger files are uploaded in 8MB chunks
-- Upload progress is tracked and visible on the Cloud Sync page
+- Files that fit within a single request are sent in one shot
+- Larger files are broken into 8MB chunks and uploaded sequentially
+- Progress is tracked per chunk, so the Cloud Sync page reflects how far along a transfer is
+- Interrupted uploads do not need to restart from zero — Dropbox tracks which chunks were received
 
 ## Storage location
 
-SaveMate creates a dedicated folder within your Dropbox. All uploaded files are saved in this folder and sync across all your Dropbox-connected devices automatically.
+Vidow creates a dedicated folder inside your Dropbox. Files saved through Vidow go there and sync automatically to any device where you have Dropbox installed. You can access, move, or share them the same way you would with any other Dropbox file.
 
 ## Managing the connection
 
-### Check connection health
+### Connection health
 
-- **Healthy** — OAuth token is valid
-- **Broken** — Token expired. Click **Reconnect** to re-authorize
-- **Revoked** — Access was removed from Dropbox settings. Reconnect to restore
+The Cloud Sync page shows the current state of your Dropbox token:
+
+- **Healthy** — The token is valid and uploads are working
+- **Broken** — The token expired or was otherwise invalidated. Click **Reconnect** to re-authorize
+- **Revoked** — You removed Vidow's access from Dropbox. Use **Reconnect** to restore it
 
 ### Disconnect
 
-1. Go to [savemate.io/cloud-sync](https://savemate.io/cloud-sync)
+To remove the integration from Vidow:
+
+1. Go to [vidow.io/cloud-sync](https://vidow.io/cloud-sync)
 2. Click disconnect on the Dropbox card
 
-To also revoke from Dropbox's side, visit [dropbox.com/account/connected_apps](https://www.dropbox.com/account/connected_apps) and remove SaveMate.
+Your files in Dropbox are not affected — only the Vidow connection is removed.
+
+To also revoke access from Dropbox's side, go to [dropbox.com/account/connected_apps](https://www.dropbox.com/account/connected_apps) and remove Vidow from the list.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="Upload stuck or slow">
-    Dropbox has rate limits on API uploads. If you're uploading many files in quick succession, some may queue. Wait a few minutes and retry.
+  <Accordion title="Upload stuck or very slow">
+    Dropbox imposes API rate limits on third-party apps. If you're syncing many videos in rapid succession, some transfers may pause while Vidow waits for the rate limit window to reset. Give it a few minutes, then check the Cloud Sync page to see if the upload resumes on its own.
   </Accordion>
   <Accordion title="Storage quota exceeded">
-    Check your available space at [dropbox.com/account](https://www.dropbox.com/account). Free Dropbox accounts include 2GB. Consider upgrading or switching to a different cloud provider.
+    Review your available space at [dropbox.com/account](https://www.dropbox.com/account). Free Dropbox accounts come with 2GB of storage, which can fill up quickly with video files. Upgrade your Dropbox plan or switch to a provider with more capacity.
   </Accordion>
   <Accordion title="Connection shows as broken">
-    Re-authorize by clicking **Reconnect** on the Cloud Sync page. This typically resolves token expiry issues.
+    A broken connection usually means Dropbox invalidated the OAuth token — this can happen if you changed your Dropbox password or removed Vidow's permissions. Click **Reconnect** on the Cloud Sync page to complete a fresh authorization.
   </Accordion>
 </AccordionGroup>

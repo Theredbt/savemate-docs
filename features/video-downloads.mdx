@@ -1,24 +1,24 @@
 ---
-title: "Video Downloads"
-description: "Download detected video streams in your preferred quality and format."
+title: "Video Downloads — Save Streaming Video in Any Quality"
+description: "Vidow lets you download streaming video from virtually any website — pick your quality, hit download, and the file lands in your downloads folder."
 ---
 
-Once SaveMate detects a video stream, you can download it to your device in the quality and format of your choice.
+When Vidow detects a video stream, you can pull it down to your device at any quality the stream makes available. The download process handles everything — manifest parsing, concurrent segment fetching, and audio/video merging — without requiring any additional software.
 
 ## How to download
 
 <Steps>
-  <Step title="Detect a stream">
-    Navigate to a page with video content. The SaveMate icon lights up when a stream is found.
+  <Step title="Find a stream">
+    Browse to a page containing video content. When Vidow detects a stream, the toolbar icon turns blue.
   </Step>
-  <Step title="Open the download panel">
-    Click the SaveMate icon to see detected streams. Click **Download** on the stream you want.
+  <Step title="Open Vidow">
+    Click the icon to open the popup. You'll see a list of all detected streams on the current page.
   </Step>
-  <Step title="Choose quality and format">
-    The format picker shows all available quality levels and formats for the detected stream. Select your preferred option.
+  <Step title="Pick your quality and format">
+    Select the stream you want, then choose a quality tier and output format from the available options.
   </Step>
-  <Step title="Start download">
-    Click **Download** to start. The file saves to your browser's default download location.
+  <Step title="Initiate the download">
+    Click **Download**. The file will be saved to your browser's download location (or a custom path if you've configured one).
   </Step>
 </Steps>
 
@@ -29,49 +29,50 @@ Once SaveMate detects a video stream, you can download it to your device in the 
 | SD (480p and below) | Unlimited | Unlimited |
 | HD (720p) | Unlimited | Unlimited |
 | Full HD (1080p) | 3 per day | Unlimited |
-| QHD (1440p) | - | Unlimited |
-| 4K (2160p) | - | Unlimited |
-| 8K (7680p) | - | Unlimited |
-| 60fps content | - | Unlimited |
+| QHD (1440p) | — | Unlimited |
+| 4K (2160p) | — | Unlimited |
+| 8K (7680p) | — | Unlimited |
+| 60fps content | — | Unlimited |
 
-## HLS & DASH stream downloads
+## HLS and DASH stream downloads
 
-For HLS (m3u8) and DASH (mpd) streams, SaveMate handles the complexity of downloading segmented video:
+Adaptive streams are segmented — the video is split into dozens or hundreds of small chunks spread across separate files. Vidow handles the entire download pipeline:
 
-1. Parses the manifest to identify all video and audio segments
-2. Downloads segments concurrently for maximum speed
-3. Combines segments into a single continuous file
-4. Optionally converts to your preferred container format
+1. Parses the manifest file to map out every video and audio segment
+2. Fetches multiple segments at the same time for faster overall download speed
+3. Reassembles them into a single, contiguous media file
+4. Optionally remuxes the result into your chosen container format
 
-Key capabilities:
-- **Concurrent threading** — Multiple segments download in parallel for faster completion
-- **Resume capability** — Interrupted downloads can be retried
-- **Separate audio/video** — Automatically combines separate audio and video tracks into one file
-- **Adaptive quality** — Choose from all available quality variants in the manifest
-- **Live streams** — Record ongoing live streams (Professional plan)
+Additional capabilities for adaptive streams:
+
+- **Parallel segment fetching** — Concurrent connections mean faster downloads, especially for longer videos
+- **Retry on interruption** — If a download stalls, you can restart it without losing progress
+- **Automatic audio merging** — When a stream carries audio and video in separate tracks, Vidow combines them into one file automatically
+- **Full quality selection** — Every variant declared in the manifest is available to choose from
+- **Live stream recording** — Capture ongoing live broadcasts (Professional plan)
 
 ## Progressive video downloads
 
-For direct video files (MP4, WebM, MKV, etc.), SaveMate downloads the file directly. File sizes are shown upfront when available from HTTP headers.
+For direct video files served over HTTP — MP4, WebM, MKV, and similar formats — Vidow downloads the file as-is. File size is shown upfront when the server includes a `Content-Length` header.
 
 ## Download limits
 
 **Free users:**
 - Unlimited downloads at 720p and below
-- 3 HD downloads per day (1080p and above)
-- Daily limit resets at midnight
+- 3 Full HD (1080p) downloads per day
+- The daily count resets at midnight
 
 **Professional users:**
-- Unlimited downloads at all qualities
-- No daily limits
+- Unlimited downloads across all quality levels
+- No daily caps
 
 <Tip>
-  The HD download limit is tracked per device. If you're logged in, it's tied to your account to prevent quota abuse across devices.
+  The 1080p daily limit is tracked per device. If you're signed into a Vidow account, it ties to your account instead, preventing the limit from being reset by switching browsers.
 </Tip>
 
 ## Supported formats
 
-SaveMate can download video in 16+ container formats:
+Vidow can download content in 16+ container formats:
 
 | Category | Formats |
 |----------|---------|
@@ -81,17 +82,13 @@ SaveMate can download video in 16+ container formats:
 | **Audio** | MP3, AAC, M4A, FLAC, WAV |
 
 <Info>
-  Format conversion from HLS/DASH to MP4/MKV/MOV/WebM is a [Professional feature](/features/format-conversion).
+  Converting HLS or DASH streams into MP4, MKV, MOV, or WebM is a [Professional feature](/features/format-conversion). Free users receive the native stream format.
 </Info>
 
 ## Download settings
 
-Customize download behavior from the extension options page:
+You can adjust download behavior from the options page:
 
-- **Download management** — Enable browser download API integration for better control over file naming and save location
-- **Download path** — Set a custom folder prefix for downloads (e.g., `SaveMate/` to organize files)
-- **File naming** — Files are automatically named with deduplication (adding a number suffix if a file already exists)
-
-<Info>
-  The download management feature requires an optional browser permission that is requested at runtime when you enable it.
-</Info>
+- **Download management** — Activates the browser's download management API, giving you more control over save location and file naming. This requires a separate optional browser permission, requested at runtime.
+- **Download path** — Set a folder prefix so Vidow organizes files into a subdirectory (e.g., `Vidow/` inside your Downloads folder).
+- **File naming** — Filenames are generated from the video title and deduplicated automatically by appending a number if a file with the same name already exists.

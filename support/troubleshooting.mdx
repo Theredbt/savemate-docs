@@ -1,173 +1,173 @@
 ---
-title: "Troubleshooting"
-description: "Solutions for common issues with SaveMate."
+title: "Troubleshooting — Fix Common Vidow Issues"
+description: "Step-by-step fixes for the most common Vidow problems — detection failures, download errors, sync issues, and more."
 ---
 
 ## Stream not detected
 
-**The SaveMate icon doesn't light up on a page with video.**
+**The Vidow icon stays inactive on a page that has video.**
 
 <Steps>
   <Step title="Check the stream format">
-    SaveMate detects HLS (m3u8), MP4, and WebM streams. Some sites use proprietary DRM-protected streams that cannot be detected.
+    Vidow detects HLS (m3u8), DASH (mpd), MP4, and WebM streams. Sites that serve video through proprietary DRM systems typically cannot be detected regardless of settings.
   </Step>
   <Step title="Refresh the page">
-    Stream detection starts when the page loads. Try refreshing the page to trigger detection again.
+    Detection runs at page load. A full refresh gives Vidow another opportunity to find the stream before any content is cached by the browser.
   </Step>
-  <Step title="Play the video">
-    Some sites only load the video stream when you press play. Start playing the video and wait a few seconds for detection.
+  <Step title="Play the video first">
+    Many platforms delay loading the stream URL until you press play. Start the video, wait a few seconds, and check whether the Vidow icon activates.
   </Step>
-  <Step title="Check the extension is enabled">
-    Right-click the SaveMate icon and select **Manage extension**. Make sure the extension is toggled **On**.
+  <Step title="Confirm the extension is enabled">
+    Right-click the Vidow icon in your toolbar and open **Manage extension**. Verify the toggle is set to **On** for the site you are visiting.
   </Step>
 </Steps>
 
 ## Download fails or is incomplete
 
-**The download starts but doesn't complete, or the downloaded file is corrupted.**
+**A download starts but stops early, or the output file is corrupted.**
 
-- **Check your internet connection** — Unstable connections can interrupt HLS segment downloads
-- **Try a different quality** — Lower quality streams have smaller segments and are more reliable on slow connections
-- **Retry the download** — SaveMate supports resuming interrupted HLS downloads
-- **Clear browser cache** — Cached manifest data can sometimes cause issues. Clear your cache and refresh the page
-- **Check disk space** — Make sure you have enough free storage for the video file
+- **Check your connection** — HLS downloads fetch many small segments in sequence. A dropped connection can interrupt this process.
+- **Switch to a lower quality** — Smaller files place less strain on slow or unstable connections and are more likely to complete in one pass.
+- **Retry the download** — Vidow supports resuming interrupted HLS downloads from where they stopped. Start the download again rather than restarting from the beginning.
+- **Clear browser cache** — Stale manifest data can cause the extension to request segments that no longer exist. Clear your cache, refresh the page, and try again.
+- **Verify available disk space** — Make sure the drive you are saving to has enough free space to hold the full video file.
 
-## Extension not appearing in toolbar
+## Extension not visible in toolbar
 
-**You installed SaveMate but can't find it in your browser.**
+**You installed Vidow but cannot find the icon in your browser.**
 
-The extension may be installed but not pinned to your toolbar:
+The extension is installed but may not be pinned yet:
 
-1. Click the **puzzle piece icon** in the top-right of your browser toolbar
-2. Find SaveMate in the extension list
-3. Click the **pin icon** to keep it visible
+1. Click the **puzzle piece icon** in the upper-right corner of your browser window
+2. Locate Vidow in the list of installed extensions
+3. Click the **pin icon** to keep it permanently visible in your toolbar
 
-See the [Pin to Toolbar guide](/extension/pinning) for detailed instructions.
+For detailed screenshots, see the [Pin to Toolbar guide](/extension/pinning).
 
 ## Cloud sync issues
 
-**Uploads to cloud storage fail or don't start.**
+**Uploads to cloud storage fail or do not start.**
 
 <AccordionGroup>
   <Accordion title="Google Drive / Dropbox">
-    - **Re-authorize**: Your OAuth token may have expired. Go to Cloud Sync settings, disconnect the provider, and reconnect
-    - **Check permissions**: Make sure you granted SaveMate the required permissions during OAuth authorization
-    - **Storage quota**: Check that your cloud storage account has enough free space
+    - **Re-authorize the connection** — OAuth tokens expire over time. Go to your Cloud Sync settings, disconnect the provider, and reconnect to generate a fresh token.
+    - **Review granted permissions** — During the OAuth flow, Vidow requires specific access scopes. If you declined any permissions, the connection may be partially authorized. Disconnect and reconnect, granting all requested permissions.
+    - **Check storage quota** — Your Google Drive or Dropbox account may be full. Free up space before retrying the upload.
   </Accordion>
   <Accordion title="AWS S3 / Cloudflare R2">
-    - **Verify credentials**: Double-check your Access Key ID and Secret Access Key
-    - **Bucket permissions**: Ensure your IAM user/policy has `s3:PutObject` and `s3:CreateMultipartUpload` permissions
-    - **Region**: Confirm the correct region is configured for your S3 bucket
+    - **Verify your credentials** — Confirm that the Access Key ID and Secret Access Key entered in Vidow settings are current and correct.
+    - **Check bucket permissions** — The IAM user or policy attached to your credentials must include `s3:PutObject` and `s3:CreateMultipartUpload` at minimum.
+    - **Confirm the region** — An incorrect region setting will cause all requests to fail. Match the region in Vidow settings to the region shown in your bucket configuration.
   </Accordion>
 </AccordionGroup>
 
 ## Account issues
 
-### Can't verify email
+### Cannot verify email
 
-If you didn't receive the verification email:
+If the verification email did not arrive:
 
-1. Check your spam/junk folder
-2. Go to [savemate.io/email/verify](https://savemate.io/email/verify) and click **Resend verification email**
-3. If using a work email, check with your IT department about email filters
+1. Check your spam and junk folders — transactional email can be filtered automatically
+2. Go to [vidow.io/email/verify](https://vidow.io/email/verify) and click **Resend verification email**
+3. If you use a work or school address, ask your IT team whether outbound email from external domains is filtered
 
 ### Forgot password
 
-1. Go to [savemate.io/forgot-password](https://savemate.io/forgot-password)
-2. Enter your email address
-3. Check your inbox for the reset link
-4. Click the link and set a new password
+1. Open [vidow.io/forgot-password](https://vidow.io/forgot-password)
+2. Enter the email address associated with your account
+3. Check your inbox for the reset link and follow the instructions to set a new password
 
-### 2FA lockout
+### Locked out after 2FA
 
-If you've lost access to your authenticator app:
+If you have lost access to your authenticator app:
 
-1. Use one of your saved recovery codes to log in
-2. Once logged in, disable and re-enable 2FA with a new device
+1. Use one of the recovery codes you saved when you set up 2FA to log in
+2. Once inside your account, disable 2FA and re-enable it with a working device
 
-If you've also lost your recovery codes, contact support for account recovery assistance.
+If you no longer have your recovery codes either, contact support for manual account recovery.
 
 ## Download limit reached
 
-**You see a message that you've reached your daily download limit.**
+**Vidow shows a message saying you have hit your daily limit.**
 
-Free users can download unlimited videos at 720p and below, but HD downloads (1080p and above) are limited to 3 per day.
+Free accounts get unlimited downloads at 720p and below. Downloads at 1080p and above are capped at 3 per day.
 
-- **The limit resets at midnight** — Wait until the next day for your HD downloads to reset
-- **The limit is tracked per device** — Using a different browser or device won't reset the limit if you're logged in, as it's tied to your account
-- **Lower quality downloads are unlimited** — You can still download at 720p and below without any limit
-- **Upgrade to Professional** — [Professional plans](/billing/plans) include unlimited HD downloads with no daily cap
+- **The limit resets at midnight** — Wait until the following day and your HD allocation refreshes automatically.
+- **The limit follows your account, not your device** — Switching browsers or machines will not bypass the cap if you are logged in.
+- **720p and below are always unlimited** — You can continue downloading at standard quality without any restriction.
+- **Remove the cap permanently** — [Professional plans](/billing/plans) include unlimited HD downloads with no daily limit.
 
-<Tip>If you frequently need HD downloads, consider the [lifetime access](/billing/lifetime) option for a one-time payment with no recurring charges.</Tip>
+<Tip>If you regularly need more than 3 HD downloads per day, [Lifetime Access](/billing/lifetime) is a one-time payment that removes the cap and all other Professional restrictions indefinitely.</Tip>
 
 ## Cloud upload stuck
 
-**An upload to cloud storage shows as "uploading" but doesn't progress.**
+**An upload shows as in progress but the progress bar is not moving.**
 
 <AccordionGroup>
-  <Accordion title="Check connection health">
-    Go to [savemate.io/cloud-sync](https://savemate.io/cloud-sync) and check the status indicator on your provider card:
-    - **Healthy** (green) — Connection is working. The issue may be network-related.
-    - **Broken** (yellow) — Your OAuth token expired. Click **Reconnect** to re-authorize.
-    - **Revoked** (red) — Access was removed from the provider side. Reconnect with new authorization.
+  <Accordion title="Check your connection health">
+    Open [vidow.io/cloud-sync](https://vidow.io/cloud-sync) and look at the status indicator on your provider card:
+
+    - **Healthy** (green) — The connection is authorized and working. The stall is likely network-related.
+    - **Broken** (yellow) — Your OAuth token expired. Click **Reconnect** to re-authorize without losing your settings.
+    - **Revoked** (red) — Access was removed from the provider side. You will need to reconnect and re-authorize from scratch.
   </Accordion>
-  <Accordion title="Pause and resume">
-    For multipart uploads (AWS S3, Cloudflare R2), try pausing the upload and resuming it. This creates a fresh connection while preserving already-uploaded parts.
+  <Accordion title="Pause and resume the upload">
+    For S3 and R2 multipart uploads, pausing and resuming creates a fresh connection while keeping already-uploaded parts intact. No data is re-uploaded from the beginning.
   </Accordion>
-  <Accordion title="Check your cloud storage quota">
-    Make sure your cloud storage account has enough free space. Google Drive shares its 15GB quota with Gmail and Google Photos.
+  <Accordion title="Check your storage quota">
+    A full cloud storage account will silently reject new uploads. Confirm your provider account has enough available space before retrying. Google Drive shares its quota across Drive, Gmail, and Google Photos.
   </Accordion>
-  <Accordion title="Retry failed uploads">
-    If an upload failed, you can retry it from the upload history on the Cloud Sync page. Click the retry button next to the failed upload.
+  <Accordion title="Retry a failed upload">
+    Failed uploads appear in your upload history on the Cloud Sync page. Click the retry button next to any failed entry to attempt the upload again from where it stopped.
   </Accordion>
 </AccordionGroup>
 
 ## Payment issues
 
-**A subscription payment failed or you can't complete checkout.**
+**A payment was declined or your subscription has not activated.**
 
 <AccordionGroup>
-  <Accordion title="Payment method declined">
-    1. Go to your [billing dashboard](https://savemate.io/billing)
-    2. Update your payment method with a valid card
-    3. Retry the payment
+  <Accordion title="Card declined">
+    1. Go to [vidow.io/billing](https://vidow.io/billing) and update your payment method
+    2. Retry the payment from your billing dashboard
 
-    Common reasons for decline: insufficient funds, expired card, bank fraud protection. Contact your bank if the card should be working.
+    Common reasons for a decline: insufficient funds, an expired card, or automatic fraud protection from your bank. Contact your bank directly if the card should be working.
   </Accordion>
   <Accordion title="Invoice payment failed">
-    Failed invoices can be retried from your billing dashboard. SaveMate will also automatically retry failed payments after a short delay.
+    Failed invoices can be retried manually from your billing dashboard. Vidow also schedules automatic retry attempts after a short delay, so the payment may succeed on its own.
   </Accordion>
   <Accordion title="Subscription not activating after payment">
-    Webhook processing can occasionally take a few minutes. If your Professional features don't activate within 5 minutes of payment, try:
-    1. Refreshing the page
-    2. Logging out and back in
-    3. Contacting support if the issue persists
+    Subscription activation relies on a webhook from Stripe. Processing usually takes under a minute, but can occasionally run longer. If your Professional features have not appeared within 5 minutes of payment:
+
+    1. Refresh the page
+    2. Log out and log back in
+    3. Contact support if the account still shows as free
   </Accordion>
 </AccordionGroup>
 
-## Extension doesn't detect videos on SPA sites
+## Extension does not detect videos on single-page apps
 
-**SaveMate doesn't detect videos when navigating between pages on single-page applications.**
+**Vidow misses videos when you navigate between pages without a full reload.**
 
-SaveMate includes an SPA observer that detects navigation changes on React, Vue, and Angular sites. If detection isn't working:
+Vidow includes a built-in SPA observer that watches for navigation changes on React, Vue, Angular, and similar frameworks. If detection is still not triggering:
 
-1. **Play the video** — Some SPAs don't load streams until playback starts
-2. **Wait a few seconds** — SPA navigation detection has a brief delay while the new content loads
-3. **Try a full page refresh** — Press F5 or Ctrl+R to force a complete reload, which triggers fresh detection
-4. **Check blocked sites** — Make sure the domain isn't in your [blocked sites list](/extension/settings#website-controls)
+1. **Play the video** — Many SPAs do not fetch the stream URL until the player is actually started
+2. **Wait a few seconds** — Navigation events fire asynchronously, so detection can lag a few seconds behind the route change
+3. **Force a full page refresh** — Press F5 or Ctrl+R to reload the page entirely, which restarts the detection process from scratch
+4. **Check your blocked sites list** — Confirm the domain is not excluded in your [extension settings](/extension/settings#website-controls)
 
 ## Report a bug
 
-If you encounter an issue that isn't covered here, you can submit a bug report directly from the extension:
+If you run into a problem that is not covered here, submit a report directly from the extension:
 
-1. Click the SaveMate icon in your toolbar
-2. Look for the feedback or report option in the popup footer
-3. Describe the issue and submit
+1. Click the Vidow icon in your toolbar
+2. Find the report option in the popup footer
+3. Describe what happened and submit
 
-Our team reviews all submitted reports and will follow up if we need more information.
+All submitted reports are reviewed by the team, and we will follow up if more detail is needed.
 
 ## Still need help?
 
-<Card title="Contact us" icon="envelope" href="https://savemate.io/contact" horizontal>
-  Reach out to our support team and we'll help you resolve any issues.
+<Card title="Contact support" icon="envelope" href="https://vidow.io/contact" horizontal>
+  Reach out to the Vidow team and we will help you resolve the issue.
 </Card>

@@ -1,68 +1,74 @@
 ---
-title: "Quick Start"
-description: "Install SaveMate and download your first video in under 2 minutes."
+title: "How to Download Video from Any Website — Quick Start Guide"
+description: "Download video from website pages in seconds with Vidow. Install the browser extension, detect streams automatically, and save files locally or to the cloud."
 ---
 
 ## Install the extension
 
-<Steps>
-  <Step title="Visit the Chrome Web Store">
-    Open the [SaveMate extension page](https://chromewebstore.google.com/detail/lejgkageoahacjmljeogapbkhbfldigd) in Chrome, Edge, or Brave.
-  </Step>
-  <Step title="Click Add to Chrome">
-    Click the **Add to Chrome** button and confirm the installation when prompted. The extension requests minimal permissions and all processing happens locally in your browser.
-  </Step>
-  <Step title="Pin the extension">
-    Click the puzzle piece icon in your browser toolbar, then click the pin icon next to SaveMate. This keeps the SaveMate icon visible so you can see when streams are detected.
+Vidow runs as a browser extension that intercepts video streams as they load. Add it from the Chrome Web Store — the whole process takes under a minute.
 
-    <Tip>Pinning the extension is optional but recommended. It makes it easy to see the detection indicator at a glance.</Tip>
+<Steps>
+  <Step title="Open the extension page">
+    Go to the [Vidow extension on the Chrome Web Store](https://chromewebstore.google.com/detail/hkdmdpdhfaamhgaojpelccmeehpfljgf) in Chrome, Edge, or Brave.
+  </Step>
+  <Step title="Add to your browser">
+    Click **Add to Chrome** and confirm the permissions prompt. Vidow requests only the access it needs to detect streams — no browsing history, no keylogging, and all detection runs locally on your machine.
+  </Step>
+  <Step title="Pin it to your toolbar">
+    Click the puzzle-piece icon in your browser's toolbar, then click the pin icon next to Vidow. Pinning keeps the icon visible so you can tell at a glance whether a video stream has been found on the current page.
+
+    <Tip>You can skip pinning if you prefer a cleaner toolbar. The extension still detects streams in the background — you just won't see the status indicator change color.</Tip>
   </Step>
 </Steps>
 
 ## Download your first video
 
-<Steps>
-  <Step title="Navigate to a video">
-    Go to any website that hosts video content. SaveMate works with most sites that use HLS (m3u8), MP4, or WebM streaming.
-  </Step>
-  <Step title="Wait for detection">
-    When SaveMate detects a video stream, the extension icon in your toolbar will light up with a blue indicator.
-  </Step>
-  <Step title="Click the icon">
-    Click the SaveMate icon to open the popup. You'll see the detected stream with options to download, cast, or save to your library.
-  </Step>
-  <Step title="Choose quality and download">
-    Select your preferred video quality and format, then click **Download**. The file will save to your browser's default download location.
+Once the extension is installed, you can download video from any website that serves content over HLS (m3u8), MPEG-DASH, MP4, or WebM. Here is how the flow works.
 
-    <Note>Free users can download up to 720p quality. [Upgrade to Professional](/billing/plans) for 4K, 8K, and 60fps downloads.</Note>
+<Steps>
+  <Step title="Open a page with video">
+    Navigate to any site with embedded video — a news clip, a tutorial, a streaming platform, or a social media post. Vidow begins scanning for streams as soon as the page starts loading.
+  </Step>
+  <Step title="Watch for the detection signal">
+    When a stream is found, the Vidow icon in your toolbar turns blue. The number shown on the badge tells you how many distinct streams were detected on that page.
+  </Step>
+  <Step title="Open the Vidow popup">
+    Click the icon to open the popup panel. Each detected stream is listed with its format, estimated duration, and available quality levels.
+  </Step>
+  <Step title="Pick a quality and save it">
+    Select the resolution you want, then click **Download**. The file goes straight to your browser's default download folder — no intermediate steps, no redirects.
+
+    <Note>Free accounts cap downloads at 720p. Sign in and upgrade to a paid plan to download video from any website page at full resolution — including 4K, 8K, and high-frame-rate streams.</Note>
   </Step>
 </Steps>
 
-## Create an account (optional)
+## Create an account
 
-A SaveMate account unlocks cloud library storage, cloud sync, and billing management. Registration is optional for basic downloads.
+An account is not required for basic downloads. You can install Vidow and start saving videos right away without registering.
 
-1. Visit [savemate.io/register](https://savemate.io/register)
-2. Sign up with email or Google SSO
-3. Verify your email address
+That said, signing up unlocks your cloud library, cross-device sync, and billing management for premium features.
 
-<Card title="Account setup" icon="user-plus" href="/account/registration" horizontal>
-  Learn more about account features and registration options.
+1. Visit [vidow.io/register](https://vidow.io/register) — no credit card required
+2. Sign up with your email address or use **Continue with Google** for one-click access via Google SSO
+3. If you register by email, check your inbox and verify your address to activate the account
+
+<Card title="Account features" icon="user-plus" href="/account/registration" horizontal>
+  See what changes when you sign in — library storage, sync settings, and plan management.
 </Card>
 
 ## Next steps
 
 <CardGroup cols={2}>
   <Card title="Supported browsers" icon="browsers" href="/extension/supported-browsers">
-    Check compatibility with your browser.
+    See which browsers Vidow runs on and any version requirements.
   </Card>
   <Card title="Stream detection" icon="signal-stream" href="/features/stream-detection">
-    Learn how detection works under the hood.
+    Understand how Vidow identifies HLS, DASH, and direct video sources.
   </Card>
   <Card title="Cloud storage" icon="cloud" href="/features/cloud-storage">
-    Set up automatic cloud sync.
+    Connect Google Drive, Dropbox, or S3-compatible storage for automatic uploads.
   </Card>
   <Card title="Plans & pricing" icon="credit-card" href="/billing/plans">
-    Compare Free and Professional features.
+    Compare what the free tier covers versus a Professional subscription.
   </Card>
 </CardGroup>

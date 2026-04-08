@@ -1,0 +1,59 @@
+---
+title: "HLS Player — Play M3U8 Streams in Your Browser"
+description: "Paste any m3u8 URL and play it instantly in your browser. Adaptive quality selection, full playback controls, no plugins required."
+---
+
+The Vidow HLS player lets you paste any m3u8 URL and play it instantly in your browser. No plugins, no extensions, no account required.
+
+## How to play an HLS stream
+
+<Steps>
+  <Step title="Open the player">
+    Go to [vidow.io/tools/hls-player](https://vidow.io/tools/hls-player).
+  </Step>
+  <Step title="Paste your m3u8 URL">
+    Paste the full m3u8 stream URL into the URL field and press **Load**.
+  </Step>
+  <Step title="Stream loads automatically">
+    The player parses the manifest and begins buffering. Playback starts as soon as enough data is ready.
+  </Step>
+  <Step title="Select quality">
+    Use the quality selector to switch between available bitrate levels. Auto mode lets the player adapt to your connection speed.
+  </Step>
+  <Step title="Play">
+    Use the on-screen controls to play, pause, seek, and adjust volume.
+  </Step>
+</Steps>
+
+## Player features
+
+| Feature | Details |
+|---------|---------|
+| **Adaptive bitrate** | Automatically switches quality based on your connection speed |
+| **Quality selector** | Manually choose from all available quality levels in the manifest |
+| **Playback controls** | Play, pause, seek, volume, and mute |
+| **Fullscreen** | Native fullscreen support |
+| **Picture-in-picture** | Float the player in a corner while using other apps |
+
+## Availability
+
+The HLS player is free — no account required.
+
+## How it works
+
+The player is powered by [HLS.js](https://github.com/video-dev/hls.js), an open-source JavaScript library for HLS playback. It runs entirely in the browser using the Media Source Extensions API, which is supported in all modern browsers. No plugins or browser extensions are required.
+
+<Tip>
+  If a stream requires authentication headers or cookies, it may not load in the public player. Streams on platforms that restrict cross-origin access are not supported.
+</Tip>
+
+## Related tools
+
+<CardGroup cols={2}>
+  <Card title="Cast Player" href="/tools/cast-player">
+    Cast an HLS stream to your Chromecast or AirPlay device.
+  </Card>
+  <Card title="Stream Detection" href="/features/stream-detection">
+    Automatically detect HLS and DASH streams on any page with the Vidow extension.
+  </Card>
+</CardGroup>

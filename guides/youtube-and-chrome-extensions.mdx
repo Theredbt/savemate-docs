@@ -1,103 +1,102 @@
 ---
-title: "YouTube & Chrome Extensions"
-description: "Why Chrome extensions can't download YouTube videos, and what SaveMate can do instead."
+title: "YouTube & Chrome Extensions — Why It Doesn't Work & What Does"
+description: "No Chrome extension can download YouTube videos — here's the real reason why, what Vidow supports instead, and how to get offline access to YouTube content legitimately."
 ---
 
-This is the most common question we receive: **"Can SaveMate download YouTube videos?"**
+The single most common question new users ask is some version of: "Can Vidow download YouTube videos?" The answer is no — and the reason has nothing to do with a technical gap. No Chrome extension can do this, by design.
 
-The short answer is **no** — and neither can any other Chrome extension. Here's why, and what your options are.
+## Can Vidow download YouTube videos?
 
-## Why YouTube downloads don't work on Chrome
+No. Vidow does not download YouTube videos, and neither does any other Chrome extension currently listed on the Chrome Web Store.
 
-### Chrome Web Store policy
+This is not a limitation of Vidow specifically. It is a hard constraint imposed at the platform level, by both Google and YouTube.
 
-Google's [Chrome Web Store Developer Program Policies](https://developer.chrome.com/docs/webstore/program-policies) explicitly prohibit extensions that facilitate downloading content from YouTube. This applies to all extensions, not just SaveMate.
+## Chrome Web Store policy
 
-Any extension that enables YouTube downloads will be:
+Google's [Chrome Web Store Developer Program Policies](https://developer.chrome.com/docs/webstore/program-policies) include an explicit prohibition on extensions that enable downloading content from YouTube. The rule applies universally — no extension is exempt.
 
-1. **Rejected** during the Chrome Web Store review process
-2. **Removed** from the store if the functionality is discovered after publication
-3. **Banned** — the developer's account may be permanently suspended
+An extension that offers YouTube downloading will face one or more of the following outcomes:
 
-SaveMate complies with these policies to remain available on the Chrome Web Store and to protect your trust as a user.
+1. **Rejected** — Google's review team identifies the capability during submission and rejects the extension before it reaches users
+2. **Removed** — If the functionality slips through initial review, it is flagged and pulled from the store once discovered
+3. **Banned** — The developer account associated with the extension may be permanently disabled
 
-### YouTube Terms of Service
+Vidow remains on the Chrome Web Store because it follows these policies. That means it is subject to Google's full security review process, receives ongoing updates, and operates transparently.
 
-YouTube's [Terms of Service](https://www.youtube.com/static?template=terms) prohibit downloading content unless a download button or link is provided by YouTube itself. YouTube Premium subscribers can download videos for offline viewing within the YouTube app.
+## YouTube Terms of Service
 
-### What happens if an extension tries
+YouTube's own [Terms of Service](https://www.youtube.com/static?template=terms) prohibit users from downloading content unless YouTube itself provides a download button or link for that specific video. YouTube Premium offers an official offline download feature within the YouTube app, which is the only sanctioned method for saving YouTube content locally.
 
-Extensions that attempt to bypass these restrictions are typically:
+## About extensions that claim otherwise
 
-- Removed from the Chrome Web Store within days
-- Unable to receive updates or security patches
-- A potential security risk, as they often operate outside Google's review process
+Occasionally, an extension appears on lesser-reviewed distribution channels claiming it can download YouTube videos. These extensions typically:
 
-<Warning>Be cautious of extensions or websites that claim to download YouTube videos. They may contain malware, inject ads, or collect your browsing data. If an extension was removed from the Chrome Web Store, there's usually a reason.</Warning>
+- Operate outside of Chrome Web Store review, which means no Google security audit
+- Get removed from the store quickly when they appear, leaving users with an unmaintained extension
+- Have been associated with ad injection, data harvesting, and other malicious behavior
 
-## What SaveMate can do
+<Warning>Exercise real caution with any extension or website that advertises YouTube downloading. If it was pulled from the Chrome Web Store, that removal happened for a reason. Extensions distributed outside the store have no independent verification and represent a genuine security risk.</Warning>
 
-SaveMate works with **thousands of other websites** that use standard video streaming formats. Here's what SaveMate excels at:
+## What Vidow can do
 
-### Supported streaming formats
+Vidow works with an enormous range of video content on the web — specifically, anything delivered through standard streaming formats. YouTube is one of the few platforms that wraps its streams in proprietary protection specifically to prevent this. The rest of the web largely does not.
 
-| Format | Examples of sites that use it |
-|--------|-------------------------------|
-| **HLS (m3u8)** | News sites, educational platforms, live streams, social media |
-| **DASH (mpd)** | Video hosting platforms, media sites |
-| **MP4** | Direct video hosting, embedded players, course platforms |
-| **WebM** | Web-native video players, open-source platforms |
+### Supported formats
 
-### Platforms where SaveMate works well
+| Format | Typical use cases |
+|--------|-------------------|
+| **HLS (m3u8)** | News publishers, live streams, educational platforms, social media, sports |
+| **DASH (mpd)** | Video hosting platforms, broadcast media, high-quality on-demand content |
+| **MP4** | Direct video hosting, embedded players, course platforms, portfolio sites |
+| **WebM** | Web-native players, open-source platforms, browser-rendered content |
 
-SaveMate's universal detection works on any site that delivers video via standard streaming protocols. Common categories include:
+### Platforms where Vidow works well
 
-- **Educational platforms** — Online courses, lectures, tutorials, webinars
-- **News & media sites** — Video reports, documentaries, interviews
-- **Social media** — Platforms that use HLS or MP4 streaming
-- **Vimeo** — Full support with [enhanced detection](/guides/download-from-vimeo) for accurate quality and file size information
-- **Live streams** — Record ongoing HLS live streams (Professional plan)
-- **Embedded players** — Videos embedded on any website using standard formats
-- **Corporate & training videos** — Internal video platforms, LMS content
-- **Sports & entertainment** — Streaming sites that use HLS/DASH
+Vidow's detection engine reads streaming format signatures, not domain names. Any site serving video through a supported format is fair game:
 
-<Info>SaveMate detects streams based on the **format** (HLS, DASH, MP4, WebM), not the website name. If a site delivers video using a supported format, SaveMate will detect it — regardless of what platform it is.</Info>
+- **Educational platforms** — Online courses, recorded lectures, webinars, and tutorial libraries
+- **News and media** — Broadcast news video, documentary clips, interview recordings
+- **Social media** — Platforms delivering content via HLS or direct MP4
+- **Vimeo** — Full support with [enhanced detection](/guides/download-from-vimeo) that surfaces all quality levels and accurate file sizes
+- **Live streams** — Capture ongoing HLS broadcasts before they disappear (Professional plan)
+- **Embedded video** — Content hosted on Vimeo, Wistia, Brightcove, or similar CDNs, embedded on any third-party page
+- **Corporate and training video** — LMS platforms, internal training portals, and enterprise video tools
+- **Sports and entertainment** — Streaming platforms and broadcasters using HLS or DASH delivery
 
-## YouTube alternatives for offline viewing
+<Info>Vidow identifies streams by their delivery format — HLS, DASH, MP4, or WebM — not by the name of the website. If a platform delivers video through any of those formats, Vidow will detect it automatically.</Info>
 
-If you specifically need offline access to YouTube content, here are legitimate options:
+## YouTube alternatives for offline access
+
+If you need offline access to YouTube content specifically, these are the legitimate paths:
 
 ### YouTube Premium
 
-YouTube's official offline feature. Requires a YouTube Premium subscription.
+YouTube's official subscription tier includes a download feature built into the YouTube mobile and desktop apps. Downloads are locked to the app and expire after 30 days without an internet reconnect. Files cannot be transferred to other devices or media players.
 
-- Download videos within the YouTube app (mobile and desktop)
-- Downloads expire after 30 days without reconnecting
-- Works on iOS, Android, and the YouTube desktop app
-- Does not allow transferring downloaded files to other devices
+### Built-in download buttons
 
-### YouTube's built-in download button
+Some YouTube videos display a download button below the player. This feature is provided by YouTube itself, typically for select creators or content categories. It is available to Premium subscribers and occasionally to non-subscribers for specific content.
 
-Some YouTube videos have a download button provided by the creator. This is allowed under YouTube's terms and doesn't require Premium for select content.
+### Creator-provided alternatives
 
-### Creator-provided links
+Many creators publish their content on multiple platforms or share direct download links in video descriptions. If the content exists elsewhere — on Vimeo, a personal site, or another platform — Vidow may be able to detect and download it from there.
 
-Many content creators share their videos on multiple platforms or provide direct download links in video descriptions. Check if the creator offers the video on a platform where SaveMate can detect it.
+## Vidow's approach
 
-## SaveMate's approach
+Vidow is built around long-term reliability over short-term workarounds. Chasing YouTube compatibility would mean operating outside the Chrome Web Store's policies, which would lead to removal and leave users running an unsupported extension.
 
-SaveMate is built for long-term reliability. Rather than risk removal from the Chrome Web Store by violating policies, we focus on:
+The tradeoff is clear: by staying within bounds, Vidow can offer:
 
-- **Broad compatibility** — Working with the thousands of sites that use standard streaming formats
-- **Enhanced detection** — Platform-specific detectors (like [Vimeo](/guides/download-from-vimeo)) for better quality and metadata
-- **Powerful features** — Format conversion, cloud sync, Chromecast, and library management that no YouTube downloader offers
-- **Trust and safety** — Remaining verified on the Chrome Web Store with full Google security review
+- **Broad compatibility** — Thousands of sites across news, education, social media, sports, and corporate video all use standard streaming formats
+- **Enhanced detection** — Platform-specific detectors like the [Vimeo integration](/guides/download-from-vimeo) provide richer metadata and more accurate quality information than generic stream capture
+- **Powerful features** — Format conversion, [cloud sync](/cloud-sync), Chromecast casting, and a video library — capabilities that purpose-built YouTube downloaders never develop
+- **Trust and safety** — A verified Chrome Web Store listing with ongoing Google security review, so you know what the extension actually does
 
 <CardGroup cols={2}>
   <Card title="Get started" icon="rocket" href="/quickstart">
-    Download your first video in under 2 minutes.
+    Download your first video from one of the thousands of supported sites.
   </Card>
   <Card title="Copyright & Fair Use" icon="scale-balanced" href="/guides/copyright-and-fair-use">
-    Understand your rights and responsibilities when downloading content.
+    Understand the legal framework around downloading content before you begin.
   </Card>
 </CardGroup>
