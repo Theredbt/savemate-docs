@@ -1,6 +1,6 @@
-# SaveMate Documentation
+# Video Downloader Plus Documentation
 
-Product documentation for [SaveMate](https://savemate.io), powered by [Mintlify](https://mintlify.com).
+Product documentation for [Video Downloader Plus](https://vidow.io), powered by [Mintlify](https://mintlify.com).
 
 ## Development
 
@@ -20,6 +20,6 @@ View the local preview at `http://localhost:3000`.
 
 ## Publishing
 
-Changes pushed to the `main` branch are automatically deployed via the Mintlify GitHub app.
+Changes pushed to the `Vidow` branch are automatically deployed via the Mintlify GitHub app.
 
-Live documentation: [savemate.io/docs](https://savemate.io/docs)
+Live documentation: [vidow.io/docs](https://vidow.io/docs)
