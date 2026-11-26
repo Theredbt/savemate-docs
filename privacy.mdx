@@ -38,7 +38,8 @@ Video Downloader Plus does contact our servers in specific, bounded situations. 
 
 - **Last-resort video detection**: when network interception alone cannot find any video streams on a page, the page URL is sent to a Video Downloader Plus API endpoint that attempts server-side detection. No page content is transmitted — only the URL.
 - **Save to library**: when you explicitly click to save a video, the video title, the originating page link, and the thumbnail URL are sent to our servers to create the library entry.
-- **Bug reports**: the page URL, your browser name, and error details are transmitted only when you actively submit a bug report through the extension UI. No automatic crash reporting occurs.
+- **Bug reports**: when you actively submit a bug report through the extension UI, the page URL, your browser name, and error details are sent.
+- **Download diagnostics**: while a download runs, the download page automatically sends diagnostics such as speed, stream format and errors. When a download fails, it may also send a short code for the kind of network error (for example "blocked by an ad blocker" or "the server's certificate is not valid"). The code never contains an address.
 - **Device association**: a unique identifier is sent on first sign-in to link anonymous usage activity to your account.
 - **Limit checks**: your device identifier is sent to verify remaining downloads and cast sessions under your plan.
 - **Authentication state**: session cookies set by the vidow.io web app are included with API requests to verify your login status. The extension itself never handles credentials — authentication happens entirely through the vidow.io web interface.
@@ -61,7 +62,7 @@ The following table covers every permission in Video Downloader Plus's manifest 
 | Permission | Purpose |
 |---|---|
 | `tabs` | Associate detected video streams with their originating tab; update the badge icon and stream count per tab; detect tab navigation and closure to clear stale data; open install, uninstall, and download pages |
-| Network monitoring | Watch for video media streams (HLS, DASH, MP4) as pages load and capture the headers needed to replay protected streams accurately |
+| Network monitoring | Watch for video media streams (HLS, DASH, MP4) as pages load and capture the headers needed to replay protected streams accurately; while a Video Downloader Plus download or cast page is open, note in memory, for about a minute, why that page's own requests failed, so the page can record a short error code (never an address) |
 | Download rules | Manage reliable file saving and the streaming player's network routing |
 | `storage` | Persist extension state: preferences in sync storage; detected video data, authentication state, and limit cache in local storage |
 | `downloads` *(optional)* | Requested at runtime only when you initiate a download. Triggers the browser's native download dialog with proper file naming. Never requested upfront |
